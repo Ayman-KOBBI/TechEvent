@@ -7,7 +7,6 @@ package entity;
 
 import java.sql.Time;
 import java.util.Date;
-
 /**
  *
  * @author asus
@@ -23,11 +22,24 @@ public class Events {
     private float  prix ; 
     private Time h_event ; 
     private String image ;
+   
     
     public Events() {
     }
+    public Events(int id_ev, int id_org,int nb_place) {
+            this.id_ev=id_ev;
+                this.id_org = id_org;
+                this.nb_place=nb_place;
+                
+    }
+    public Events(String description,String lieu) {
+                this.description = description;
+                this.lieu = lieu;
 
-    public Events(int id_ev, int id_org, String description, Date dt_event, int nb_place, String lieu, float prix, Time h_event, String image) {
+
+    }
+
+    public Events(int id_ev, int id_org, String description, Date dt_event, int nb_place, String lieu, float prix, Time h_event) {
         this.id_ev = id_ev;
         this.id_org = id_org;
         this.description = description;
@@ -36,27 +48,8 @@ public class Events {
         this.lieu = lieu;
         this.prix = prix;
         this.h_event = h_event;
-        this.image = image;
-    }
-   /* public Events(int id_ev, int id_org, String description, Date dt_event, int nb_place, String lieu, float prix, Time h_event, String image) {
-        this.id_ev = id_ev;
-        this.id_org = id_org;
-        this.description = description;
-        this.dt_event = dt_event;
-        this.nb_place = nb_place;
-        this.lieu = lieu;
-        this.prix = prix;
-        this.h_event = h_event;
-        this.image = image;
-    }*/
-
-    @Override
-    public String toString() {
-        return "Events{" + "id_ev=" + id_ev + ", id_org=" + id_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", image=" + image + '}';
     }
 
-
-    
     public Events(int id_ev,String description,int nb_place, float prix) {
         this.id_ev = id_ev;
        
@@ -65,6 +58,19 @@ public class Events {
         this.prix = prix;
     
     }
+
+    public Events(int id_ev, int id_org, String description, Date dt_event, Time h_event, int nb_place, String lieu, float prix, String image) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "Events{" + "id_ev=" + id_ev + ", id_org=" + id_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", image=" + image + '}';
+    }
+
+
+    
+    
 
     public void setId_ev(int id_ev) {
         this.id_ev = id_ev;

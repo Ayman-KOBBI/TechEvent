@@ -13,9 +13,9 @@ import java.util.List;
  * @author asus
  */
 public interface IEventService {
-    public void creerEvent(Events event);
-    public void modifEvent(Events event);
-    public void supprEvent(Events event);
+    public void creerEvent(Events e);
+    public void modifEvent(Events e);
+    public void supprEvent(Events e);
     public Events rechercheEventByID(int id);;
     public List<Events> affichierEvent();
     

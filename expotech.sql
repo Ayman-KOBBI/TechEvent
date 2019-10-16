@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 15 oct. 2019 à 20:43
+-- Généré le :  mer. 16 oct. 2019 à 17:45
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -32,23 +32,25 @@ DROP TABLE IF EXISTS `events`;
 CREATE TABLE IF NOT EXISTS `events` (
   `id_ev` int(11) NOT NULL AUTO_INCREMENT,
   `id_org` int(11) NOT NULL,
-  `lieu` varchar(50) NOT NULL,
+  `lieu` varchar(50) DEFAULT NULL,
   `nb_place` int(11) NOT NULL,
   `dt_event` date NOT NULL,
-  `h_event` time NOT NULL,
+  `h_event` varchar(50) NOT NULL,
   `prix` float NOT NULL,
   `image` varchar(50) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_ev`),
   KEY `id_org` (`id_org`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `events`
 --
 
 INSERT INTO `events` (`id_ev`, `id_org`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `image`, `description`) VALUES
-(1, 1, 'toz', 5, '2019-10-01', '09:00:00', 2.2, '', 'ahmed');
+(2, 1, 'mjez', 50, '2019-10-24', '08:00:00', 20, '', 'techevent'),
+(6, 5, 'ariana', 45, '2019-10-17', '10:00:00', 250, '', 'med'),
+(7, 4, 'tunis', 70, '2020-05-22', '12:30:00', 20, '', 'khayat');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,14 @@ CREATE TABLE IF NOT EXISTS `organisateur` (
   `email` varchar(50) NOT NULL,
   `tel` varchar(50) NOT NULL,
   PRIMARY KEY (`id_org`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `organisateur`
+--
+
+INSERT INTO `organisateur` (`id_org`, `nom`, `prenom`, `email`, `tel`) VALUES
+(1, 'med', 'khayat', 'khayat.mohamed@gmail.com', '292365424');
 
 -- --------------------------------------------------------
 

@@ -8,6 +8,7 @@ package service;
 import entity.Events;
 import iservice.IEventService;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,6 +18,8 @@ import javax.swing.JOptionPane;
 import utils.ConnexionBD;
 import java.util.Date;
 import java.sql.Time;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author asus
@@ -75,52 +78,48 @@ try {
     @Override
     public void supprEvent(Events e) {
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-    try {
-        String req3=("delete from events where id_ev = '"+e.getId_ev()+"'");
-           ste.executeUpdate(req3);
+     try {
+            String req1="delete from events where"
+                    + " id_ev=?";
+       
+      PreparedStatement ps = c.prepareStatement(req1);
+            ps.setInt(1, e.getId_ev());
+            ps.executeUpdate();
+         
+           
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null,"Impossible de supprimer cet article\n"+ex.getMessage());
             System.out.println(ex.getMessage());
-        } 
+        }
+  
     }
 
     @Override
     public Events rechercheEventByID(int id) {
-      
-        String res1=("select * from events where where id_ev="+id);
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     try {
-        
-        
-        ResultSet res=  ste.executeQuery(res1);
+                String res1=("select * from events where id_ev="+id);
+     ResultSet res=  ste.executeQuery(res1);
         while(res.next())
-            {
-                
-               int id_ev = res.getInt("id_ev");
+            {    
+                int id_ev = res.getInt("id_ev");
                 int id_org = res.getInt("id_org");
                 String description=res.getString("description");
                 Date dt_event=res.getDate("dt_event");
-                Time h_event=res.getTime("h_event");
+                String h_event=res.getString("h_event");
                 int nb_place=res.getInt("nb_place");
                 String lieu=res.getString("lieu");
                 float prix=res.getFloat("prix");
                 String image=res.getString("image");
                  
-                    
-
-                      
-               
-            
-                
-                return  new Events(id_ev, id_org, description, dt_event,h_event, nb_place,lieu, prix ,image);  
+                System.out.println("evenement trouvé \n");
+              
+           //    return new Events(id_ev, id_org, description, dt_event,h_event, nb_place,lieu, prix ,image);  
                 
             }
         
-           ste.executeUpdate(res1);
+          // ste.executeUpdate(res1);
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null,"Introuvable \n"+ex.getMessage());
-            System.out.println(ex.getMessage());
+             System.out.println("introvable \n");
         } 
          return null;
     }
@@ -142,7 +141,7 @@ try {
                       p.setDescription(res.getString("Description") );
                       p.setLieu(res.getString("lieu"));
                       p.setDt_event(res.getDate("dt_event"));
-                      p.setH_event(res.getTime("h_event"));
+                      p.setH_event(res.getString("h_event"));
                       p.setPrix(res.getFloat("prix"));
                       p.setNb_place(res.getInt("nb_place"));
                       p.setImage(res.getString("image"));

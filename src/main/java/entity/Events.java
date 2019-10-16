@@ -20,7 +20,7 @@ public class Events {
     private int nb_place ; 
     private String lieu ;
     private float  prix ; 
-    private Time h_event ; 
+    private String h_event ; 
     private String image ;
    
     
@@ -32,6 +32,12 @@ public class Events {
                 this.nb_place=nb_place;
                 
     }
+    public Events(int id_ev, int id_org) {
+            this.id_ev=id_ev;
+                this.id_org = id_org;
+               
+                
+    }
     public Events(String description,String lieu) {
                 this.description = description;
                 this.lieu = lieu;
@@ -39,7 +45,7 @@ public class Events {
 
     }
 
-    public Events(int id_ev, int id_org, String description, Date dt_event, int nb_place, String lieu, float prix, Time h_event) {
+    public Events(int id_ev, int id_org, String description, Date dt_event, int nb_place, String lieu, float prix, String h_event) {
         this.id_ev = id_ev;
         this.id_org = id_org;
         this.description = description;
@@ -59,7 +65,7 @@ public class Events {
     
     }
 
-    public Events(int id_ev, int id_org, String description, Date dt_event, Time h_event, int nb_place, String lieu, float prix, String image) {
+    public Events(int id_ev, int id_org, String description, Date dt_event, String h_event, int nb_place, String lieu, float prix, String image) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -100,7 +106,7 @@ public class Events {
         this.prix = prix;
     }
 
-    public void setH_event(Time h_event) {
+    public void setH_event(String h_event) {
         this.h_event = h_event;
     }
 
@@ -136,7 +142,7 @@ public class Events {
         return prix;
     }
 
-    public Time getH_event() {
+    public String getH_event() {
         return h_event;
     }
 

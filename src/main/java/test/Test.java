@@ -24,15 +24,13 @@ public class Test {
 
             EventService es = new EventService();
             Events e1;
-            
-           // Date a = new Date();
-           // Time t = new Time(5, 0, 0);
-            
-       e1 = new Events(0, 1, 0);
-           es.creerEvent(e1);
-         //es.creerEvent(new Events("aaa", "bbbb"));
-            ArrayList<Events> e = (ArrayList<Events>) es.affichierEvent();
-            System.out.println(e.toString());
+           Events e2 =  new Events(4, 2);           
+         e1 = new Events(0, 1, 0);
+        es.rechercheEventByID(2);
+        // es.supprEvent(e2);
+       // es.creerEvent(e1);
+         //ArrayList<Events> e = (ArrayList<Events>) es.affichierEvent();
+        //System.out.println(e.toString());
 
             
 

@@ -6,6 +6,8 @@
 package iservice;
 
 import entity.Events;
+import java.sql.SQLException;
+
 import java.util.List;
 
 /**
@@ -13,8 +15,8 @@ import java.util.List;
  * @author asus
  */
 public interface IEventService {
-    public void creerEvent(Events e);
-    public void modifEvent(Events e);
+    public void creerEvent(Events e) throws SQLException;
+    public void modifEvent(Events e,int i);
     public void supprEvent(Events e);
     public Events rechercheEventByID(int id);;
     public List<Events> affichierEvent();

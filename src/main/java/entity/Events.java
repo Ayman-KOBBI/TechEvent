@@ -14,27 +14,22 @@ import java.util.Date;
 public class Events {
     
     private int id_ev ; 
-    private int id_org ; 
+   // private int id_org ; 
     private String description; 
-    private Date dt_event; 
+    private String dt_event; 
     private int nb_place ; 
     private String lieu ;
-    private float  prix ; 
+    private int  prix ; 
     private String h_event ; 
     private String image ;
    
     
     public Events() {
     }
-    public Events(int id_ev, int id_org,int nb_place) {
+    
+    public Events(int id_ev) {
             this.id_ev=id_ev;
-                this.id_org = id_org;
-                this.nb_place=nb_place;
                 
-    }
-    public Events(int id_ev, int id_org) {
-            this.id_ev=id_ev;
-                this.id_org = id_org;
                
                 
     }
@@ -45,33 +40,26 @@ public class Events {
 
     }
 
-    public Events(int id_ev, int id_org, String description, Date dt_event, int nb_place, String lieu, float prix, String h_event) {
-        this.id_ev = id_ev;
-        this.id_org = id_org;
+    public Events(int id_ev, String lieu,int nb_place,String dt_event,String h_event,int prix,String image,String description) {
+       this.id_ev = id_ev;
+       // this.id_org = id_org;
         this.description = description;
         this.dt_event = dt_event;
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
         this.h_event = h_event;
+        this.image=image;
     }
+     
 
-    public Events(int id_ev,String description,int nb_place, float prix) {
-        this.id_ev = id_ev;
-       
-        this.description = description;
-        this.nb_place = nb_place;
-        this.prix = prix;
     
-    }
 
-    public Events(int id_ev, int id_org, String description, Date dt_event, String h_event, int nb_place, String lieu, float prix, String image) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public String toString() {
-        return "Events{" + "id_ev=" + id_ev + ", id_org=" + id_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", image=" + image + '}';
+        return "Events{" + "id_ev=" + id_ev + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", image=" + image + '}';
     }
 
 
@@ -82,15 +70,15 @@ public class Events {
         this.id_ev = id_ev;
     }
 
-    public void setId_org(int id_org) {
+ /*   public void setId_org(int id_org) {
         this.id_org = id_org;
-    }
+    }*/
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setDt_event(Date dt_event) {
+    public void setDt_event(String dt_event) {
         this.dt_event = dt_event;
     }
 
@@ -102,7 +90,7 @@ public class Events {
         this.lieu = lieu;
     }
 
-    public void setPrix(float prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 
@@ -118,15 +106,15 @@ public class Events {
         return id_ev;
     }
 
-    public int getId_org() {
+  /*  public int getId_org() {
         return id_org;
-    }
+    }*/
 
     public String getDescription() {
         return description;
     }
 
-    public Date getDt_event() {
+    public String getDt_event() {
         return dt_event;
     }
 
@@ -138,7 +126,7 @@ public class Events {
         return lieu;
     }
 
-    public float getPrix() {
+    public int getPrix() {
         return prix;
     }
 

@@ -30,8 +30,8 @@ public class EventService implements IEventService{
            .getConnection();
     Statement ste;
     Events e ;
-    java.util.Date dt = new java.util.Date();
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+  // java.util.Date dt = new java.util.Date();
+     //   java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
    
 
     public EventService() {
@@ -43,35 +43,57 @@ public class EventService implements IEventService{
     }
 
     @Override
-    public void creerEvent(Events e) {
+    public void creerEvent(Events e) throws SQLException{
                    
 
-try {
-
-  // String req1="INSERT INTO `events`(`id_ev`, `id_org`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `description`) VALUES ("+null+","+e.getId_org()+","+e.getLieu()+","+e.getNb_place()+","+e.getDt_event()+","+e.getH_event()+","+e.getPrix()+","+e.getDescription()+")";
-                    
-            String req1="INSERT INTO `events` (`id_ev`, `id_org`) VALUES ("+null+","+e.getId_org()+","+e.getNb_place()+")";
-         //  String req1="INSERT INTO `events`( `lieu`, `description`) VALUES ("+e.getLieu()+","+e.getDescription()+")";
-          
-  // String req1 = +"insert into 'events' values ("+null+","+e.getId_org()+","+e.getDescription()+","+e.getLieu()+","+e.getDt_event()+","+e.getH_event()+","+e.getImage()+","+e.getPrix()+")";
-           ste.executeUpdate(req1);
-        } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null,"Erreur d_'ajout \n"+ex.getMessage());
-            System.out.println(ex.getMessage());
-        } 
+String req="INSERT INTO events(id_ev,lieu,nb_place,dt_event,h_event,prix,image,description) VALUES (?,?,?,?,?,?,?,?)";
+        PreparedStatement pres=c.prepareStatement(req);
+        pres.setInt(1,e.getId_ev() );
+        pres.setString(2,e.getLieu());
+        pres.setInt(3,e.getNb_place());
+        pres.setString(4,e.getDt_event());
+        pres.setString(5,e.getH_event());
+        pres.setInt(6,e.getPrix());  
+        pres.setString(7,e.getImage());  
+        pres.setString(8,e.getDescription());  
+        pres.executeUpdate();
+        System.out.println(pres.executeUpdate());
+        System.out.println("element inserer");
     }
 
     @Override
-    public void modifEvent(Events e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    try {
+    public void modifEvent(Events e,int i ) {    
 
-  String req2=("UPDATE events SET description = '"+e.getDescription()+"', nb_place = "+e.getNb_place()+  " ',image = "+e.getImage()+  "',  dt_event = '"+e.getDt_event()+"', h_event = '"+e.getH_event()+"', lieu= '"+e.getLieu()+"', prix= '"+e.getPrix()+"' WHERE id_ev = "+e.getId_ev());
-           ste.executeUpdate(req2);
-        } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null,"Erreur de modifier \n"+ex.getMessage());
-            System.out.println(ex.getMessage());
-        } 
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String sql = "UPDATE article SET lieu=?, nb_place=?,  dt_event=?,h_event=?,prix=?,image=?, description=? where id_ev="+i;
+ 
+        PreparedStatement pres;
+          
+
+         try {
+             pres = c.prepareStatement(sql);
+             pres.setString(1,e.getLieu());
+        pres.setInt(2,e.getNb_place());
+        pres.setString(3,e.getDt_event());
+        pres.setString(4,e.getH_event());
+        pres.setInt(5,e.getPrix());  
+        pres.setString(6,e.getImage());  
+        pres.setString(7,e.getDescription());
+     int rowsUpdated = pres.executeUpdate();
+        if (rowsUpdated > 0) {
+           System.out.println("L'evenement a été modifier avec succès");
+          }
+         } catch (SQLException ex) {
+           System.out.println("L'evenement non modifier");
+
+         }
+        
+        
+        
+        //pres.setInt(1,e.getId_ev());
+       
+          
+          
     
     }
 
@@ -85,11 +107,10 @@ try {
       PreparedStatement ps = c.prepareStatement(req1);
             ps.setInt(1, e.getId_ev());
             ps.executeUpdate();
-         
+         System.out.println("evenement supprimer");
            
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null,"Impossible de supprimer cet article\n"+ex.getMessage());
-            System.out.println(ex.getMessage());
+            System.out.println("Impossible de supprimer cet article\n");
         }
   
     }
@@ -102,13 +123,13 @@ try {
         while(res.next())
             {    
                 int id_ev = res.getInt("id_ev");
-                int id_org = res.getInt("id_org");
+               // int id_org = res.getInt("id_org");
                 String description=res.getString("description");
-                Date dt_event=res.getDate("dt_event");
+                String dt_event=res.getString("dt_event");
                 String h_event=res.getString("h_event");
                 int nb_place=res.getInt("nb_place");
                 String lieu=res.getString("lieu");
-                float prix=res.getFloat("prix");
+                float prix=res.getInt("prix");
                 String image=res.getString("image");
                  
                 System.out.println("evenement trouvé \n");
@@ -137,12 +158,12 @@ try {
           while (res.next()) { 
               p = new Events();
                       p.setId_ev(res.getInt("id_ev"));
-                      p.setId_org(res.getInt("id_org"));
+                   //   p.setId_org(res.getInt("id_org"));
                       p.setDescription(res.getString("Description") );
                       p.setLieu(res.getString("lieu"));
-                      p.setDt_event(res.getDate("dt_event"));
+                      p.setDt_event(res.getString("dt_event"));
                       p.setH_event(res.getString("h_event"));
-                      p.setPrix(res.getFloat("prix"));
+                      p.setPrix(res.getInt("prix"));
                       p.setNb_place(res.getInt("nb_place"));
                       p.setImage(res.getString("image"));
 
@@ -155,6 +176,8 @@ try {
           }
              
      return event;
-    }}
+    }     
     
-
+    
+}
+    

@@ -93,7 +93,7 @@ public class commentaireService implements IcommentaireService {
     public void modifiercomm(commentaire m){
          try{
             PreparedStatement as = c.prepareStatement("update commentaire set date_comm=?,heure_comm=?,Text=?");
-            as.setString(1, m.getDate_comm());
+           as.setString(1, m.getDate_comm());
             as.setString(2, m.getHeure_comm());
             as.setString(3, m.getText());
             

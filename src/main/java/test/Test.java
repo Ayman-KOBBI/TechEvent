@@ -6,6 +6,7 @@
 package test;
 
 import entity.Events;
+import entity.Reservation;
 import java.awt.Event;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import service.ReservationService;
 /**
  *
  * @author asus
@@ -47,13 +49,17 @@ public class Test {
 System.out.println("element non inserer");       }*/
          
        //  es.creerPersonne(p);
-       es.rechercheEventByID(1);
-      es.supprEvent(e2);
+       //es.rechercheEventByID(1);
+      //es.supprEvent(e2);
        // es.creerEvent(e1);
          //ArrayList<Events> e = (ArrayList<Events>) es.affichierEvent();
         //System.out.println(e.toString());
-
-            
+       ///reservation 
+         ReservationService res1= new ReservationService();
+        Reservation r1=new Reservation(9,1,1,"kkk","hhshd");
+        //res1.ajouterReservation(r1);
+        //res1.supprimerReservation(r1);
+        //System.out.println(res1.afficherReservation().toString());    
 
                     }
 }

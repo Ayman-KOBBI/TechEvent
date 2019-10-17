@@ -23,21 +23,32 @@ import java.util.logging.Logger;
  */
 public class Test {
     public static void main(String[] args) {
-        Date d = new Date();
+        //Date d = new Date();
 
             EventService es = new EventService();
             Events e2 =new Events(9);
-            Events e3 = new Events(5, "mjez", 26, "22-07-2020", "20:00", 80, "image", "khat");
-        try{
-            es.creerEvent(e3);
+            Events e4 =new Events(24, 7, "mjez", 7, "dt_event", "h_event", 0, "image", "description");
+            e4.setDescription("esprit_ariena");
+          es.modifEvent(e4);
+        /*try {
+            es.creerEvent(e4);
+            e4.setDescription("espriiiiit");
+             es.modifEvent(e4);
+        } catch (SQLException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+      
+           /* try{
+            es.creerEvent(e4);
+          
+
             System.out.println("element inserer");
         } catch (SQLException ex) {
-System.out.println("element non inserer");        }
+System.out.println("element non inserer");       }*/
          
        //  es.creerPersonne(p);
-       // es.rechercheEventByID(2);
-        es.modifEvent(e3, 8);
-       es.supprEvent(e3);
+       es.rechercheEventByID(1);
+      es.supprEvent(e2);
        // es.creerEvent(e1);
          //ArrayList<Events> e = (ArrayList<Events>) es.affichierEvent();
         //System.out.println(e.toString());

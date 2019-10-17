@@ -46,45 +46,50 @@ public class EventService implements IEventService{
     public void creerEvent(Events e) throws SQLException{
                    
 
-String req="INSERT INTO events(id_ev,lieu,nb_place,dt_event,h_event,prix,image,description) VALUES (?,?,?,?,?,?,?,?)";
+String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,image,description) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pres=c.prepareStatement(req);
         pres.setInt(1,e.getId_ev() );
-        pres.setString(2,e.getLieu());
-        pres.setInt(3,e.getNb_place());
-        pres.setString(4,e.getDt_event());
-        pres.setString(5,e.getH_event());
-        pres.setInt(6,e.getPrix());  
-        pres.setString(7,e.getImage());  
-        pres.setString(8,e.getDescription());  
+        pres.setInt(2,e.getId_org() );
+        pres.setString(3,e.getLieu());
+        pres.setInt(4,e.getNb_place());
+        pres.setString(5,e.getDt_event());
+        pres.setString(6,e.getH_event());
+        pres.setInt(7,e.getPrix());  
+        pres.setString(8,e.getImage());  
+        pres.setString(9,e.getDescription());  
         pres.executeUpdate();
         System.out.println(pres.executeUpdate());
         System.out.println("element inserer");
     }
 
     @Override
-    public void modifEvent(Events e,int i ) {    
+    public void modifEvent(Events e) {    
 
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    String sql = "UPDATE article SET lieu=?, nb_place=?,  dt_event=?,h_event=?,prix=?,image=?, description=? where id_ev="+i;
+    String sql = "UPDATE events SET id_org=?,lieu=?, nb_place=?,"
+            + "  dt_event=?,h_event=?,prix=?,image=?, description=? where id_ev=?";
  
         PreparedStatement pres;
           
 
          try {
              pres = c.prepareStatement(sql);
-             pres.setString(1,e.getLieu());
-        pres.setInt(2,e.getNb_place());
-        pres.setString(3,e.getDt_event());
-        pres.setString(4,e.getH_event());
-        pres.setInt(5,e.getPrix());  
-        pres.setString(6,e.getImage());  
-        pres.setString(7,e.getDescription());
-     int rowsUpdated = pres.executeUpdate();
-        if (rowsUpdated > 0) {
+        pres.setInt(1,e.getId_org());
+        pres.setString(2,e.getLieu());
+        pres.setInt(3,e.getNb_place());
+        pres.setString(4,e.getDt_event());
+        pres.setString(5,e.getH_event());
+        pres.setInt(6,e.getPrix());  
+        pres.setString(7,e.getImage());  
+        pres.setString(8,e.getDescription());
+        pres.setInt(9,e.getId_ev());
+             System.out.println(e.getId_ev());
+        pres.executeUpdate();
+     
            System.out.println("L'evenement a été modifier avec succès");
-          }
+          
          } catch (SQLException ex) {
-           System.out.println("L'evenement non modifier");
+            System.out.println(ex);
 
          }
         
@@ -123,7 +128,7 @@ String req="INSERT INTO events(id_ev,lieu,nb_place,dt_event,h_event,prix,image,d
         while(res.next())
             {    
                 int id_ev = res.getInt("id_ev");
-               // int id_org = res.getInt("id_org");
+                int id_org = res.getInt("id_org");
                 String description=res.getString("description");
                 String dt_event=res.getString("dt_event");
                 String h_event=res.getString("h_event");
@@ -158,7 +163,7 @@ String req="INSERT INTO events(id_ev,lieu,nb_place,dt_event,h_event,prix,image,d
           while (res.next()) { 
               p = new Events();
                       p.setId_ev(res.getInt("id_ev"));
-                   //   p.setId_org(res.getInt("id_org"));
+                      p.setId_org(res.getInt("id_org"));
                       p.setDescription(res.getString("Description") );
                       p.setLieu(res.getString("lieu"));
                       p.setDt_event(res.getString("dt_event"));
@@ -177,6 +182,10 @@ String req="INSERT INTO events(id_ev,lieu,nb_place,dt_event,h_event,prix,image,d
              
      return event;
     }     
+
+   /* private int id_ev() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
     
     
 }

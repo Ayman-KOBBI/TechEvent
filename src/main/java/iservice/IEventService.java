@@ -16,7 +16,9 @@ import java.util.List;
  */
 public interface IEventService {
     public void creerEvent(Events e) throws SQLException;
-    public void modifEvent(Events e,int i);
+  //  public void modifEvent(Events e,int i);
+        public void modifEvent(Events e);    
+
     public void supprEvent(Events e);
     public Events rechercheEventByID(int id);;
     public List<Events> affichierEvent();

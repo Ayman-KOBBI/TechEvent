@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 16 oct. 2019 à 22:01
+-- Généré le :  jeu. 17 oct. 2019 à 10:30
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE IF NOT EXISTS `events` (
-  `id_ev` int(11) NOT NULL,
+  `id_ev` int(11) NOT NULL AUTO_INCREMENT,
+  `id_org` int(11) NOT NULL,
   `lieu` varchar(50) NOT NULL,
   `nb_place` int(11) NOT NULL,
   `dt_event` varchar(50) NOT NULL,
@@ -56,16 +57,30 @@ CREATE TABLE IF NOT EXISTS `events` (
   `image` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ev`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `events`
 --
 
-INSERT INTO `events` (`id_ev`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `image`, `description`) VALUES
-(1, 'toz', 5, '2019-10-01', '09:00:00', 2, '', 'ahmed'),
-(8, 'lieu', 25, '20-07-2020', '20:00', 70, 'image', 'khayat'),
-(4, 'arana', 25, '20-07-2021', '20:10', 80, 'image', 'khayat');
+INSERT INTO `events` (`id_ev`, `id_org`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `image`, `description`) VALUES
+(1, 0, 'toz', 5, '2019-10-01', '09:00:00', 2, '', 'ahmed'),
+(3, 0, 'lieu', 0, 'dt_event', 'h_event', 0, 'image', 'description'),
+(8, 0, 'lieu', 25, '20-07-2020', '20:00', 70, 'image', 'khayat'),
+(7, 0, 'lieu', 0, 'dt_event', 'h_event', 0, 'image', 'description'),
+(22, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit'),
+(16, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'description'),
+(17, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'description'),
+(18, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'description'),
+(19, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'description'),
+(20, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'description'),
+(23, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit'),
+(24, 7, 'mjez', 7, 'dt_event', 'h_event', 0, 'image', 'esprit_ariena'),
+(25, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit'),
+(26, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit'),
+(27, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit'),
+(28, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit'),
+(29, 9, 'lieu', 7, 'dt_event', 'h_event', 0, 'image', 'esprit');
 
 -- --------------------------------------------------------
 

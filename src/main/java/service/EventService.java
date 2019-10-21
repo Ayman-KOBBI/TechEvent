@@ -18,8 +18,11 @@ import javax.swing.JOptionPane;
 import utils.ConnexionBD;
 import java.util.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.java2d.pipe.SpanShapeRenderer;
 /**
  *
  * @author asus
@@ -30,8 +33,7 @@ public class EventService implements IEventService{
            .getConnection();
     Statement ste;
     Events e ;
-  // java.util.Date dt = new java.util.Date();
-     //   java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+ 
    
 
     public EventService() {
@@ -45,14 +47,16 @@ public class EventService implements IEventService{
     @Override
     public void creerEvent(Events e) throws SQLException{
                    
-
+ Date dt_event = Calendar.getInstance().getTime();
+    SimpleDateFormat format1=new SimpleDateFormat("yyyy-MM-dd");
+  
 String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,image,description) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pres=c.prepareStatement(req);
         pres.setInt(1,e.getId_ev() );
         pres.setInt(2,e.getId_org() );
         pres.setString(3,e.getLieu());
         pres.setInt(4,e.getNb_place());
-        pres.setString(5,e.getDt_event());
+        pres.setDate(5, (java.sql.Date) e.getDt_event());
         pres.setString(6,e.getH_event());
         pres.setInt(7,e.getPrix());  
         pres.setString(8,e.getImage());  
@@ -64,6 +68,8 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
 
     @Override
     public void modifEvent(Events e) {    
+        Date dt_event = Calendar.getInstance().getTime();
+    SimpleDateFormat format2=new SimpleDateFormat("yyyy-MM-dd");
 
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     String sql = "UPDATE events SET id_org=?,lieu=?, nb_place=?,"
@@ -77,7 +83,7 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
         pres.setInt(1,e.getId_org());
         pres.setString(2,e.getLieu());
         pres.setInt(3,e.getNb_place());
-        pres.setString(4,e.getDt_event());
+        pres.setDate(4, (java.sql.Date) e.getDt_event());
         pres.setString(5,e.getH_event());
         pres.setInt(6,e.getPrix());  
         pres.setString(7,e.getImage());  
@@ -123,6 +129,7 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
     @Override
     public Events rechercheEventByID(int id) {
     try {
+         
                 String res1=("select * from events where id_ev="+id);
      ResultSet res=  ste.executeQuery(res1);
         while(res.next())
@@ -130,7 +137,7 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
                 int id_ev = res.getInt("id_ev");
                 int id_org = res.getInt("id_org");
                 String description=res.getString("description");
-                String dt_event=res.getString("dt_event");
+                Date dt_event=res.getDate("dt_event");
                 String h_event=res.getString("h_event");
                 int nb_place=res.getInt("nb_place");
                 String lieu=res.getString("lieu");
@@ -166,7 +173,7 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
                       p.setId_org(res.getInt("id_org"));
                       p.setDescription(res.getString("Description") );
                       p.setLieu(res.getString("lieu"));
-                      p.setDt_event(res.getString("dt_event"));
+                      p.setDt_event(res.getDate("dt_event"));
                       p.setH_event(res.getString("h_event"));
                       p.setPrix(res.getInt("prix"));
                       p.setNb_place(res.getInt("nb_place"));
@@ -189,4 +196,5 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
     
     
 }
-    
+
+        

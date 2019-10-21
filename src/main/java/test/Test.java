@@ -12,6 +12,8 @@ import java.awt.Event;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import service.EventService;
 import utils.ConnexionBD;
@@ -26,13 +28,17 @@ import service.ReservationService;
  * @author asus
  */
 public class Test {
-    public static void main(String[] args) throws SQLException {
-        //Date d = new Date();
 
+ 
+    public static void main(String[] args) throws SQLException, ParseException {
+       String m = "2019-01-28";
+    java.util.Date date =  new SimpleDateFormat("yyyy-MM-dd").parse(m);
+    java.sql.Date sqlDate = new java.sql.Date(date.getTime());
             EventService es = new EventService();
             Events e2 =new Events(9);
-            Events e3=new Events(5, "lieu", 9, "dt_event", "h_event", 0, "image", "description");
-            Events e4 =new Events(24, 7, "mjez", 7, "dt_event", "h_event", 0, "image", "description");
+            Events e3 =new Events(8, "mjez", 8, sqlDate, "08:00", 70, "m", "esprit");
+            //Events e3=new Events(5, "lieu", 9, "dt_event", "h_event", 0, "image", "description");
+           // Events e4 =new Events(24, 7, "mjez", 7, "dt_event", "h_event", 0, "image", "description");
             //e4.setDescription("esprit_ariena");
          // es.modifEvent(e4);
         try {
@@ -58,7 +64,7 @@ System.out.println("element non inserer");       }*/
          //ArrayList<Events> e = (ArrayList<Events>) es.affichierEvent();
         //System.out.println(e.toString());
        ///reservation 
-         ReservationService res1= new ReservationService();
+       //  ReservationService res1= new ReservationService();
        // Reservation r1=new Reservation(1,1,1,"kkk","hhshd","aaaaaa");
         //res1.ajouterReservation(r1);
         //res1.supprimerReservation(r1);

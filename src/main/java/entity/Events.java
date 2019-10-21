@@ -16,7 +16,7 @@ public class Events {
     private int id_ev ; 
    private int id_org ; 
     private String description; 
-    private String dt_event; 
+    private Date dt_event; 
     private int nb_place ; 
     private String lieu ;
     private int  prix ; 
@@ -33,6 +33,8 @@ public class Events {
                
                 
     }
+   
+   
     public Events(String description,String lieu) {
                 this.description = description;
                 this.lieu = lieu;
@@ -40,7 +42,7 @@ public class Events {
 
     }
 
-    public Events(int id_ev,int id_org, String lieu,int nb_place,String dt_event,String h_event,int prix,String image,String description) {
+    public Events(int id_ev,int id_org, String lieu,int nb_place,Date dt_event,String h_event,int prix,String image,String description) {
        this.id_ev = id_ev;
        this.id_org = id_org;
         this.description = description;
@@ -52,7 +54,7 @@ public class Events {
         this.image=image;
     }
      
-public Events(int id_org, String lieu,int nb_place,String dt_event,String h_event,int prix,String image,String description) {
+public Events(int id_org, String lieu,int nb_place,Date dt_event,String h_event,int prix,String image,String description) {
        //this.id_ev = id_ev;
        this.id_org = id_org;
         this.description = description;
@@ -88,7 +90,7 @@ public Events(int id_org, String lieu,int nb_place,String dt_event,String h_even
         this.description = description;
     }
 
-    public void setDt_event(String dt_event) {
+    public void setDt_event(Date dt_event) {
         this.dt_event = dt_event;
     }
 
@@ -124,7 +126,7 @@ public Events(int id_org, String lieu,int nb_place,String dt_event,String h_even
         return description;
     }
 
-    public String getDt_event() {
+    public Date getDt_event() {
         return dt_event;
     }
 

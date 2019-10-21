@@ -15,11 +15,11 @@ public class Participants {
     private String prenom;
     private String email;
     private String tel;
-    private float solde;
+    private int solde=20;
     
     public Participants(){}
 
-    public Participants(int id_par, String nom, String prenom, String email, String tel, float solde) {
+    public Participants(int id_par, String nom, String prenom, String email, String tel, int solde) {
         this.id_par = id_par;
         this.nom = nom;
         this.prenom = prenom;
@@ -28,6 +28,10 @@ public class Participants {
         this.solde = solde;
     }
 
+    public Participants(int id_par, String nom, String prenom, String email, String tel) {
+        this(id_par,nom,prenom,email,tel,20);
+ 
+    }
     public int getId_par() {
         return id_par;
     }
@@ -68,11 +72,11 @@ public class Participants {
         this.tel = tel;
     }
 
-    public float getSolde() {
+    public int getSolde() {
         return solde;
     }
 
-    public void setSolde(float solde) {
+    public void setSolde(int solde) {
         this.solde = solde;
     }
 

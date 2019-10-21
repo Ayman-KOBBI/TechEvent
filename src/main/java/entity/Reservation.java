@@ -16,16 +16,32 @@ public class Reservation {
    private int id_par;
    private String nom;
    private String prenom;
-
+   private String image;
+   
     public Reservation() {
     }
 
-    public Reservation(int id_ticket, int id_ev,int id_par, String nom, String prenom) {
+   
+    public Reservation(int id_ticket, int id_ev,int id_par, String nom, String prenom,String image) {
         this.id_ticket = id_ticket;
         this.id_ev = id_ev;
         this.id_par = id_par;
         this.nom = nom;
         this.prenom = prenom;
+        this.image=image;
+      
+    }
+
+     public Reservation(int id_ticket, Events e,Participants p,String image){
+            this(id_ticket,e.getId_ev(),p.getId_par(),p.getNom(),p.getPrenom(),image);
+    }
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 

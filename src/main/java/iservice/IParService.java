@@ -17,5 +17,5 @@ public interface IParService {
     public void modifierPar(Participants par)throws SQLException;
     public void supprimerPar(Participants p);
     public List<Participants> afficherPar();
-    
+    public void SetJetons(Participants p,boolean flag,int n) throws Exception;
 }

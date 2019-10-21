@@ -5,6 +5,7 @@
  */
 package iservice;
 
+import entity.Participants;
 import entity.Reservation;
 import java.util.List;
 

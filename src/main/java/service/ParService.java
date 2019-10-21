@@ -53,7 +53,7 @@ public class ParService implements IParService{
                       o.setPrenom(res.getString("prenom"));
                       o.setEmail(res.getString("email"));
                       o.setTel(res.getString("tel"));
-                      o.setSolde(res.getFloat("solde"));
+                      o.setSolde(res.getInt("solde"));
               par.add(o);
           }
           
@@ -80,7 +80,7 @@ public class ParService implements IParService{
         pres.setString(3,par.getPrenom());
         pres.setString(4,par.getEmail() );
         pres.setString(5,par.getTel() );
-        pres.setFloat(6,par.getSolde() );
+        pres.setInt(6,par.getSolde() );
         pres.executeUpdate();
         System.out.println(pres.executeUpdate());
         System.out.println("element inserer");
@@ -96,7 +96,7 @@ public class ParService implements IParService{
         pres.setString(3,par.getPrenom());
         pres.setString(4,par.getEmail() );
         pres.setString(5,par.getTel() );
-        pres.setFloat(6,par.getSolde() );
+        pres.setInt(6,par.getSolde() );
         pres.setInt(7,par.getId_par() );
         pres.executeUpdate();
         System.out.println(pres.executeUpdate());
@@ -120,6 +120,18 @@ public class ParService implements IParService{
         } catch (SQLException ex) {
             Logger.getLogger(OrgService.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void SetJetons(Participants p,boolean flag,int n) throws Exception{
+        if (flag){
+            if (p.getSolde()+n>=0)  
+                p.setSolde(p.getSolde()+n);
+            else
+                throw new Exception("Solde insuffisant");
+        }else{
+            if (n>=0)    
+                p.setSolde(n);
+            }
     }
     
 }

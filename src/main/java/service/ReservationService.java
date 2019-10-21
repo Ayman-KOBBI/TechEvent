@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package service;
+import entity.Participants;
 import entity.Reservation;
 import iservice.IReservationService;
 import java.sql.Connection;
@@ -45,6 +46,7 @@ public class ReservationService implements IReservationService{
           ResultSet res=  ste.executeQuery(req2);
           while (res.next()) { 
               r = new Reservation();
+             // p = new Participants();
                       r.setId_ticket( res.getInt("id_ticket"));
                       r.setId_ev(res.getInt("id_ev"));
                       r.setId_par(res.getInt("id_par"));
@@ -64,16 +66,17 @@ public class ReservationService implements IReservationService{
     public void ajouterReservation(Reservation r) {
          try {
             String req1="INSERT INTO `reservation` "
-                    + "(`id_ticket`,`id_ev`,`id_par`,`nom`, `prenom`) "
+                    + "(`id_ticket`,`id_ev`,`id_par`,`nom`, `prenom`,`image`) "
                     + "VALUES ( "
                     + ""+r.getId_ticket()+","+r.getId_ev()+","+r.getId_par()+",'"+r.getNom()+"','"
-                    +r.getPrenom()+"');";
+                    +r.getPrenom()+"','"+r.getImage()+"');";
             ste.executeUpdate(req1);
         } catch (SQLException ex) {
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
 
     @Override
     public void supprimerReservation(Reservation r) {
@@ -90,4 +93,6 @@ public class ReservationService implements IReservationService{
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     
 }

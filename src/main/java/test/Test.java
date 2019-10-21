@@ -63,14 +63,14 @@ System.out.println("element non inserer");       }*/
         //res1.ajouterReservation(r1);
         //res1.supprimerReservation(r1);
         //System.out.println(res1.afficherReservation().toString());    
-        ParService par1= new ParService();
-        Participants p1= new Participants(10,"aaaa","bbbb","cccc","dddd",20);
-        try{    
+        //ParService par1= new ParService();
+        //Participants p1= new Participants(10,"aaaa","bbbb","cccc","dddd",20);
+        /*try{    
             par1.creerPar(p1);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
         Reservation r1=new Reservation(1,1,p1,"aaaaaa");
-        res1.ajouterReservation(r1);
+        res1.ajouterReservation(r1); */
                     }
 }

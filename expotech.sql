@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 18 oct. 2019 à 18:18
+-- Généré le :  lun. 21 oct. 2019 à 23:17
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -51,39 +51,28 @@ CREATE TABLE IF NOT EXISTS `events` (
   `id_org` int(11) NOT NULL,
   `lieu` varchar(50) NOT NULL,
   `nb_place` int(11) NOT NULL,
-  `dt_event` varchar(50) NOT NULL,
+  `dt_event` date DEFAULT NULL,
   `h_event` varchar(50) NOT NULL,
   `prix` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ev`),
   KEY `id_org` (`id_org`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `events`
 --
 
 INSERT INTO `events` (`id_ev`, `id_org`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `image`, `description`) VALUES
-(1, 0, 'toz', 5, '', '09:00:00', 2, '', 'ahmed'),
-(3, 0, 'lieu', 0, '', 'h_event', 0, 'image', 'description'),
-(8, 0, 'lieu', 25, '', '20:00', 70, 'image', 'khayat'),
-(7, 0, 'lieu', 0, '', 'h_event', 0, 'image', 'description'),
-(22, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(16, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'description'),
-(17, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'description'),
-(18, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'description'),
-(19, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'description'),
-(20, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'description'),
-(23, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(24, 7, 'mjez', 7, 'dt_event', 'h_event', 0, 'image', 'esprit_ariena'),
-(25, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(26, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(27, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(28, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(29, 9, 'lieu', 7, '', 'h_event', 0, 'image', 'esprit'),
-(30, 5, 'lieu', 9, 'dt_event', 'h_event', 0, 'image', 'description'),
-(31, 5, 'lieu', 9, 'dt_event', 'h_event', 0, 'image', 'description');
+(1, 0, 'toz', 5, NULL, '09:00:00', 2, '', 'ahmed'),
+(3, 0, 'lieu', 0, NULL, 'h_event', 0, 'image', 'description'),
+(8, 0, 'lieu', 25, NULL, '20:00', 70, 'image', 'khayat'),
+(17, 9, 'lieu', 7, NULL, 'h_event', 0, 'image', 'description'),
+(18, 9, 'lieu', 7, NULL, 'h_event', 0, 'image', 'description'),
+(55, 7, 'djerba', 17, '2019-01-28', '09:00', 50, 'm', 'espritinfo'),
+(56, 7, 'djerba', 17, '2019-01-28', '09:00', 50, 'm', 'espritinfo'),
+(57, 7, 'djerba', 17, '2019-01-28', '09:00', 50, 'm', 'espritinfo');
 
 -- --------------------------------------------------------
 

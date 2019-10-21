@@ -62,7 +62,7 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
         pres.setString(8,e.getImage());  
         pres.setString(9,e.getDescription());  
         pres.executeUpdate();
-        System.out.println(pres.executeUpdate());
+       // System.out.println(pres.executeUpdate());
         System.out.println("element inserer");
     }
 

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package service;
+import entity.Events;
 import entity.Participants;
 import entity.Reservation;
 import iservice.IReservationService;
@@ -63,8 +64,58 @@ public class ReservationService implements IReservationService{
     }
 
     @Override
-    public void ajouterReservation(Reservation r) {
-         try {
+    public void ajouterReservation(Reservation r) throws Exception {
+        Participants p=new Participants();
+        String requete_solde_part="Select * from participant where id_par=?;";
+        PreparedStatement rs = c.prepareStatement(requete_solde_part);
+        rs.setInt(1, r.getId_par());
+        try{    
+            ResultSet res= rs.executeQuery();
+            res.next();
+            p.setSolde(res.getInt("solde"));
+            p.setNom(res.getString("nom"));
+            p.setPrenom(res.getString("prenom"));
+            p.setId_par(res.getInt("id_par"));
+            p.setTel(res.getString("tel"));
+            p.setEmail(res.getString("email"));
+            
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        System.out.println(p);
+        
+        Events e=new Events();
+        String requete_prix_event="Select * from events where id_ev=?;";
+        PreparedStatement rs1 = c.prepareStatement(requete_prix_event);
+        rs1.setInt(1, r.getId_ev());
+        
+         try{    
+            ResultSet res2= rs1.executeQuery();
+            res2.next();
+            e.setPrix(res2.getInt("prix"));
+            e.setDescription(res2.getString("Description"));
+            e.setDt_event(res2.getDate("dt_event"));
+            e.setId_ev(res2.getInt("id_ev"));
+            e.setH_event(res2.getString("H_event"));
+            e.setId_org(res2.getInt("Id_org"));
+            e.setImage(res2.getString("Image"));
+            e.setLieu(res2.getString("lieu"));
+            e.setNb_place(res2.getInt("Nb_place"));
+                 
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }     
+        
+        ParService par1=new ParService();
+        par1.SetJetons(p, true, -e.getPrix());
+         String req_update_solde="UPDATE participant SET solde=? WHERE(id_par=?);";
+         PreparedStatement rs2 = c.prepareStatement(req_update_solde);
+         rs2.setInt(1, p.getSolde());
+         rs2.setInt(2, p.getId_par());
+         rs2.executeUpdate();
+    //    ste.executeUpdate(req_update_solde);   
+        try {
             String req1="INSERT INTO `reservation` "
                     + "(`id_ticket`,`id_ev`,`id_par`,`nom`, `prenom`,`image`) "
                     + "VALUES ( "

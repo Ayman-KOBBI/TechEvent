@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IReservationService {
 
-    public void ajouterReservation(Reservation r);
+    public void ajouterReservation(Reservation r) throws Exception;
     public void supprimerReservation(Reservation r);
     public List<Reservation> afficherReservation();
 }

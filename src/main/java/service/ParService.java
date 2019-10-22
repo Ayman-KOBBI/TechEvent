@@ -121,7 +121,8 @@ public class ParService implements IParService{
             Logger.getLogger(OrgService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    // methode pour gestion de reservation
+    @Override
     public void SetJetons(Participants p,boolean flag,int n) throws Exception{
         if (flag){
             if (p.getSolde()+n>=0)  

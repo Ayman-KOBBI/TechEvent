@@ -96,7 +96,12 @@ public class ConsulterEventController implements Initializable {
 
     @FXML
     private void bt_sup(ActionEvent event) {
-        
+        int id_ev = Integer.parseInt(id_e.getText());
+        Events P = new Events();
+        P.setId_ev(id_ev);
+        EventService p1 = new EventService();
+        p1.supprEvent(P);
+        JOptionPane.showMessageDialog(null, "Account Deleted Successfull");
     }
 }
    

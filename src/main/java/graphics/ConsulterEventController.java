@@ -5,6 +5,7 @@
  */
 package graphics;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Date;
 import java.time.LocalDate;
 import entity.Events;
@@ -24,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import service.EventService;
 import javafx.collections.FXCollections;
+import static javafx.scene.input.KeyCode.S;
 import javax.swing.JOptionPane;
 
 
@@ -68,8 +70,8 @@ public class ConsulterEventController implements Initializable {
          ////////////////Afficher///////////
         EventService p= new EventService();
         ArrayList<Events> e = (ArrayList<Events>) p.affichierEvent(); 
-        ObservableList<Events> obs=FXCollections.observableArrayList(e);
-        //table_event.setItems(obs);
+        observableList<Events> obs=FXCollections.observableArrayList(e);
+        table_event.setItems(obs);
         id_e.setCellValueFactory(new PropertyValueFactory<>("id_ev") );
         id_or.setCellValueFactory(new PropertyValueFactory<>("id_org") );
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
@@ -83,28 +85,60 @@ public class ConsulterEventController implements Initializable {
 
     @FXML
     private void bt_aj(ActionEvent event) throws SQLException {
+        int id_org = Integer.parseInt(id_or.getText());
+        String lieu= lie.getText();
+        int nb_place = Integer.parseInt(nb.getText());
+        LocalDate locald = date.getValue();
+        Date dt_event = Date.valueOf(locald);     
+        String h_event= h_e.getText();
+        int prix= Integer.parseInt(px.getText());
+        String image= imag.getText();
+        String description= desc.getText();
+
+           Events E1= new Events(id_org,lieu,nb_place,dt_event,h_event,prix,image,description);
+           EventService e = new EventService();
+              e.creerEvent(E1);
+              JOptionPane.showMessageDialog(null, "Account Created Successfull");
+    }
        
        }
 
     @FXML
-    private void bt_modif(ActionEvent event) {
+    private void bt_modif(ActionEvent event) throws SQLException {
+        
+       
+         int id_org = Integer.parseInt(id_or.getText());
+        String lieu= lie.getText();
+        int nb_place = Integer.parseInt(nb.getText());
+        LocalDate locald = date.getValue();
+        Date dt_event = Date.valueOf(locald);     
+        String h_event= h_e.getText();
+        int prix= Integer.parseInt(px.getText());
+        String image= imag.getText();
+        String description= desc.getText();
+
+           Events E1= new Events(id_org,lieu,nb_place,dt_event,h_event,prix,image,description);
+           EventService p = new EventService();
+              e.modifEvent(E1);
+              JOptionPane.showMessageDialog(null, "Account edited Successfull");
+
+       
+        
     }
 
     @FXML
     private void bt_sup(ActionEvent event) {
-    }
-        
-        
-           int cin = Integer.parseInt(cinsupp_t.getText());
-        Posteur P = new Posteur();
-        P.setCin(cin);
-        PosteurService p1 = new PosteurService();
-        p1.supprimerPosteur(P); 
-        JOptionPane.showMessageDialog(null, "Account Deleted Successfull");
 
-       
     }
+
+    @FXML
+  /*  private void Date(TableColumn.CellEditEvent<S, T> event) {
+    }
+        
+        
+       
+    }*/
 
 
     
-}
+

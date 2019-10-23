@@ -101,5 +101,25 @@ public class EventController implements Initializable {
         
         
     }
+
+    @FXML
+    private void bt_Retour(ActionEvent event) {
+        
+      
+    }
+
+    @FXML
+    private void bt_annuler(ActionEvent event) {
+        
+       id_or.setText(null);
+        lieu.setText("");
+       nb.setText(null);
+        date.setValue(null);
+        h_e.setText("");
+        prix.setText("");
+        image.setText("");
+        description.setText("");
+       
+    }
     
 }

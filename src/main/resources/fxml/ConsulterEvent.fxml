@@ -16,7 +16,7 @@
             <TableColumn fx:id="id_or" prefWidth="70.0" text="id_org" />
             <TableColumn fx:id="lie" prefWidth="69.0" text="lieu" />
             <TableColumn fx:id="nb" prefWidth="70.0" text="nb_place" />
-            <TableColumn fx:id="dt_e" prefWidth="63.0" text="dt_event" />
+            <TableColumn fx:id="dt_e" onEditStart="#Date" prefWidth="63.0" text="dt_event" />
             <TableColumn fx:id="h_e" prefWidth="60.0" text="h_event" />
             <TableColumn fx:id="px" prefWidth="57.0" text="prix" />
             <TableColumn fx:id="imag" prefWidth="65.0" text="image" />

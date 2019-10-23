@@ -52,7 +52,9 @@
       <TextField fx:id="imag" layoutX="212.0" layoutY="273.0" />
       <TextField fx:id="px" layoutX="212.0" layoutY="242.0" />
       <TextField fx:id="h_e" layoutX="212.0" layoutY="209.0" prefHeight="25.0" prefWidth="149.0" />
-      <Button layoutX="592.0" layoutY="389.0" mnemonicParsing="false" onAction="#ajout1" text="Ajouter" />
+      <Button layoutX="547.0" layoutY="201.0" mnemonicParsing="false" onAction="#ajout1" text="Ajouter" />
       <DatePicker fx:id="date" layoutX="212.0" layoutY="174.0" prefHeight="25.0" prefWidth="149.0" />
+      <Button layoutX="634.0" layoutY="14.0" mnemonicParsing="false" onAction="#bt_Retour" text="Retour" />
+      <Button layoutX="631.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_annuler" text="Anuuler" />
    </children>
 </AnchorPane>

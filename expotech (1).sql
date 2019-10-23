@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 21 oct. 2019 à 23:17
+-- Généré le :  mar. 22 oct. 2019 à 22:02
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -51,28 +51,22 @@ CREATE TABLE IF NOT EXISTS `events` (
   `id_org` int(11) NOT NULL,
   `lieu` varchar(50) NOT NULL,
   `nb_place` int(11) NOT NULL,
-  `dt_event` date DEFAULT NULL,
+  `dt_event` date NOT NULL,
   `h_event` varchar(50) NOT NULL,
   `prix` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`id_ev`),
   KEY `id_org` (`id_org`)
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `events`
 --
 
 INSERT INTO `events` (`id_ev`, `id_org`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `image`, `description`) VALUES
-(1, 0, 'toz', 5, NULL, '09:00:00', 2, '', 'ahmed'),
-(3, 0, 'lieu', 0, NULL, 'h_event', 0, 'image', 'description'),
-(8, 0, 'lieu', 25, NULL, '20:00', 70, 'image', 'khayat'),
-(17, 9, 'lieu', 7, NULL, 'h_event', 0, 'image', 'description'),
-(18, 9, 'lieu', 7, NULL, 'h_event', 0, 'image', 'description'),
-(55, 7, 'djerba', 17, '2019-01-28', '09:00', 50, 'm', 'espritinfo'),
-(56, 7, 'djerba', 17, '2019-01-28', '09:00', 50, 'm', 'espritinfo'),
-(57, 7, 'djerba', 17, '2019-01-28', '09:00', 50, 'm', 'espritinfo');
+(1, 0, 'toz', 5, '2019-02-01', '09:00:00', 2, '', 'ahmed'),
+(79, 11, 'mjez', 8, '2019-01-28', '08:00', 70, 'm', 'esprit');
 
 -- --------------------------------------------------------
 
@@ -125,7 +119,15 @@ CREATE TABLE IF NOT EXISTS `participant` (
   `tel` varchar(50) NOT NULL,
   `solde` float NOT NULL,
   PRIMARY KEY (`id_par`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `participant`
+--
+
+INSERT INTO `participant` (`id_par`, `nom`, `prenom`, `email`, `tel`, `solde`) VALUES
+(10, 'aaaa', 'bbbb', 'cccc', 'dddd', 20),
+(11, 'ayman', 'kobbi', '6546', 'eaemail', 36);
 
 -- --------------------------------------------------------
 
@@ -140,11 +142,18 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `id_par` int(11) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
+  `image` varchar(50) NOT NULL,
   PRIMARY KEY (`id_ticket`),
   KEY `id_ev` (`id_ev`),
-  KEY `id_par` (`id_par`),
-  KEY `nom` (`nom`,`prenom`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `id_par` (`id_par`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id_ticket`, `id_ev`, `id_par`, `nom`, `prenom`, `image`) VALUES
+(1, 1, 11, 'ayman', 'kobbi', 'image.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

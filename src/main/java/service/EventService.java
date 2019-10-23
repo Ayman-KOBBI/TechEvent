@@ -5,6 +5,7 @@
  */
 package service;
 
+
 import entity.Events;
 import iservice.IEventService;
 import java.sql.Connection;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import utils.ConnexionBD;
 import java.util.Date;
 import java.sql.Time;
@@ -49,7 +50,11 @@ public class EventService implements IEventService{
                    
  Date dt_event = Calendar.getInstance().getTime();
     SimpleDateFormat format1=new SimpleDateFormat("yyyy-MM-dd");
-  
+    
+    //Time h_event = Calendar.getInstance().getTime();
+    ///SimpleTimeFormat format3=new SimpleTimeFormat("hh:mm:ss");
+ 
+
 String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,image,description) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pres=c.prepareStatement(req);
         pres.setInt(1,e.getId_ev() );

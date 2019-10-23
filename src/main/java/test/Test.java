@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package test;
-
 import entity.Events;
 import entity.Participants;
 import entity.Reservation;
@@ -65,11 +64,11 @@ System.out.println("element non inserer");       }*/
          //ArrayList<Events> e = (ArrayList<Events>) es.affichierEvent();
         //System.out.println(e.toString());
        ///reservation 
-         ReservationService res1= new ReservationService();
+       //  ReservationService res1= new ReservationService();
         
         //res1.supprimerReservation(r1);
         //System.out.println(res1.afficherReservation().toString());    
-        ParService par1= new ParService();
+    /*    ParService par1= new ParService();
         Participants p1= new Participants(11,"ayman","kobbi","6546","eaemail",50);
         try{    
             par1.creerPar(p1);
@@ -84,6 +83,6 @@ System.out.println("element non inserer");       }*/
             System.out.println(e.getMessage());
         }
 //Reservation r1=new Reservation(1,1,p1,"aaaaaa");
-        //res1.ajouterReservation(r1); 
+        //res1.ajouterReservation(r1); */
                     }
 }

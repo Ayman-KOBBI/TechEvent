@@ -35,20 +35,20 @@ public class Test {
     java.util.Date date =  new SimpleDateFormat("yyyy-MM-dd").parse(m);
     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
             EventService es = new EventService();
-            Events e2 =new Events(9);
+           /* Events e2 =new Events(9);
             Events e3 =new Events(11, "mjez", 8, sqlDate, "08:00", 70, "m", "esprit");
-            Events e4 =new Events(62, 9, "m", 0, sqlDate, "m", 0, "m", "m");
+            Events e4 =new Events(62, 9, "m", 0, sqlDate, "m", 0, "m", "m"); */
             //Events e3=new Events(5, "lieu", 9, "dt_event", "h_event", 0, "image", "description");
            // Events e4 =new Events(24, 7, "mjez", 7, "dt_event", "h_event", 0, "image", "description");
             //e4.setDescription("esprit_ariena");
          // es.modifEvent(e4);
-        try {
+       /* try {
             es.creerEvent(e3);
           //  e4.setDescription("espriiiiit");
              es.modifEvent(e4);
         } catch (SQLException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } */
       
            /* try{
             es.creerEvent(e4);

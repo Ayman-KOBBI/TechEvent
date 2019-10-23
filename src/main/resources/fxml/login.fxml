@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -21,11 +23,16 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="lblMsg" layoutX="65.0" layoutY="164.0" text="Welcome to Tech'Expo" textFill="WHITE">
+      <Button fx:id="btnSignup" layoutX="108.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnSignupAction" prefHeight="30.0" prefWidth="145.0" text="Sign Up" />
+      <ImageView fitHeight="321.0" fitWidth="350.0" layoutX="14.0" layoutY="18.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/evolusi.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblMsg" layoutX="73.0" layoutY="174.0" text="Welcome to Tech'Expo" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btnSignup" layoutX="118.0" layoutY="230.0" mnemonicParsing="false" onAction="#btnSignupAction" prefHeight="25.0" prefWidth="145.0" text="Sign Up" />
    </children>
 </AnchorPane>

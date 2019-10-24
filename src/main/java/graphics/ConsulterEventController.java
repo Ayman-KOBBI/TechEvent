@@ -103,6 +103,12 @@ public class ConsulterEventController implements Initializable {
         p1.supprEvent(P);
         JOptionPane.showMessageDialog(null, "Account Deleted Successfull");
     }
+
+    
+    
+
+    
+   
 }
    
 

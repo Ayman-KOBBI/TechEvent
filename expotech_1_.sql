@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 22 oct. 2019 à 22:02
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Hôte : 127.0.0.1
+-- Généré le :  jeu. 24 oct. 2019 à 02:57
+-- Version du serveur :  10.4.6-MariaDB
+-- Version de PHP :  7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `expotech`
+-- Base de données :  `expotech(1)`
 --
 
 -- --------------------------------------------------------
@@ -28,15 +28,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `commentaire`
 --
 
-DROP TABLE IF EXISTS `commentaire`;
-CREATE TABLE IF NOT EXISTS `commentaire` (
+CREATE TABLE `commentaire` (
   `id_comm` int(11) NOT NULL,
   `id_article` int(11) NOT NULL,
-  `date_comm` date NOT NULL,
-  `heure_comm` time NOT NULL,
-  `Text` text NOT NULL,
-  PRIMARY KEY (`id_comm`),
-  KEY `id_article` (`id_article`)
+  `id_user` int(11) NOT NULL,
+  `Text` varchar(1000) NOT NULL,
+  `date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,9 +42,8 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- Structure de la table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
-CREATE TABLE IF NOT EXISTS `events` (
-  `id_ev` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `events` (
+  `id_ev` int(11) NOT NULL,
   `id_org` int(11) NOT NULL,
   `lieu` varchar(50) NOT NULL,
   `nb_place` int(11) NOT NULL,
@@ -55,10 +51,8 @@ CREATE TABLE IF NOT EXISTS `events` (
   `h_event` varchar(50) NOT NULL,
   `prix` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_ev`),
-  KEY `id_org` (`id_org`)
-) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `events`
@@ -74,18 +68,13 @@ INSERT INTO `events` (`id_ev`, `id_org`, `lieu`, `nb_place`, `dt_event`, `h_even
 -- Structure de la table `forum`
 --
 
-DROP TABLE IF EXISTS `forum`;
-CREATE TABLE IF NOT EXISTS `forum` (
+CREATE TABLE `forum` (
   `id_article` int(11) NOT NULL,
-  `id_ev` int(11) NOT NULL,
-  `id_org` int(11) NOT NULL,
-  `date_cr` date NOT NULL,
-  `heure_cr` time NOT NULL,
-  `lieu` varchar(50) NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_article`),
-  KEY `id_ev` (`id_ev`,`id_org`,`lieu`,`image`,`description`)
+  `id_user` int(11) NOT NULL,
+  `titre` varchar(50) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -94,14 +83,12 @@ CREATE TABLE IF NOT EXISTS `forum` (
 -- Structure de la table `organisateur`
 --
 
-DROP TABLE IF EXISTS `organisateur`;
-CREATE TABLE IF NOT EXISTS `organisateur` (
-  `id_org` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `organisateur` (
+  `id_org` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `tel` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_org`)
+  `tel` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -110,16 +97,14 @@ CREATE TABLE IF NOT EXISTS `organisateur` (
 -- Structure de la table `participant`
 --
 
-DROP TABLE IF EXISTS `participant`;
-CREATE TABLE IF NOT EXISTS `participant` (
-  `id_par` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `participant` (
+  `id_par` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tel` varchar(50) NOT NULL,
-  `solde` float NOT NULL,
-  PRIMARY KEY (`id_par`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+  `solde` float NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `participant`
@@ -135,18 +120,14 @@ INSERT INTO `participant` (`id_par`, `nom`, `prenom`, `email`, `tel`, `solde`) V
 -- Structure de la table `reservation`
 --
 
-DROP TABLE IF EXISTS `reservation`;
-CREATE TABLE IF NOT EXISTS `reservation` (
-  `id_ticket` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reservation` (
+  `id_ticket` int(11) NOT NULL,
   `id_ev` int(11) NOT NULL,
   `id_par` int(11) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
-  `image` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_ticket`),
-  KEY `id_ev` (`id_ev`),
-  KEY `id_par` (`id_par`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `image` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reservation`
@@ -154,6 +135,78 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 
 INSERT INTO `reservation` (`id_ticket`, `id_ev`, `id_par`, `nom`, `prenom`, `image`) VALUES
 (1, 1, 11, 'ayman', 'kobbi', 'image.jpg');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `commentaire`
+--
+ALTER TABLE `commentaire`
+  ADD PRIMARY KEY (`id_comm`),
+  ADD KEY `id_article` (`id_article`);
+
+--
+-- Index pour la table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id_ev`),
+  ADD KEY `id_org` (`id_org`);
+
+--
+-- Index pour la table `forum`
+--
+ALTER TABLE `forum`
+  ADD PRIMARY KEY (`id_article`);
+
+--
+-- Index pour la table `organisateur`
+--
+ALTER TABLE `organisateur`
+  ADD PRIMARY KEY (`id_org`);
+
+--
+-- Index pour la table `participant`
+--
+ALTER TABLE `participant`
+  ADD PRIMARY KEY (`id_par`) USING BTREE;
+
+--
+-- Index pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id_ticket`),
+  ADD KEY `id_ev` (`id_ev`),
+  ADD KEY `id_par` (`id_par`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id_ev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT pour la table `organisateur`
+--
+ALTER TABLE `organisateur`
+  MODIFY `id_org` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `participant`
+--
+ALTER TABLE `participant`
+  MODIFY `id_par` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

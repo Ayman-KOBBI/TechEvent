@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 package iservice;
-import entity.forum;
+import entity.Forum;
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
  * @author oussama
  */
 public interface IforumService {
-    public void creerarticle(forum f);
-    public void modifierarticle(forum f);
-    public void supprimerarticle(forum f);
-    public List<forum> afficherarticle();
+    public void creerarticle(Forum f);
+    public void modifierarticle(int id_article, String description);
+    public void supprimerarticle(int id_article);
+    public void afficherarticle();
+    public ArrayList<Forum> afficherarticles();
     
 }

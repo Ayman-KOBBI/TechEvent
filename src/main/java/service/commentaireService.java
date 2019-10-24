@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package service;
-import entity.commentaire;
+import entity.Commentaire;
+import entity.Forum;
 import iservice.IcommentaireService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,36 +29,30 @@ public class commentaireService implements IcommentaireService {
            .getInstanceConnexionBD()
            .getConnection();
     Statement ste;
-    public commentaireService() 
-    {
-       try {
-            ste = c.createStatement();
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } 
-    }
-        @Override
-        public void ajoutercomm(commentaire m) {
+    
+ @Override
+        public void ajoutercomm(Commentaire m) {
         try {
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            Statement st=c.createStatement();
             String req1="INSERT INTO `commentaire` "
-                    + "(`id_article`,`date_comm`,`heure_comm`,`Text`) "
-                    + "VALUES ( "+m.getId_article()+","+m.getDate_comm()+","+m.getHeure_comm()+","+m.getText()+");";
+                    + "(`id_comm`,`id_article`,`id_user`,`Text`,`date`) "
+                    + "VALUES ( "+m.getId_comm()+","+m.getId_article()+","+m.getId_user()+","+m.getText()+","+m.getDate()+");";
             
             
          
-            ste.executeUpdate(req1);
+            st.executeUpdate(req1);
         } catch (SQLException ex) {
             Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @Override
-    public void supprimercomm(commentaire m) {
-        try {
-            String req1="delete from commentaire where"
+    public void supprimercomm(int id_comm) {
+       try {
+            String req1="delete from forum where"
                     + " id_comm=?";
        
       PreparedStatement ps = c.prepareStatement(req1);
-            ps.setInt(1, m.getId_comm());
+            ps.setInt(1,id_comm);
             ps.executeUpdate();
          
            
@@ -63,43 +60,38 @@ public class commentaireService implements IcommentaireService {
             Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        @Override
-    public List<commentaire> affichercomm() {
-      
-      List<commentaire> commentaires = new ArrayList<>();
-      commentaire m = null ;
-      String req2="select date_comm, heure_comm, Text from commentaire";
-      try {
-         
-         
-          ResultSet res=  ste.executeQuery(req2);
-          while (res.next()) { 
-              m = new commentaire();
-                    
-                      m.setDate_comm(res.getDate("date_comm"));
-                      m.setHeure_comm(res.getTime("heure_comm"));
-                      m.setText(res.getString("Text"))  ; 
-                      
-              commentaires.add(m);
-          }
-          
-      } catch (SQLException ex) {
-          System.out.println(ex.getMessage());
-      } 
-        
-     return commentaires;
-    }
-    @Override
-    public void modifiercomm(commentaire m){
-         try{
-            PreparedStatement as = c.prepareStatement("update commentaire set date_comm=?,heure_comm=?,Text=?");
-          as.setString(1, m.getDate_comm());
-            as.setString(2, m.getHeure_comm());
-            as.setString(3, m.getText());
-            
-            as.executeUpdate();
-            
-             }catch(SQLException e) { System.out.println(" Erreur modif " + e);}
+    public List<Commentaire> affichercomm(Forum f) 
+            {
+            ArrayList <Commentaire> mylist = new ArrayList();
+        try {
+            Statement st = c.createStatement();
+            String req="select * from commentaire where id_article="+f.getId_article();
+            ResultSet rs=st.executeQuery(req);
+            while(rs.next()) 
+ {
+ Commentaire a= new Commentaire(rs.getInt(3),rs.getString(4));
+ String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getDate(5));
+ a.setDate(date);
+ mylist.add(a);
+ 
+ 
+ 
+ }
+        } catch (SQLException ex) {
+            Logger.getLogger(Commentaire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        return mylist;
+       }
+    public void modifiercomm(int id_comm, String Text){
+        try {
+            PreparedStatement pt= c.prepareStatement("update commentaire set Text=? where id_comm=? ");
+            pt.setString(1,Text);
+            pt.setInt(2,id_comm);
+            pt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     }
 

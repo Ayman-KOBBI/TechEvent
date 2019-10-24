@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 package iservice;
-import entity.commentaire;
+import entity.Commentaire;
+import entity.Forum;
 import java.util.List;
 /**
  *
  * @author oussama
  */
 public interface IcommentaireService {
-    public void ajoutercomm(commentaire m);
-    public void modifiercomm(commentaire m);
-    public void supprimercomm(commentaire m);
-    public List<commentaire> affichercomm();
+    public void ajoutercomm(Commentaire m);
+    public void modifiercomm(int id_comm, String Text);
+    public void supprimercomm(int id_comm);
+    public List<Commentaire> affichercomm(Forum f) ;
     
 }

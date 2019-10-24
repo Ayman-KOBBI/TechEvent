@@ -38,7 +38,7 @@ import javax.swing.JOptionPane;
 public class ConsulterEventController implements Initializable {
 
     @FXML
-    private TableView<?> table_event;
+    private TableView table_event;
     
     @FXML
     private TableColumn<?, ?> id_e;

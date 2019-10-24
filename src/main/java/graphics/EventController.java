@@ -39,8 +39,6 @@ public class EventController implements Initializable {
     @FXML
     private Label prix;
     @FXML
-    private Label id_org;
-    @FXML
     private Label h_event;
     @FXML
     private Label dt_event;
@@ -50,24 +48,28 @@ public class EventController implements Initializable {
     private Label lieu;
     @FXML
     private Label description;
-    @FXML
-    private Label image;
-    @FXML
-    private TextField id_or;
+
     @FXML
     private TextField lie;
     @FXML
     private TextField nb;
     @FXML
     private TextField desc;
-    @FXML
-    private TextField imag;
+   
     @FXML
     private TextField px;
     @FXML
     private TextField h_e;
     @FXML
     private DatePicker date;
+    @FXML
+    private Label nom_org;
+    @FXML
+    private Label nom_event;
+    @FXML
+    private TextField nom_or;
+    @FXML
+    private TextField nom_e;
 
     /**
      * Initializes the controller class.
@@ -84,17 +86,18 @@ public class EventController implements Initializable {
     @FXML
     private void ajout1(ActionEvent event) throws SQLException {
         
-         int id_org = Integer.parseInt(id_or.getText());
+         String nom_org = nom_or.getText();
+         String nom_event = nom_e.getText();
         String lieu= lie.getText();
         int nb_place = Integer.parseInt(nb.getText());
         LocalDate locald = date.getValue();
         Date dt_event = Date.valueOf(locald);     
         String h_event= h_e.getText();
         int prix= Integer.parseInt(px.getText());
-        String image= imag.getText();
+        
         String description= desc.getText();
 
-           Events E1= new Events(id_org,lieu,nb_place,dt_event,h_event,prix,image,description);
+           Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
            EventService p = new EventService();
               p.creerEvent(E1);
               JOptionPane.showMessageDialog(null, "Account Created Successfull");
@@ -105,19 +108,30 @@ public class EventController implements Initializable {
     @FXML
     private void bt_Retour(ActionEvent event) {
         
-      
+      Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ConsulterEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     @FXML
     private void bt_annuler(ActionEvent event) {
         
-       id_or.setText(null);
+       nom_or.setText("");
+       nom_e.setText("");
         lie.setText("");
        nb.setText(null);
         date.setValue(null);
         h_e.setText("");
         px.setText("");
-        imag.setText("");
+        
         desc.setText("");
        
     }

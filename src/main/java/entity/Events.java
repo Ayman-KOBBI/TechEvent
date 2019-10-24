@@ -14,14 +14,14 @@ import java.util.Date;
 public class Events {
     
     private int id_ev ; 
-   private int id_org ; 
+   private String nom_org ; 
     private String description; 
     private Date dt_event; 
     private int nb_place ; 
     private String lieu ;
     private int  prix ; 
     private String h_event ; 
-    private String image ;
+    private String nom_event ;
    
     
     public Events() {
@@ -42,36 +42,35 @@ public class Events {
 
     }
 
-    public Events(int id_ev,int id_org, String lieu,int nb_place,Date dt_event,String h_event,int prix,String image,String description) {
+    public Events(int id_ev,String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,String h_event,int prix,String description) {
        this.id_ev = id_ev;
-       this.id_org = id_org;
+       this.nom_org = nom_org;
         this.description = description;
         this.dt_event = dt_event;
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
         this.h_event = h_event;
-        this.image=image;
+        this.nom_event=nom_event;
     }
      
-public Events(int id_org, String lieu,int nb_place,Date dt_event,String h_event,int prix,String image,String description) {
+public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,String h_event,int prix,String description) {
        //this.id_ev = id_ev;
-       this.id_org = id_org;
+       this.nom_org = nom_org;
         this.description = description;
         this.dt_event = dt_event;
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
         this.h_event = h_event;
-        this.image=image;
-    }
+        this.nom_event=nom_event;    }
     
 
     
 
     @Override
     public String toString() {
-        return "Events{" + "id_ev=" + id_ev + "," + "id_org=" + id_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", image=" + image + '}';
+        return "Events{" + "id_ev=" + id_ev + "," + "nom_org=" + nom_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", nom_event=" + nom_event + '}';
     }
 
 
@@ -82,8 +81,8 @@ public Events(int id_org, String lieu,int nb_place,Date dt_event,String h_event,
         this.id_ev = id_ev;
     }
 
-    public void setId_org(int id_org) {
-        this.id_org = id_org;
+    public void setNom_org(String nom_org) {
+        this.nom_org = nom_org;
     }
 
     public void setDescription(String description) {
@@ -110,16 +109,16 @@ public Events(int id_org, String lieu,int nb_place,Date dt_event,String h_event,
         this.h_event = h_event;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setNom_event(String nom_event) {
+        this.nom_event = nom_event;
     }
 
     public int getId_ev() {
         return id_ev;
     }
 
-    public int getId_org() {
-        return id_org;
+    public String getNom_org() {
+        return nom_org;
     }
 
     public String getDescription() {
@@ -146,8 +145,8 @@ public Events(int id_org, String lieu,int nb_place,Date dt_event,String h_event,
         return h_event;
     }
 
-    public String getImage() {
-        return image;
+    public String getNom_event() {
+        return nom_event;
     }
 
 

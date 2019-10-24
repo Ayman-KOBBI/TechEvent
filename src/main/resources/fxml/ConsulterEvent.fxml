@@ -12,15 +12,14 @@
       <Button layoutX="321.0" layoutY="397.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
       <TableView fx:id="table_event" layoutX="-2.0" layoutY="14.0" prefHeight="369.0" prefWidth="693.0">
          <columns>
-            <TableColumn fx:id="id_e" prefWidth="75.0" text="id_ev" />
-            <TableColumn fx:id="id_or" prefWidth="70.0" text="id_org" />
+            <TableColumn fx:id="nom_or" prefWidth="89.0" text="nom_org" />
+            <TableColumn fx:id="nom_e" prefWidth="77.0" text="nom_event" />
             <TableColumn fx:id="lie" prefWidth="69.0" text="lieu" />
-            <TableColumn fx:id="nb" prefWidth="70.0" text="nb_place" />
-            <TableColumn fx:id="dt_e" prefWidth="63.0" text="dt_event" />
-            <TableColumn fx:id="h_e" prefWidth="60.0" text="h_event" />
-            <TableColumn fx:id="px" prefWidth="57.0" text="prix" />
-            <TableColumn fx:id="imag" prefWidth="65.0" text="image" />
-            <TableColumn fx:id="desc" prefWidth="158.0" text="description" />
+            <TableColumn fx:id="nb" prefWidth="69.0" text="nb_place" />
+            <TableColumn fx:id="dt_e" prefWidth="68.0" text="dt_event" />
+            <TableColumn fx:id="h_e" prefWidth="67.0" text="h_event" />
+            <TableColumn fx:id="px" prefWidth="84.0" text="prix" />
+            <TableColumn fx:id="desc" prefWidth="169.0" text="description" />
          </columns>
       </TableView>
    </children>

@@ -9,31 +9,31 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.EventController">
    <children>
-      <Label fx:id="prix" layoutX="30.0" layoutY="242.0" text="Prix :">
+      <Label fx:id="prix" layoutX="33.0" layoutY="277.0" text="Prix :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="id_org" layoutX="28.0" layoutY="84.0" text="Id_org :">
+      <Label fx:id="nom_org" layoutX="28.0" layoutY="84.0" text="Nom_org :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="h_event" layoutX="28.0" layoutY="213.0" text="H_Event :">
+      <Label fx:id="h_event" layoutX="31.0" layoutY="242.0" text="H_Event :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="dt_event" layoutX="28.0" layoutY="178.0" text="Dt_Event :">
+      <Label fx:id="dt_event" layoutX="30.0" layoutY="213.0" text="Dt_Event :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="nb_place" layoutX="28.0" layoutY="146.0" text="Nb_Place :">
+      <Label fx:id="nb_place" layoutX="29.0" layoutY="178.0" text="Nb_Place :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="lieu" layoutX="28.0" layoutY="113.0" text="Lieu :">
+      <Label fx:id="lieu" layoutX="31.0" layoutY="146.0" text="Lieu :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label layoutX="247.0" layoutY="14.0" text="Formulaire" textAlignment="CENTER">
+      <Label layoutX="247.0" layoutY="14.0" text="Creer Events" textAlignment="CENTER">
          <font>
             <Font name="Agency FB" size="41.0" />
          </font></Label>
@@ -41,19 +41,19 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="image" layoutX="29.0" layoutY="277.0" text="Image :">
+      <Label fx:id="nom_event" layoutX="28.0" layoutY="113.0" text="Nom_event :">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <TextField fx:id="id_or" layoutX="212.0" layoutY="80.0" />
-      <TextField fx:id="lie" layoutX="212.0" layoutY="109.0" />
-      <TextField fx:id="nb" layoutX="212.0" layoutY="142.0" />
+      <TextField fx:id="nom_or" layoutX="212.0" layoutY="80.0" />
+      <TextField fx:id="lie" layoutX="212.0" layoutY="146.0" />
+      <TextField fx:id="nb" layoutX="212.0" layoutY="178.0" />
       <TextField fx:id="desc" layoutX="212.0" layoutY="314.0" prefHeight="100.0" prefWidth="323.0" />
-      <TextField fx:id="imag" layoutX="212.0" layoutY="273.0" />
-      <TextField fx:id="px" layoutX="212.0" layoutY="242.0" />
-      <TextField fx:id="h_e" layoutX="212.0" layoutY="209.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="nom_e" layoutX="212.0" layoutY="113.0" />
+      <TextField fx:id="px" layoutX="212.0" layoutY="277.0" />
+      <TextField fx:id="h_e" layoutX="212.0" layoutY="242.0" prefHeight="25.0" prefWidth="149.0" />
       <Button layoutX="547.0" layoutY="201.0" mnemonicParsing="false" onAction="#ajout1" text="Ajouter" />
-      <DatePicker fx:id="date" layoutX="212.0" layoutY="174.0" prefHeight="25.0" prefWidth="149.0" />
+      <DatePicker fx:id="date" layoutX="212.0" layoutY="213.0" prefHeight="25.0" prefWidth="149.0" />
       <Button layoutX="634.0" layoutY="14.0" mnemonicParsing="false" onAction="#bt_Retour" text="Retour" />
       <Button layoutX="631.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_annuler" text="Anuuler" />
    </children>

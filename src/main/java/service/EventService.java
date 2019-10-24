@@ -55,16 +55,17 @@ public class EventService implements IEventService{
     ///SimpleTimeFormat format3=new SimpleTimeFormat("hh:mm:ss");
  
 
-String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,image,description) VALUES (?,?,?,?,?,?,?,?,?)";
+String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pres=c.prepareStatement(req);
         pres.setInt(1,e.getId_ev() );
-        pres.setInt(2,e.getId_org() );
-        pres.setString(3,e.getLieu());
-        pres.setInt(4,e.getNb_place());
-        pres.setDate(5, (java.sql.Date) e.getDt_event());
-        pres.setString(6,e.getH_event());
-        pres.setInt(7,e.getPrix());  
-        pres.setString(8,e.getImage());  
+        pres.setString(2,e.getNom_org() );
+        pres.setString(3,e.getNom_event());
+        pres.setString(4,e.getLieu());
+        pres.setInt(5,e.getNb_place());
+        pres.setDate(6, (java.sql.Date) e.getDt_event());
+        pres.setString(7,e.getH_event());
+        pres.setInt(8,e.getPrix());  
+          
         pres.setString(9,e.getDescription());  
         pres.executeUpdate();
        // System.out.println(pres.executeUpdate());
@@ -77,21 +78,21 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
     SimpleDateFormat format2=new SimpleDateFormat("yyyy-MM-dd");
 
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    String sql = "UPDATE events SET id_org=?,lieu=?, nb_place=?,"
-            + "  dt_event=?,h_event=?,prix=?,image=?, description=? where id_ev=?";
+    String sql = "UPDATE events SET nom_org=?,nom_event,lieu=?, nb_place=?,"
+            + "  dt_event=?,h_event=?,prix=?, description=? where id_ev=?";
  
         PreparedStatement pres;
           
 
          try {
              pres = c.prepareStatement(sql);
-        pres.setInt(1,e.getId_org());
+        pres.setString(2,e.getNom_org() );
         pres.setString(2,e.getLieu());
         pres.setInt(3,e.getNb_place());
         pres.setDate(4, (java.sql.Date) e.getDt_event());
         pres.setString(5,e.getH_event());
         pres.setInt(6,e.getPrix());  
-        pres.setString(7,e.getImage());  
+        pres.setString(3,e.getNom_event()); 
         pres.setString(8,e.getDescription());
         pres.setInt(9,e.getId_ev());
              System.out.println(e.getId_ev());
@@ -140,14 +141,15 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
         while(res.next())
             {    
                 int id_ev = res.getInt("id_ev");
-                int id_org = res.getInt("id_org");
+                String nom_org = res.getString("nom_org");
+                String nom_event=res.getString("nom_event");
                 String description=res.getString("description");
                 Date dt_event=res.getDate("dt_event");
                 String h_event=res.getString("h_event");
                 int nb_place=res.getInt("nb_place");
                 String lieu=res.getString("lieu");
                 float prix=res.getInt("prix");
-                String image=res.getString("image");
+                
                  
                 System.out.println("evenement trouvé \n");
               
@@ -175,14 +177,14 @@ String req="INSERT INTO events(id_ev,id_org,lieu,nb_place,dt_event,h_event,prix,
           while (res.next()) { 
               p = new Events();
                       p.setId_ev(res.getInt("id_ev"));
-                      p.setId_org(res.getInt("id_org"));
+                      p.setNom_org(res.getString("nom_org"));
                       p.setDescription(res.getString("Description") );
                       p.setLieu(res.getString("lieu"));
                       p.setDt_event(res.getDate("dt_event"));
                       p.setH_event(res.getString("h_event"));
                       p.setPrix(res.getInt("prix"));
                       p.setNb_place(res.getInt("nb_place"));
-                      p.setImage(res.getString("image"));
+                      p.setNom_event(res.getString("nom_event"));
 
                       
               event.add(p);

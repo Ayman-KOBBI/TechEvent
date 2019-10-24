@@ -9,12 +9,15 @@ import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Date;
 import java.time.LocalDate;
 import entity.Events;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +29,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import service.EventService;
 import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import static javafx.scene.input.KeyCode.S;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 
@@ -40,9 +48,7 @@ public class ConsulterEventController implements Initializable {
     @FXML
     private TableView table_event;
     
-    @FXML
     private TableColumn<?, ?> id_e;
-    @FXML
     private TableColumn<?, ?> id_or;
     @FXML
     private TableColumn<?, ?> lie;
@@ -54,10 +60,13 @@ public class ConsulterEventController implements Initializable {
     private TableColumn<?, ?> h_e;
     @FXML
     private TableColumn<?, ?> px;
-    @FXML
     private TableColumn<?, ?> imag;
     @FXML
     private TableColumn<?, ?> desc;
+    @FXML
+    private TableColumn<?, ?> nom_or;
+    @FXML
+    private TableColumn<?, ?> nom_e;
     
     
     
@@ -73,35 +82,68 @@ public class ConsulterEventController implements Initializable {
         ArrayList<Events> e = (ArrayList<Events>) p.affichierEvent(); 
         ObservableList<Events> obs=FXCollections.observableArrayList(e);
         table_event.setItems(obs);
-        id_e.setCellValueFactory(new PropertyValueFactory<>("id_ev") );
-        id_or.setCellValueFactory(new PropertyValueFactory<>("id_org") );
+        nom_or.setCellValueFactory(new PropertyValueFactory<>("nom_org") );
+        nom_e.setCellValueFactory(new PropertyValueFactory<>("nom_event") );
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
         nb.setCellValueFactory(new PropertyValueFactory<>("nb_place") );
         dt_e.setCellValueFactory(new PropertyValueFactory<>("dt_event") );
         h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
-        imag.setCellValueFactory(new PropertyValueFactory<>("image") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
     }    
 
     @FXML
     private void bt_aj(ActionEvent event) throws SQLException {
-        
+          Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/Event.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     @FXML
     private void bt_modif(ActionEvent event) {
         
+        Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ModifEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+        
+        
     }
 
     @FXML
     private void bt_sup(ActionEvent event) {
-        int id_ev = Integer.parseInt(id_e.getText());
-        Events P = new Events();
-        P.setId_ev(id_ev);
-        EventService p1 = new EventService();
-        p1.supprEvent(P);
-        JOptionPane.showMessageDialog(null, "Account Deleted Successfull");
+       
+        EventService cs = new EventService();
+      
+        Events a = (Events) table_event.getSelectionModel().getSelectedItem();
+        cs.supprEvent(a);
+        
+        Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ConsulterEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     

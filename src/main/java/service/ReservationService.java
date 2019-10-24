@@ -98,8 +98,8 @@ public class ReservationService implements IReservationService{
             e.setDt_event(res2.getDate("dt_event"));
             e.setId_ev(res2.getInt("id_ev"));
             e.setH_event(res2.getString("H_event"));
-            e.setId_org(res2.getInt("Id_org"));
-            e.setImage(res2.getString("Image"));
+            e.setNom_org(res2.getString("Id_org"));
+            e.setNom_event(res2.getString("Image"));
             e.setLieu(res2.getString("lieu"));
             e.setNb_place(res2.getInt("Nb_place"));
                  

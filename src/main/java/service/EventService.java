@@ -78,16 +78,16 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
     SimpleDateFormat format2=new SimpleDateFormat("yyyy-MM-dd");
 
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    String sql = "UPDATE events SET nom_event=?,lieu=?, nb_place=?,"
-            + "  dt_event=?,h_event=?,prix=?, description=? where nom_org=?";
+    String sql = "UPDATE events SET nom_org=?,lieu=?, nb_place=?,"
+            + "  dt_event=?,h_event=?,prix=?, description=? where nom_event=?";
  
         PreparedStatement pres;
           
 
          try {
              pres = c.prepareStatement(sql);
-        pres.setString(8,e.getNom_org() );
-        pres.setString(1,e.getNom_event()); 
+        pres.setString(1,e.getNom_org() );
+        pres.setString(8,e.getNom_event()); 
         pres.setString(2,e.getLieu());
         pres.setInt(3,e.getNb_place());
         pres.setDate(4, (java.sql.Date) e.getDt_event());

@@ -10,7 +10,7 @@
       <Button layoutX="435.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
       <Button layoutX="523.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
       <Button layoutX="607.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
-      <TableView fx:id="table_event" layoutX="153.0" layoutY="6.0" prefHeight="393.0" prefWidth="539.0">
+      <TableView fx:id="table_event" layoutX="153.0" layoutY="6.0" prefHeight="393.0" prefWidth="539.0" style="-fx-background-color: gray; -fx-border-color: blue;">
          <columns>
             <TableColumn fx:id="nom_or" prefWidth="69.0" text="nom_org" />
             <TableColumn fx:id="nom_e" prefWidth="71.0" text="nom_event" />

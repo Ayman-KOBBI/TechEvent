@@ -140,7 +140,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
         List<Events> event=new ArrayList<>();
         try {
              ResultSet rs=  ste.executeQuery(req);
-            
+            //
             while(rs.next()){
                 p = new Events();
                       p.setId_ev(rs.getInt("id_ev"));

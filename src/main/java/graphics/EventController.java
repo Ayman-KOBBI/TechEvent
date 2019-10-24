@@ -112,13 +112,13 @@ public class EventController implements Initializable {
     private void bt_annuler(ActionEvent event) {
         
        id_or.setText(null);
-        lieu.setText("");
+        lie.setText("");
        nb.setText(null);
         date.setValue(null);
         h_e.setText("");
-        prix.setText("");
-        image.setText("");
-        description.setText("");
+        px.setText("");
+        imag.setText("");
+        desc.setText("");
        
     }
     

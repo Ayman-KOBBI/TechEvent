@@ -39,6 +39,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.InputMethodEvent;
 import static javafx.scene.input.KeyCode.S;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -125,6 +127,7 @@ public class ConsulterEventController implements Initializable {
       
         Events a = (Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
               cs.modifEvent(a);
+              
         /* nom_or.setText(a.getNom_org());
         nom_e.setText(a.getNom_event());
          lie.setText(a.getLieu());
@@ -196,7 +199,32 @@ public class ConsulterEventController implements Initializable {
             ArrayList<Events> e= (ArrayList<Events>) p.chercher(m);
             ObservableList<Events> obs=FXCollections.observableArrayList(e);
             table_event.setItems(obs);
-    }
-    }
+    }   
 
+   /*public void setValueformtableviewtotext()
+    {
+        table_event.setOnMouseClicked(new EventHandler<MouseEvent>()
+         {
+              @Override
+              public void handle(MouseEvent event) {
+               Events E=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
+
+                  nom_or.setText(E.getNom_org());
+                  nom_e.setText(E.getNom_event());
+                lie.setText(E.getLieu());
+                nb.setText(String.valueOf(E.getNb_place()));
+                   java.util.Date dt_event=E.getDt_event(); 
+                   LocalDate date2 = LocalDate.parse((CharSequence) dt_event);
+                   date.setValue(date2);
+                   h_e.setText(E.getH_event());
+                   px.setText(String.valueOf(E.getPrix()));
+                   desc.setText(E.getDescription());
+                   Events E1= new Events(nom_or, nom_e, lie, nb, date, h_e, px, desc);
+           EventService p = new EventService();
+              p.modifEvent(E1);
+                 }
+        
+         });
+    }*/
+}
 

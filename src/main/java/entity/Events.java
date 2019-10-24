@@ -7,6 +7,8 @@ package entity;
 
 import java.sql.Time;
 import java.util.Date;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
 /**
  *
  * @author asus
@@ -64,6 +66,7 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         this.prix = prix;
         this.h_event = h_event;
         this.nom_event=nom_event;    }
+
     
 
     

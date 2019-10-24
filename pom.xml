@@ -23,25 +23,12 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>2.1.2</version>
         </dependency>
-<!-- https://mvnrepository.com/artifact/org.openjfx/javafx -->
+<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
 <dependency>
     <groupId>org.openjfx</groupId>
-    <artifactId>javafx</artifactId>
-    <version>11</version>
-    <type>pom</type>
+    <artifactId>javafx-fxml</artifactId>
+    <version>14-ea+1</version>
 </dependency>
-<dependency>
-        <groupId>com.stackoverflow...</groupId>
-        <artifactId>artifactId...</artifactId>
-        <version>1.0</version>
-     </dependency>
-     <dependency>
-        <groupId>com.stackoverflow</groupId>
-        <artifactId>commons-utils</artifactId>
-        <version>1.3</version>
-        <scope>system</scope>
-        <systemPath>${basedir}/lib/commons-utils.jar</systemPath>
-    </dependency>
 </dependencies>
 </project>
  

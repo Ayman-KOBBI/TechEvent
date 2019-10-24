@@ -134,14 +134,14 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
     }
 
      @Override
-    public Events rechercheEvent(String nom_e) {
+    /*public Events rechercheEvent(String nom_e) {
     try {
          
                 String res1=("select * from events where nom_event like '%"+nom_e+"%' ");
      ResultSet res=  ste.executeQuery(res1);
         while(res.next())
             {    
-                int id_ev = res.getInt("id_ev");
+               // int id_ev = res.getInt("id_ev");
                 String nom_org = res.getString("nom_org");
                 String nom_event=res.getString("nom_event");
                 String description=res.getString("description");
@@ -154,7 +154,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
                  
                 System.out.println("evenement trouvé \n");
               
-           //    return new Events(id_ev, id_org, description, dt_event,h_event, nb_place,lieu, prix ,image);  
+            Events b = new Events(nom_org, nom_event, lieu, nb_place, dt_event, h_event, prix, description);
                 
             }
         
@@ -162,8 +162,40 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
         } catch (SQLException ex) {
              System.out.println("introvable \n");
         } 
+   // EventService
          return null;
-    }
+    }*/
+  
+    
+     public List<Events> chercher(String nom_e){
+         Events p = null ;
+        String req="select * from events where nom_event like '"+nom_e+"'";
+        List<Events> event=new ArrayList<>();
+        try {
+             ResultSet rs=  ste.executeQuery(req);
+            
+            while(rs.next()){
+                p = new Events();
+                      p.setId_ev(rs.getInt("id_ev"));
+                      p.setNom_org(rs.getString("nom_org"));
+                      p.setDescription(rs.getString("Description") );
+                      p.setLieu(rs.getString("lieu"));
+                      p.setDt_event(rs.getDate("dt_event"));
+                      p.setH_event(rs.getString("h_event"));
+                      p.setPrix(rs.getInt("prix"));
+                      p.setNb_place(rs.getInt("nb_place"));
+                      p.setNom_event(rs.getString("nom_event"));
+System.out.println("evenement trouvé \n");
+                      
+              event.add(p);
+               
+             // list.add(new Events(rs.getString("nom_org"),rs.getString("nom_event"),rs.getString("lieu"),rs.getInt("nb_place"),rs.getDate("dt_event"),rs.getString("h_event"),rs.getInt("Nb_place"),rs.getString("description")));  
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return event;
+}
 
     @Override
     public List<Events> affichierEvent() {

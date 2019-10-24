@@ -35,7 +35,7 @@ public class Test {
     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
            EventService es = new EventService();
             Events e2 =new Events(9);
-            es.rechercheEvent("tech");
+            es.chercher("tech");
             //Events e3 =new Events(11, "mjez", 8, sqlDate, "08:00", 70, "m", "esprit");
            // Events e4 =new Events(62, 9, "m", 0, sqlDate, "m", 0, "m", "m"); */
             //Events e3=new Events(5, "lieu", 9, "dt_event", "h_event", 0, "image", "description");

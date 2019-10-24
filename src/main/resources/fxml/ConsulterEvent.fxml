@@ -3,13 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ConsulterEventController">
    <children>
-      <Button layoutX="435.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
-      <Button layoutX="523.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
-      <Button layoutX="607.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
+      <Button layoutX="153.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
+      <Button layoutX="232.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
+      <Button layoutX="314.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
       <TableView fx:id="table_event" layoutX="153.0" layoutY="6.0" prefHeight="393.0" prefWidth="539.0" style="-fx-background-color: gray; -fx-border-color: blue;">
          <columns>
             <TableColumn fx:id="nom_or" prefWidth="69.0" text="nom_org" />
@@ -22,5 +23,6 @@
             <TableColumn fx:id="desc" prefWidth="93.0" text="description" />
          </columns>
       </TableView>
+      <TextField fx:id="tfserach" layoutX="435.0" layoutY="410.0" onKeyTyped="#search" />
    </children>
 </AnchorPane>

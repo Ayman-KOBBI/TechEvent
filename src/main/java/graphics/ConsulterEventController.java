@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.SortEvent;
+import javafx.scene.control.TextField;
 import static javafx.scene.input.KeyCode.S;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -74,6 +77,8 @@ public class ConsulterEventController implements Initializable {
     private TableColumn<?, ?> nom_e;
     
     private DatePicker date;
+    @FXML
+    private TextField tfserach;
     
 
     /**
@@ -183,4 +188,15 @@ public class ConsulterEventController implements Initializable {
         window.show();
     }
 
-}
+    @FXML
+    private void search(KeyEvent event) {
+        
+            EventService p = new EventService();
+            String m = tfserach.getText().concat("%");
+            ArrayList<Events> e= (ArrayList<Events>) p.chercher(m);
+            ObservableList<Events> obs=FXCollections.observableArrayList(e);
+            table_event.setItems(obs);
+    }
+    }
+
+

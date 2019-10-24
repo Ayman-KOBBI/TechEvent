@@ -5,36 +5,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ModifEventController">
+<AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ModifEventController">
    <children>
-      <Label fx:id="prix" layoutX="31.0" layoutY="277.0" text="Prix :">
+      <Label fx:id="prix" layoutX="31.0" layoutY="277.0" text="Prix :" textFill="#fcf9f9">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="id_org" layoutX="28.0" layoutY="84.0" text="Nom_org :">
+      <Label fx:id="id_org" layoutX="28.0" layoutY="84.0" text="Nom_org :" textFill="#fffefe">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="h_event" layoutX="31.0" layoutY="242.0" text="H_Event :">
+      <Label fx:id="h_event" layoutX="31.0" layoutY="242.0" text="H_Event :" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="dt_event" layoutX="29.0" layoutY="213.0" text="Dt_Event :">
+      <Label fx:id="dt_event" layoutX="29.0" layoutY="213.0" text="Dt_Event :" textFill="#fffdfd">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="nb_place" layoutX="29.0" layoutY="178.0" text="Nb_Place :">
+      <Label fx:id="nb_place" layoutX="29.0" layoutY="178.0" text="Nb_Place :" textFill="#fffefe">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lieu" layoutX="30.0" layoutY="146.0" text="Lieu :">
+      <Label fx:id="lieu" layoutX="30.0" layoutY="146.0" text="Lieu :" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -43,13 +45,21 @@
          <font>
             <Font name="Agency FB" size="41.0" />
          </font>
+         <textFill>
+            <RadialGradient centerX="0.5" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
       </Label>
-      <Label fx:id="description" layoutX="28.0" layoutY="314.0" text="Description :">
+      <Label fx:id="description" layoutX="28.0" layoutY="314.0" text="Description :" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="image" layoutX="28.0" layoutY="113.0" text="Nom_event :">
+      <Label fx:id="image" layoutX="28.0" layoutY="113.0" text="Nom_event :" textFill="#fcf9f9">
          <font>
             <Font size="16.0" />
          </font>

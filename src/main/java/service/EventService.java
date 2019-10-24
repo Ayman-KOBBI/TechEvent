@@ -133,40 +133,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
   
     }
 
-     @Override
-    /*public Events rechercheEvent(String nom_e) {
-    try {
-         
-                String res1=("select * from events where nom_event like '%"+nom_e+"%' ");
-     ResultSet res=  ste.executeQuery(res1);
-        while(res.next())
-            {    
-               // int id_ev = res.getInt("id_ev");
-                String nom_org = res.getString("nom_org");
-                String nom_event=res.getString("nom_event");
-                String description=res.getString("description");
-                Date dt_event=res.getDate("dt_event");
-                String h_event=res.getString("h_event");
-                int nb_place=res.getInt("nb_place");
-                String lieu=res.getString("lieu");
-                int prix=res.getInt("prix");
-                
-                 
-                System.out.println("evenement trouvé \n");
-              
-            Events b = new Events(nom_org, nom_event, lieu, nb_place, dt_event, h_event, prix, description);
-                
-            }
-        
-          // ste.executeUpdate(res1);
-        } catch (SQLException ex) {
-             System.out.println("introvable \n");
-        } 
-   // EventService
-         return null;
-    }*/
-  
-    
+     @Override   
      public List<Events> chercher(String nom_e){
          Events p = null ;
         String req="select * from events where nom_event like '"+nom_e+"'";

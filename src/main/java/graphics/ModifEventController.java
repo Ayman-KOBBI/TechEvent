@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,6 +79,7 @@ public class ModifEventController implements Initializable {
 
     @FXML
     private void bt_modifEvent(ActionEvent event) throws SQLException {
+        
         String nom_org = nom_or1.getText();
          String nom_event = nom_e1.getText();
         String lieu= lie1.getText();
@@ -89,6 +91,7 @@ public class ModifEventController implements Initializable {
         
         String description= desc1.getText();
 
+      
            Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
            EventService p = new EventService();
               p.modifEvent(E1);

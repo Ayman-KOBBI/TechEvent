@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,11 +30,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import service.EventService;
 import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import static javafx.scene.input.KeyCode.S;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -68,7 +72,7 @@ public class ConsulterEventController implements Initializable {
     @FXML
     private TableColumn<?, ?> nom_e;
     
-    
+    private DatePicker date;
     
 
     /**
@@ -90,6 +94,7 @@ public class ConsulterEventController implements Initializable {
         h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
+ 
     }    
 
     @FXML
@@ -97,6 +102,7 @@ public class ConsulterEventController implements Initializable {
           Parent PageParent = null;
         try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/Event.fxml"));
+        
         } catch (IOException ex) {
             Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -109,21 +115,44 @@ public class ConsulterEventController implements Initializable {
 
     @FXML
     private void bt_modif(ActionEvent event) {
+         EventService cs = new EventService();
+      
+        Events a = (Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
+       //  nom_or.setText(a.getNom_org());
+       //  nom_e.setText(a.getNom_event());
+         
+         
+        cs.modifEvent(a);
         
+     //String date1=date.toString();
         Parent PageParent = null;
-        try {
+                            try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/ModifEvent.fxml"));
+          
+           
+            
         } catch (IOException ex) {
             Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+         
         }
         Scene PageScene = new Scene(PageParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(PageScene);
         window.show();
+          
+             }
+        
+
+      /* EventService cs = new EventService();    
+       Events a = (Events) table_event.getSelectionModel().getSelectedItem();         
+        cs.modifEvent(a);*/
         
         
-    }
+      
+        
+        
+    
 
     @FXML
     private void bt_sup(ActionEvent event) {
@@ -151,7 +180,7 @@ public class ConsulterEventController implements Initializable {
 
     
    
-}
+         }
    
 
 

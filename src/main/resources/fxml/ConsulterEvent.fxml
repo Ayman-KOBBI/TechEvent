@@ -5,21 +5,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ConsulterEventController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: gray; -fx-border-color: blue;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ConsulterEventController">
    <children>
-      <Button layoutX="160.0" layoutY="397.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
-      <Button layoutX="242.0" layoutY="397.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
-      <Button layoutX="321.0" layoutY="397.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
-      <TableView fx:id="table_event" layoutX="-2.0" layoutY="14.0" prefHeight="369.0" prefWidth="693.0">
+      <Button layoutX="435.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
+      <Button layoutX="523.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
+      <Button layoutX="607.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
+      <TableView fx:id="table_event" layoutX="153.0" layoutY="6.0" prefHeight="393.0" prefWidth="539.0">
          <columns>
-            <TableColumn fx:id="nom_or" prefWidth="89.0" text="nom_org" />
-            <TableColumn fx:id="nom_e" prefWidth="77.0" text="nom_event" />
-            <TableColumn fx:id="lie" prefWidth="69.0" text="lieu" />
-            <TableColumn fx:id="nb" prefWidth="69.0" text="nb_place" />
-            <TableColumn fx:id="dt_e" prefWidth="68.0" text="dt_event" />
-            <TableColumn fx:id="h_e" prefWidth="67.0" text="h_event" />
-            <TableColumn fx:id="px" prefWidth="84.0" text="prix" />
-            <TableColumn fx:id="desc" prefWidth="169.0" text="description" />
+            <TableColumn fx:id="nom_or" prefWidth="69.0" text="nom_org" />
+            <TableColumn fx:id="nom_e" prefWidth="71.0" text="nom_event" />
+            <TableColumn fx:id="lie" prefWidth="51.0" text="lieu" />
+            <TableColumn fx:id="nb" prefWidth="61.0" text="nb_place" />
+            <TableColumn fx:id="dt_e" prefWidth="79.0" text="dt_event" />
+            <TableColumn fx:id="h_e" prefWidth="56.0" text="h_event" />
+            <TableColumn fx:id="px" minWidth="0.0" prefWidth="58.0" text="prix" />
+            <TableColumn fx:id="desc" prefWidth="93.0" text="description" />
          </columns>
       </TableView>
    </children>

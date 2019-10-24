@@ -42,7 +42,7 @@ public class forumService implements IforumService {
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             String req1="INSERT INTO `forum` "
                     + "(`id_article`, `id_user`,`titre`,`image`,`description`,`date`) "
-                    + "VALUES ( "+f.getId_article()+","+f.getid_user()+","+f.getTitre()+","+f.getImage()+","+f.getDescription()+","+f.getDate()+");";
+                    + "VALUES ( "+f.getId_article()+","+f.getId_user()+","+f.getTitre()+","+f.getImage()+","+f.getDescription()+","+f.getDate()+");";
             
             
          
@@ -100,7 +100,9 @@ public class forumService implements IforumService {
             ResultSet rs=st.executeQuery(req);
             while(rs.next()) 
  {
- Forum f = new Forum(rs.getInt(2),rs.getString(3),rs.getString(5),rs.getString(6));
+ Forum f = new Forum(rs.getInt(2),rs.getString(3),rs.getString(5));
+ String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getDate(6));
+ f.setDate(date);
  mylist.add(f);
  
  

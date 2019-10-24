@@ -39,7 +39,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="247.0" layoutY="14.0" text="Formulaire" textAlignment="CENTER">
+      <Label layoutX="247.0" layoutY="14.0" text="Modifier Events" textAlignment="CENTER">
          <font>
             <Font name="Agency FB" size="41.0" />
          </font>
@@ -64,6 +64,6 @@
       <Button layoutX="547.0" layoutY="201.0" mnemonicParsing="false" onAction="#bt_modifEvent" text="Enregistre" />
       <DatePicker fx:id="date1" layoutX="212.0" layoutY="213.0" prefHeight="25.0" prefWidth="149.0" />
       <Button layoutX="634.0" layoutY="14.0" mnemonicParsing="false" onAction="#bt_Retour2" text="Retour" />
-      <Button layoutX="624.0" layoutY="389.0" mnemonicParsing="false" onAction="#bt_annuler2" text="Anuller" />
+      <Button layoutX="624.0" layoutY="389.0" mnemonicParsing="false" onAction="#bt_annuler2" text="Annuler" />
    </children>
 </AnchorPane>

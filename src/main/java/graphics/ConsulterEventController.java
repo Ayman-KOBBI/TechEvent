@@ -36,6 +36,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SortEvent;
 import static javafx.scene.input.KeyCode.S;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -118,11 +119,18 @@ public class ConsulterEventController implements Initializable {
          EventService cs = new EventService();
       
         Events a = (Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-       //  nom_or.setText(a.getNom_org());
-       //  nom_e.setText(a.getNom_event());
+              cs.modifEvent(a);
+        /* nom_or.setText(a.getNom_org());
+        nom_e.setText(a.getNom_event());
+         lie.setText(a.getLieu());
+        nb.setText(String.valueOf(a.getNb_place()));
+         java.util.Date dt_event=a.getDt_event(); 
+         LocalDate date2 = LocalDate.parse((CharSequence) dt_event);
+          date.setValue(date2);
+          h_e.setText(a.getH_event());
+          px.setText(String.valueOf(a.getPrix()));
+          desc.setText(a.getDescription());*/
          
-         
-        cs.modifEvent(a);
         
      //String date1=date.toString();
         Parent PageParent = null;
@@ -175,15 +183,4 @@ public class ConsulterEventController implements Initializable {
         window.show();
     }
 
-    
-    
-
-    
-   
-         }
-   
-
-
-
-    
-
+}

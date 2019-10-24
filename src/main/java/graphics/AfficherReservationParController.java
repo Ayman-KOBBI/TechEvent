@@ -58,9 +58,9 @@ public class AfficherReservationParController implements Initializable {
         ObservableList OL = FXCollections.observableArrayList(list);
          
         tab_res.setItems(OL);
-        id_ticket.setCellValueFactory(new PropertyValueFactory<>("id_ticket"));
-        id_par.setCellValueFactory(new PropertyValueFactory<>("id_par"));
-        id_ev.setCellValueFactory(new PropertyValueFactory<>("id_ev"));
+       // id_ticket.setCellValueFactory(new PropertyValueFactory<>("id_ticket"));
+        //id_par.setCellValueFactory(new PropertyValueFactory<>("id_par"));
+        //id_ev.setCellValueFactory(new PropertyValueFactory<>("id_ev"));
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));

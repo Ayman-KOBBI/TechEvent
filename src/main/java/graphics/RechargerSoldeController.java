@@ -14,15 +14,14 @@ import javafx.fxml.Initializable;
  *
  * @author ASUS
  */
-public class ParticiperEventController implements Initializable {
-    
+public class RechargerSoldeController implements Initializable {
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
     }    
     
 }

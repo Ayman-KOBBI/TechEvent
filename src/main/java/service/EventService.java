@@ -133,11 +133,11 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
   
     }
 
-    @Override
-    public Events rechercheEventByID(int id) {
+     @Override
+    public Events rechercheEvent(String nom_e) {
     try {
          
-                String res1=("select * from events where id_ev="+id);
+                String res1=("select * from events where nom_event like '%"+nom_e+"%' ");
      ResultSet res=  ste.executeQuery(res1);
         while(res.next())
             {    
@@ -149,7 +149,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
                 String h_event=res.getString("h_event");
                 int nb_place=res.getInt("nb_place");
                 String lieu=res.getString("lieu");
-                float prix=res.getInt("prix");
+                int prix=res.getInt("prix");
                 
                  
                 System.out.println("evenement trouvé \n");

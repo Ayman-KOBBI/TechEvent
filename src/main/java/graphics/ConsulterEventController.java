@@ -219,12 +219,10 @@ public class ConsulterEventController implements Initializable {
                    h_e.setText(E.getH_event());
                    px.setText(String.valueOf(E.getPrix()));
                    desc.setText(E.getDescription());
-                   Events E1= new Events(nom_or, nom_e, lie, nb, date, h_e, px, desc);
-           EventService p = new EventService();
-              p.modifEvent(E1);
+                  
                  }
         
-         });
-    }*/
+         });*/
+    
 }
 

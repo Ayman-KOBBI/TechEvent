@@ -36,6 +36,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TextField;
@@ -122,30 +123,23 @@ public class ConsulterEventController implements Initializable {
     }
 
     @FXML
-    private void bt_modif(ActionEvent event) {
-         EventService cs = new EventService();
+    private void bt_modif(ActionEvent event) throws IOException {
+      
+                  
+             
+        
+       /*  EventService cs = new EventService();
       
         Events a = (Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-              cs.modifEvent(a);
-              
-        /* nom_or.setText(a.getNom_org());
-        nom_e.setText(a.getNom_event());
-         lie.setText(a.getLieu());
-        nb.setText(String.valueOf(a.getNb_place()));
-         java.util.Date dt_event=a.getDt_event(); 
-         LocalDate date2 = LocalDate.parse((CharSequence) dt_event);
-          date.setValue(date2);
-          h_e.setText(a.getH_event());
-          px.setText(String.valueOf(a.getPrix()));
-          desc.setText(a.getDescription());*/
-         
-        
-     //String date1=date.toString();
+              cs.modifEvent(a);*/
         Parent PageParent = null;
                             try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/ModifEvent.fxml"));
           
-           
+          
+  
+        
+          
             
         } catch (IOException ex) {
             Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,9 +148,12 @@ public class ConsulterEventController implements Initializable {
         Scene PageScene = new Scene(PageParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
         window.setScene(PageScene);
+        
         window.show();
-          
+       
+         
              }
         
 
@@ -201,28 +198,8 @@ public class ConsulterEventController implements Initializable {
             table_event.setItems(obs);
     }   
 
-   /*public void setValueformtableviewtotext()
-    {
-        table_event.setOnMouseClicked(new EventHandler<MouseEvent>()
-         {
-              @Override
-              public void handle(MouseEvent event) {
-               Events E=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-
-                  nom_or.setText(E.getNom_org());
-                  nom_e.setText(E.getNom_event());
-                lie.setText(E.getLieu());
-                nb.setText(String.valueOf(E.getNb_place()));
-                   java.util.Date dt_event=E.getDt_event(); 
-                   LocalDate date2 = LocalDate.parse((CharSequence) dt_event);
-                   date.setValue(date2);
-                   h_e.setText(E.getH_event());
-                   px.setText(String.valueOf(E.getPrix()));
-                   desc.setText(E.getDescription());
-                  
-                 }
-        
-         });*/
+   
+    
     
 }
 

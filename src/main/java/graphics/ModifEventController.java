@@ -22,8 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -68,6 +70,7 @@ public class ModifEventController implements Initializable {
     private TextField nom_or1;
     @FXML
     private TextField nom_e1;
+    private TableView table_event;
 
     /**
      * Initializes the controller class.
@@ -79,6 +82,7 @@ public class ModifEventController implements Initializable {
 
     @FXML
     private void bt_modifEvent(ActionEvent event) throws SQLException {
+       
         
         String nom_org = nom_or1.getText();
          String nom_event = nom_e1.getText();
@@ -91,8 +95,8 @@ public class ModifEventController implements Initializable {
         
         String description= desc1.getText();
 
-      
-           Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
+
+          Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
            EventService p = new EventService();
               p.modifEvent(E1);
             JOptionPane.showMessageDialog(null, "Account edited Successfull");

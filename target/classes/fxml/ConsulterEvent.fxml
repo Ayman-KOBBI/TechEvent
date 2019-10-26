@@ -35,7 +35,7 @@
       <TextField fx:id="h_e1" layoutX="8.0" layoutY="256.0" prefHeight="25.0" prefWidth="149.0" promptText="heure event" />
       <TextField fx:id="px1" layoutX="8.0" layoutY="289.0" promptText="prix" />
       <TextField fx:id="desc1" layoutX="8.0" layoutY="322.0" prefHeight="77.0" prefWidth="149.0" promptText="description" />
-      <Button layoutX="14.0" layoutY="410.0" mnemonicParsing="false" text="Actualiser" />
+      <Button layoutX="14.0" layoutY="410.0" mnemonicParsing="false" onAction="#refrech" text="Actualiser" />
       <Text fill="#f8f5f6" layoutX="-28.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EXPO TECH" textAlignment="CENTER" wrappingWidth="219.0541763305664">
          <font>
             <Font size="25.0" />

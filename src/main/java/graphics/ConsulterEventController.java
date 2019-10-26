@@ -50,6 +50,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import java.time.format.DateTimeFormatter;
+import javafx.scene.chart.PieChart.Data;
+
 
 
 /**
@@ -137,7 +140,7 @@ public class ConsulterEventController implements Initializable {
                 nom_e1.setText(e.getNom_event());
                /* LocalDate locald = date1.getValue();
         Date dt_e = Date.valueOf(locald);*/
-                   /*java.util.Date dt_event=e.getDt_event();
+                  /* java.util.Date dt_event=e.getDt_event();
                     LocalDate date2 = LocalDate.parse((CharSequence) dt_e);
                     date1.setValue(date2);*/
                     /* SimpleDateFormat dateFormater;
@@ -145,9 +148,11 @@ public class ConsulterEventController implements Initializable {
                     date1.setText(dateFormater.format(e.getDt_event()));*/
                  /* date1.setValue(e.getDt_event().toLocalDate());*/
             //   dt_e.setValue(e.getDt_event().);
-          // date1.getValue()(e.getDt_event().toLocalDate());
+          //date1.getValue()(e.getDt_event().toLocalDate());
        // String dt_e =locald.toString();
-      // date1.setValue(e.getDt_event().toLocalDate());
+   //  date1.setValue(e.getDt_event().toLocalDate());
+    
+                    
                
                h_e1.setText(e.getH_event());
                 lie1.setText(e.getLieu());
@@ -245,11 +250,26 @@ public class ConsulterEventController implements Initializable {
             table_event.setItems(obs);
     }  
 
+    @FXML
     private void refrech(ActionEvent event) {
-        EventService cs = new EventService();
-      
-                  Events a=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-        cs.modifEvent(a);
+        
+        String nom_org = nom_or1.getText();
+         String nom_event = nom_e1.getText();
+        String lieu= lie1.getText();
+        int nb_place = Integer.parseInt(nb1.getText());
+        LocalDate locald = date1.getValue();
+        Date dt_event = Date.valueOf(locald);     
+        String h_event= h_e1.getText();
+        int prix= Integer.parseInt(px1.getText());
+        
+        String description= desc1.getText();
+
+
+          Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
+           EventService p = new EventService();
+              p.modifEvent(E1);
+            JOptionPane.showMessageDialog(null, "Account edited Successfull");
+        
         Parent PageParent = null;
         try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/ConsulterEvent.fxml"));

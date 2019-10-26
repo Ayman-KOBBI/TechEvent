@@ -105,19 +105,11 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
             System.out.println(ex);
 
          }
-        
-        
-        
-        //pres.setInt(1,e.getId_ev());
-       
-          
-          
-    
+     
     }
 
     @Override
     public void supprEvent(Events e) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
      try {
             String req1="delete from events where"
                     + " id_ev=?";

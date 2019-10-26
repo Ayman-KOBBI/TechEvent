@@ -102,7 +102,7 @@ public class ModifEventController implements Initializable {
 
           Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
            EventService p = new EventService();
-              p.modifEvent(E1);
+              p.creerEvent(E1);
             JOptionPane.showMessageDialog(null, "Account edited Successfull");
 
     }
@@ -111,7 +111,7 @@ public class ModifEventController implements Initializable {
     private void bt_Retour2(ActionEvent event) {
         Parent PageParent = null;
         try {
-            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ConsulterEvent.fxml"));
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AdminEvent.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(ModifEventController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -168,41 +168,7 @@ public class ConsulterEventController implements Initializable {
         window.show();
     }
 
-    private void bt_modif(ActionEvent event) throws IOException {
-      
-     
-        Parent PageParent = null;
-                            try {
-            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ModifEvent.fxml"));
-            
-          
-          
-        } catch (IOException ex) {
-            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
-         
-        }
-        Scene PageScene = new Scene(PageParent);
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        window.setScene(PageScene);
-        
-        window.show();
-       
-         
-             }
-        
-
-      /* EventService cs = new EventService();    
-       Events a = (Events) table_event.getSelectionModel().getSelectedItem();         
-        cs.modifEvent(a);*/
-        
-        
-      
-        
-        
-    
-
+   
     @FXML
     private void bt_sup(ActionEvent event) {
        

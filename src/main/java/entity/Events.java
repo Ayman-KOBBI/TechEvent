@@ -160,10 +160,6 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         return nom_event;
     }
 
-    public String getDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
    
 
 

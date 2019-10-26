@@ -52,8 +52,8 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.chart.PieChart.Data;
-
-
+import service.EventService;
+import utils.ConnexionBD;
 
 /**
  * FXML Controller class
@@ -136,21 +136,9 @@ public class ConsulterEventController implements Initializable {
                     Events e=table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
                     nom_or1.setText(e.getNom_org());
                 nom_e1.setText(e.getNom_event());
-      
-        
-       
-                    //java.util.Date date1=e.getDt_event(); 
-                 
-                  /* java.util.Date dt_event=e.getDt_event();
-                    LocalDate date2 = LocalDate.parse((CharSequence) dt_e);
-                    date1.setValue(date2);*/
-                   
-                 /* date1.setValue(e.getDt_event().toLocalDate());*/
-            //   dt_e.setValue(e.getDt_event().);
-          //date1.getValue()(e.getDt_event().toLocalDate());
-       // String dt_e =locald.toString();
-   // date1.setValue(e.getDt_event().toLocalDate());
-                  
+                     String date=String.valueOf(e.getDt_event()); 
+                   LocalDate date2 = LocalDate.parse(date);
+                   date1.setValue(date2);
                h_e1.setText(e.getH_event());
                 lie1.setText(e.getLieu());
                 px1.setText(Integer.toString(e.getPrix()));

@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c2eaff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="graphics.OrgController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.OrgController">
    <children>
       <AnchorPane layoutX="-4.0" prefHeight="460.0" prefWidth="175.0" style="-fx-background-color: #87d5ff;">
          <children>
@@ -31,7 +30,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="270.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Mes evenements">
+            <Button layoutX="-4.0" layoutY="270.0" mnemonicParsing="false" onAction="#event1" prefHeight="35.0" prefWidth="180.0" text="Events">
                <font>
                   <Font size="14.0" />
                </font>

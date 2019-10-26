@@ -6,6 +6,7 @@
 package graphics;
 
 import entity.Participants;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -13,9 +14,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import service.ParService;
 
 /**
@@ -33,11 +39,8 @@ public class PartController implements Initializable {
     private Button btnMesevenements;
     @FXML
     private Button btnForum;
-    @FXML
     private TextField nom_p;
-    @FXML
     private TextField prenom_p;
-    @FXML
     private TextField solde_p;
 
     /**
@@ -71,6 +74,17 @@ public class PartController implements Initializable {
 
     @FXML
     private void btnMesevenementsAction(ActionEvent event) {
+         Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ParticipantEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ModifEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     @FXML

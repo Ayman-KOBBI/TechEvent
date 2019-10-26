@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c2eaff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="graphics.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.AdminController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="470.0" prefWidth="174.0" style="-fx-background-color: #87d5ff;">
          <children>
@@ -30,7 +29,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Forum">
+            <Button layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" onAction="#event2" prefHeight="35.0" prefWidth="180.0" text="Events">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="-4.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Forum">
                <font>
                   <Font size="14.0" />
                </font>

@@ -168,7 +168,6 @@ public class ConsulterEventController implements Initializable {
         window.show();
     }
 
-    @FXML
     private void bt_modif(ActionEvent event) throws IOException {
       
      
@@ -277,6 +276,21 @@ public class ConsulterEventController implements Initializable {
         
         desc1.setText("");
         
+    }
+
+    @FXML
+    private void retour(ActionEvent event) {
+           Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/OrgEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ModifEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     

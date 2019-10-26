@@ -14,7 +14,7 @@
       <Button layoutX="314.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
       <Button layoutX="386.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
       <Button layoutX="460.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
-      <TableView fx:id="table_event" layoutX="159.0" layoutY="6.0" prefHeight="393.0" prefWidth="533.0" style="-fx-background-color: gray; -fx-border-color: blue;">
+      <TableView fx:id="table_event" layoutX="159.0" layoutY="38.0" prefHeight="361.0" prefWidth="533.0" style="-fx-background-color: gray; -fx-border-color: blue;">
          <columns>
             <TableColumn fx:id="nom_or" prefWidth="69.0" text="nom_org" />
             <TableColumn fx:id="nom_e" prefWidth="71.0" text="nom_event" />
@@ -42,5 +42,6 @@
       </Text>
       <DatePicker fx:id="date1" layoutX="8.0" layoutY="217.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
       <Button layoutX="99.0" layoutY="410.0" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
+      <Button layoutX="634.0" layoutY="8.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ package graphics;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,14 +18,30 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import service.ParService;
 /**
  * FXML Controller class
  *
  * @author asus
  */
 public class AdminController implements Initializable {
+
+    @FXML
+    private Label es_admin;
+    @FXML
+    private Button Home;
+    @FXML
+    private Button btorganisateur;
+    @FXML
+    private Button utilisateur;
+    @FXML
+    private Button event;
+    @FXML
+    private Button forum;
 
     /**
      * Initializes the controller class.
@@ -47,6 +64,22 @@ public class AdminController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(PageScene);
         window.show();
+    }
+
+    @FXML
+    private void bthome(ActionEvent event) {
+    }
+
+    @FXML
+    private void btorganisateur(ActionEvent event) {
+    }
+
+    @FXML
+    private void btutilisateur(ActionEvent event) {
+    }
+
+    @FXML
+    private void btforum(ActionEvent event) {
     }
     
 }

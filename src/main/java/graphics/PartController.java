@@ -48,7 +48,7 @@ public class PartController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try{
+     /*   try{
         // TODO
         //modifierMembre.setVisible(false);
         ParService ms = new ParService();
@@ -61,7 +61,7 @@ public class PartController implements Initializable {
     
         catch (SQLException ex) {
             Logger.getLogger(PartController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     @FXML

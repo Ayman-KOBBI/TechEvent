@@ -5,36 +5,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.AdminController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="470.0" prefWidth="174.0" style="-fx-background-color: #87d5ff;">
          <children>
-            <Label layoutX="21.0" layoutY="88.0" text="Espace admin">
+            <Label fx:id="es_admin" layoutX="21.0" layoutY="88.0" text="Espace admin">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="-4.0" layoutY="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Home">
+            <Button fx:id="Home" layoutX="-4.0" layoutY="200.0" mnemonicParsing="false" onAction="#bthome" prefHeight="35.0" prefWidth="180.0" text="Home">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="gestion organisateurs">
+            <Button fx:id="btorganisateur" layoutX="-4.0" layoutY="235.0" mnemonicParsing="false" onAction="#btorganisateur" prefHeight="35.0" prefWidth="180.0" text="gestion organisateurs">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="270.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="consulter utilisateurs">
+            <Button fx:id="utilisateur" layoutX="-4.0" layoutY="270.0" mnemonicParsing="false" onAction="#btutilisateur" prefHeight="35.0" prefWidth="180.0" text="consulter utilisateurs">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" onAction="#event2" prefHeight="35.0" prefWidth="180.0" text="Events">
+            <Button fx:id="event" layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" onAction="#event2" prefHeight="35.0" prefWidth="180.0" text="Events">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Forum">
+            <Button fx:id="forum" layoutX="-4.0" layoutY="340.0" mnemonicParsing="false" onAction="#btforum" prefHeight="35.0" prefWidth="180.0" text="Forum">
                <font>
                   <Font size="14.0" />
                </font>

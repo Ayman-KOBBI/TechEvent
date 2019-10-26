@@ -20,12 +20,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="-4.0" layoutY="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Home">
+            <Button layoutX="-4.0" layoutY="200.0" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="180.0" text="Home">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Profil">
+            <Button layoutX="-4.0" layoutY="235.0" mnemonicParsing="false" onAction="#profil" prefHeight="35.0" prefWidth="180.0" text="Profil">
                <font>
                   <Font size="14.0" />
                </font>
@@ -35,13 +35,13 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Forum">
+            <Button layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" onAction="#forum" prefHeight="35.0" prefWidth="180.0" text="Forum">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <TextField layoutX="79.0" layoutY="86.0" prefHeight="25.0" prefWidth="75.0" />
-            <TextField layoutX="79.0" layoutY="113.0" prefHeight="25.0" prefWidth="75.0" />
+            <TextField fx:id="nom" layoutX="79.0" layoutY="86.0" prefHeight="25.0" prefWidth="75.0" />
+            <TextField fx:id="prenom" layoutX="79.0" layoutY="113.0" prefHeight="25.0" prefWidth="75.0" />
          </children>
       </AnchorPane>
    </children>

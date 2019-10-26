@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -26,6 +27,11 @@ import javafx.stage.Stage;
  * @author asus
  */
 public class OrgController implements Initializable {
+
+    @FXML
+    private TextField nom;
+    @FXML
+    private TextField prenom;
 
 
     /**
@@ -51,6 +57,18 @@ public class OrgController implements Initializable {
         window.setScene(PageScene);
         window.show();
         
+    }
+
+    @FXML
+    private void home(ActionEvent event) {
+    }
+
+    @FXML
+    private void profil(ActionEvent event) {
+    }
+
+    @FXML
+    private void forum(ActionEvent event) {
     }
 
     

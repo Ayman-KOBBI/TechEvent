@@ -53,9 +53,9 @@ public class ParticipantEventController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         // TODO
-         EventService p= new EventService();
+         ////////////////Afficher///////////
+        EventService p= new EventService();
         ArrayList<Events> e = (ArrayList<Events>) p.affichierEvent(); 
         ObservableList<Events> obs=FXCollections.observableArrayList(e);
         table_event.setItems(obs);
@@ -73,7 +73,8 @@ public class ParticipantEventController implements Initializable {
 
     @FXML
     private void search(KeyEvent event) {
-        EventService p = new EventService();
+        
+         EventService p = new EventService();
             String m = tfserach.getText().concat("%");
             ArrayList<Events> e= (ArrayList<Events>) p.chercher(m);
             ObservableList<Events> obs=FXCollections.observableArrayList(e);

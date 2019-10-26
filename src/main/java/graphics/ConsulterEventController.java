@@ -245,7 +245,6 @@ public class ConsulterEventController implements Initializable {
             table_event.setItems(obs);
     }  
 
-    @FXML
     private void refrech(ActionEvent event) {
         EventService cs = new EventService();
       

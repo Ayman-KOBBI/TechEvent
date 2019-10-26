@@ -9,6 +9,7 @@ import entity.Events;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -140,19 +141,20 @@ public class AdminEventController implements Initializable {
 
     @FXML
     private void refrech(ActionEvent event) {
-         String nom_org = nom_or1.getText();
-         String nom_event = nom_e1.getText();
+        String nom_org = nom_or1.getText();
+        String nom_event = nom_e1.getText();
         String lieu= lie1.getText();
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
-       Date dt_event = Date.valueOf(locald);  
+        Date dt_event = Date.valueOf(locald);  
         String h_event= h_e1.getText();
         int prix= Integer.parseInt(px1.getText());
         String description= desc1.getText();
-          Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
-           EventService p = new EventService();
-              p.modifEvent(E1);
-            JOptionPane.showMessageDialog(null, "Account edited Successfull");
+        Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
+        EventService p = new EventService();
+        p.modifEvent(E1);
+        JOptionPane.showMessageDialog(null, "Account edited Successfull");
+     
         
         Parent PageParent = null;
         try {

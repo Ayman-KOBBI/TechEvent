@@ -13,7 +13,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="nom" layoutX="92.0" layoutY="145.0" text="Nom:" />
+      <Label layoutX="92.0" layoutY="145.0" text="Nom:" />
       <Label layoutX="85.0" layoutY="179.0" text="Prenom:" />
       <Label layoutX="97.0" layoutY="212.0" text="Tel:" />
       <Label layoutX="91.0" layoutY="257.0" text="Email:" />
@@ -26,6 +26,6 @@
       <Label layoutX="80.0" layoutY="100.0" text="Password:" />
       <TextField fx:id="password" layoutX="136.0" layoutY="96.0" />
       <TextField fx:id="username" layoutX="136.0" layoutY="62.0" />
-      <Button fx:id="retour" layoutX="498.0" layoutY="337.0" mnemonicParsing="false" text="Retour" />
+      <Button fx:id="retour" layoutX="498.0" layoutY="337.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
    </children>
 </AnchorPane>

@@ -14,10 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,7 +29,7 @@ import javafx.scene.control.TextField;
  */
 public class InscriptionController implements Initializable {
     @FXML
-    private Label nom;
+    private TextField nom;
     @FXML
     private Button btnEnregistrer;
     @FXML
@@ -50,7 +53,7 @@ public class InscriptionController implements Initializable {
        
         // TODO
         
-            retour.setOnAction((ActionEvent event) -> {
+        /*    retour.setOnAction((ActionEvent event) -> {
                 FXMLLoader loader = new FXMLLoader(InscriptionController.this.getClass().getResource("/fxml/login.fxml"));
                 Parent root;
                 try {
@@ -59,7 +62,7 @@ public class InscriptionController implements Initializable {
                 } catch (IOException ex) {
                     Logger.getLogger(InscriptionController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            });
+            });*/
                 
     }
                   
@@ -75,6 +78,26 @@ public class InscriptionController implements Initializable {
               p.creerPar(E1);
               JOptionPane.showMessageDialog(null, "Account Created Successfull");
     }*/
+
+    @FXML
+    private void btnEnregistrerAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void retour(ActionEvent event) {
+         Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    }
+
 
 }
 

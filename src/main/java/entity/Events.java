@@ -67,6 +67,10 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         this.h_event = h_event;
         this.nom_event=nom_event;    }
 
+    public Events(TableColumn<Events, String> nom_or, TableColumn<Events, String> nom_e, TableColumn<Events, String> lie, TableColumn<Events, String> nb, TableColumn<Events, java.sql.Date> dt_e, TableColumn<Events, String> h_e, TableColumn<Events, String> px, TableColumn<Events, String> desc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 
     

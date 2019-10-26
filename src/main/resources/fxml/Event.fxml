@@ -4,14 +4,17 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.EventController">
    <children>
-      <Label fx:id="prix" layoutX="33.0" layoutY="277.0" text="Prix :" textFill="#f8f7f7">
+      <Label fx:id="prix" layoutX="33.0" layoutY="290.0" text="Prix :" textFill="#f8f7f7">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -19,11 +22,11 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="h_event" layoutX="31.0" layoutY="242.0" text="H_Event :" textFill="#fcfafa">
+      <Label fx:id="h_event" layoutX="33.0" layoutY="255.0" text="H_Event :" textFill="#fcfafa">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="dt_event" layoutX="30.0" layoutY="213.0" text="Dt_Event :" textFill="#fffdfd">
+      <Label fx:id="dt_event" layoutX="30.0" layoutY="216.0" text="Dt_Event :" textFill="#fffdfd">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -47,7 +50,7 @@
                </stops>
             </RadialGradient>
          </textFill></Label>
-      <Label fx:id="description" layoutX="28.0" layoutY="314.0" text="Description :" textFill="#f2f2f2">
+      <Label fx:id="description" layoutX="28.0" layoutY="327.0" text="Description :" textFill="#f2f2f2">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -55,16 +58,26 @@
          <font>
             <Font size="16.0" />
          </font></Label>
-      <TextField fx:id="nom_or" layoutX="212.0" layoutY="80.0" />
-      <TextField fx:id="lie" layoutX="212.0" layoutY="146.0" />
-      <TextField fx:id="nb" layoutX="212.0" layoutY="178.0" />
-      <TextField fx:id="desc" layoutX="212.0" layoutY="314.0" prefHeight="100.0" prefWidth="323.0" />
-      <TextField fx:id="nom_e" layoutX="212.0" layoutY="113.0" />
-      <TextField fx:id="px" layoutX="212.0" layoutY="277.0" />
-      <TextField fx:id="h_e" layoutX="212.0" layoutY="242.0" prefHeight="25.0" prefWidth="149.0" />
-      <Button layoutX="547.0" layoutY="201.0" mnemonicParsing="false" onAction="#ajout1" text="Ajouter" />
-      <DatePicker fx:id="date" layoutX="212.0" layoutY="213.0" prefHeight="25.0" prefWidth="149.0" />
-      <Button layoutX="634.0" layoutY="14.0" mnemonicParsing="false" onAction="#bt_Retour" text="Retour" />
-      <Button layoutX="631.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_annuler" text="Anuuler" />
+      <TextField fx:id="nom_or" layoutX="212.0" layoutY="80.0" promptText="nom organisateur" />
+      <TextField fx:id="lie" layoutX="212.0" layoutY="146.0" promptText="lieu" />
+      <TextField fx:id="nb" layoutX="212.0" layoutY="178.0" promptText="nombre de palce" />
+      <TextField fx:id="desc" layoutX="212.0" layoutY="327.0" prefHeight="100.0" prefWidth="323.0" promptText="description" />
+      <TextField fx:id="nom_e" layoutX="212.0" layoutY="113.0" promptText="nom event" />
+      <TextField fx:id="px" layoutX="212.0" layoutY="290.0" promptText="prix" />
+      <TextField fx:id="h_e" layoutX="212.0" layoutY="255.0" prefHeight="25.0" prefWidth="149.0" promptText="heure event" />
+      <Button layoutX="633.0" layoutY="352.0" mnemonicParsing="false" onAction="#ajout1" text="Valider" />
+      <DatePicker fx:id="date" layoutX="212.0" layoutY="213.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
+      <Button layoutX="628.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_Retour" prefHeight="25.0" prefWidth="65.0" text="Retour" />
+      <Button layoutX="632.0" layoutY="383.0" mnemonicParsing="false" onAction="#bt_annuler" text="Anuuler" />
+      <Text fill="#f8f5f6" fontSmoothingType="LCD" layoutX="441.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are Welcome" textAlignment="CENTER" wrappingWidth="219.0541763305664">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="170.0" fitWidth="219.0" layoutX="455.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Event+Tech+Tribe+logo+icon+jpeg.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

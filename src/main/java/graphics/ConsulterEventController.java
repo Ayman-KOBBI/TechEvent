@@ -6,6 +6,7 @@
 package graphics;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.sql.Date;
 import java.time.LocalDate;
 import entity.Events;
@@ -37,6 +38,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TextField;
@@ -44,6 +46,7 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.InputMethodEvent;
 import static javafx.scene.input.KeyCode.S;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -57,31 +60,48 @@ import javax.swing.JOptionPane;
 public class ConsulterEventController implements Initializable {
 
     @FXML
-    private TableView table_event;
+    private TableView <Events> table_event;
     
-    private TableColumn<?, ?> id_e;
-    private TableColumn<?, ?> id_or;
+   
     @FXML
-    private TableColumn<?, ?> lie;
+    private TableColumn<Events, String> lie;
     @FXML
-    private TableColumn<?, ?> nb;
+    private TableColumn<Events, String> nb;
     @FXML
-    private TableColumn<?, ?> dt_e;
+    private TableColumn<Events, Date> dt_e;
     @FXML
-    private TableColumn<?, ?> h_e;
+    private TableColumn<Events, String> h_e;
     @FXML
-    private TableColumn<?, ?> px;
-    private TableColumn<?, ?> imag;
+    private TableColumn<Events, String>px;
+    
     @FXML
-    private TableColumn<?, ?> desc;
+    private TableColumn<Events, String> desc;
     @FXML
-    private TableColumn<?, ?> nom_or;
+    private TableColumn<Events, String> nom_or;
     @FXML
-    private TableColumn<?, ?> nom_e;
+    private TableColumn<Events, String> nom_e;
     
     private DatePicker date;
+    
     @FXML
     private TextField tfserach;
+    @FXML
+    private TextField nom_or1;
+    @FXML
+    private TextField nom_e1;
+    @FXML
+    private TextField lie1;
+    @FXML
+    private TextField nb1;
+    @FXML
+    private DatePicker date1;
+    @FXML
+    private TextField h_e1;
+    @FXML
+    private TextField px1;
+    @FXML
+    private TextField desc1;
+    
     
 
     /**
@@ -103,6 +123,41 @@ public class ConsulterEventController implements Initializable {
         h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
+        
+         EventService ps=new EventService();
+        ////////////
+        table_event.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                    Events e=new Events();
+                    e=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
+                    
+                    nom_or1.setText(e.getNom_org());
+                nom_e1.setText(e.getNom_event());
+               /* LocalDate locald = date1.getValue();
+        Date dt_e = Date.valueOf(locald);*/
+                   /*java.util.Date dt_event=e.getDt_event();
+                    LocalDate date2 = LocalDate.parse((CharSequence) dt_e);
+                    date1.setValue(date2);*/
+                    /* SimpleDateFormat dateFormater;
+                    dateFormater = new SimpleDateFormat("yyyy-MM-dd");
+                    date1.setText(dateFormater.format(e.getDt_event()));*/
+                 /* date1.setValue(e.getDt_event().toLocalDate());*/
+            //   dt_e.setValue(e.getDt_event().);
+          // date1.getValue()(e.getDt_event().toLocalDate());
+       // String dt_e =locald.toString();
+      // date1.setValue(e.getDt_event().toLocalDate());
+               
+               h_e1.setText(e.getH_event());
+                lie1.setText(e.getLieu());
+                px1.setText(Integer.toString(e.getPrix()));
+                nb1.setText(Integer.toString(e.getNb_place()));
+                desc1.setText(e.getDescription());
+                    
+                }
+            }
+        });
  
     }    
 
@@ -111,6 +166,7 @@ public class ConsulterEventController implements Initializable {
           Parent PageParent = null;
         try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/Event.fxml"));
+            
         
         } catch (IOException ex) {
             Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,22 +181,13 @@ public class ConsulterEventController implements Initializable {
     @FXML
     private void bt_modif(ActionEvent event) throws IOException {
       
-                  
-             
-        
-       /*  EventService cs = new EventService();
-      
-        Events a = (Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-              cs.modifEvent(a);*/
+     
         Parent PageParent = null;
                             try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/ModifEvent.fxml"));
-          
-          
-  
-        
-          
             
+          
+          
         } catch (IOException ex) {
             Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
          
@@ -196,10 +243,33 @@ public class ConsulterEventController implements Initializable {
             ArrayList<Events> e= (ArrayList<Events>) p.chercher(m);
             ObservableList<Events> obs=FXCollections.observableArrayList(e);
             table_event.setItems(obs);
-    }   
+    }  
 
+    @FXML
+    private void refrech(ActionEvent event) {
+        EventService cs = new EventService();
+      
+                  Events a=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
+        cs.modifEvent(a);
+        Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ConsulterEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    }
+    
+   
+    }
+
+    
    
     
     
-}
+
 

@@ -63,6 +63,24 @@ public class ParService implements IParService{
         
      return par;
     }
+    public ArrayList<Participants> getAllMembers() throws SQLException {
+        ArrayList<Participants> retour = new ArrayList<>();
+        Statement stm = c.createStatement();
+        String req = "SELECT * FROM participant ";
+        ResultSet resultat = stm.executeQuery(req);
+        while(resultat.next()){
+          int id_par= resultat.getInt(1);
+           //String login=resultat.getString("username");
+           //String mdp=resultat.getString("password");
+           String email=resultat.getString("email");
+            String nom = resultat.getString("nom");
+           String prenom= resultat.getString("prenom");
+           String tel = resultat.getString("tel");
+           retour.add(new Participants(id_par,email, prenom, nom, tel));
+           
+        }
+      return retour;
+    }
     
     /**
      *
@@ -134,5 +152,22 @@ public class ParService implements IParService{
                 p.setSolde(n);
             }
     }
+    public Participants getpar(String email) throws SQLException {
+        Statement stm = c.createStatement();
+        String req = "SELECT * FROM `participant` WHERE email='"+email+"' ";
+        ResultSet resultat = stm.executeQuery(req);
+        while(resultat.next()){
+          int id_par= resultat.getInt(1);
+            String nom = resultat.getString("nom");
+           String prenom= resultat.getString("prenom");
+           String tel=resultat.getString("tel");
+           int solde=resultat.getInt("solde");
+
+         return (new Participants(id_par, prenom, nom,tel,email,solde));
+            
+        }
+         return null;
+    
+}
     
 }

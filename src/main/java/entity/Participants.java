@@ -16,6 +16,8 @@ public class Participants {
     private String email;
     private String tel;
     private int solde=20;
+    public static String session;
+
     
     public Participants(){}
 
@@ -31,6 +33,10 @@ public class Participants {
     public Participants(int id_par, String nom, String prenom, String email, String tel) {
         this(id_par,nom,prenom,email,tel,20);
  
+    }
+
+    public Participants(String nom, String prenom, String tel, String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     public int getId_par() {
         return id_par;
@@ -78,6 +84,13 @@ public class Participants {
 
     public void setSolde(int solde) {
         this.solde = solde;
+    }
+    public static String getSession() {
+        return session;
+    }
+
+    public static void setSession(String session) {
+        Participants.session = session;
     }
 
     @Override

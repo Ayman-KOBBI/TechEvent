@@ -105,7 +105,7 @@ public class ConsulterEventController implements Initializable {
     @FXML
     private TextField desc1;
     
-    
+    private TextField dt_e1;
 
     /**
      * Initializes the controller class.
@@ -133,27 +133,24 @@ public class ConsulterEventController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
-                    Events e=new Events();
-                    e=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-                    
+                    Events e=table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
                     nom_or1.setText(e.getNom_org());
                 nom_e1.setText(e.getNom_event());
-               /* LocalDate locald = date1.getValue();
-        Date dt_e = Date.valueOf(locald);*/
+      
+        
+       
+                    //java.util.Date date1=e.getDt_event(); 
+                 
                   /* java.util.Date dt_event=e.getDt_event();
                     LocalDate date2 = LocalDate.parse((CharSequence) dt_e);
                     date1.setValue(date2);*/
-                    /* SimpleDateFormat dateFormater;
-                    dateFormater = new SimpleDateFormat("yyyy-MM-dd");
-                    date1.setText(dateFormater.format(e.getDt_event()));*/
+                   
                  /* date1.setValue(e.getDt_event().toLocalDate());*/
             //   dt_e.setValue(e.getDt_event().);
           //date1.getValue()(e.getDt_event().toLocalDate());
        // String dt_e =locald.toString();
-   //  date1.setValue(e.getDt_event().toLocalDate());
-    
-                    
-               
+   // date1.setValue(e.getDt_event().toLocalDate());
+                  
                h_e1.setText(e.getH_event());
                 lie1.setText(e.getLieu());
                 px1.setText(Integer.toString(e.getPrix()));
@@ -258,13 +255,10 @@ public class ConsulterEventController implements Initializable {
         String lieu= lie1.getText();
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
-        Date dt_event = Date.valueOf(locald);     
+       Date dt_event = Date.valueOf(locald);  
         String h_event= h_e1.getText();
         int prix= Integer.parseInt(px1.getText());
-        
         String description= desc1.getText();
-
-
           Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
            EventService p = new EventService();
               p.modifEvent(E1);

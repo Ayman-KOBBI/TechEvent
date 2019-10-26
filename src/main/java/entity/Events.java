@@ -71,6 +71,10 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public Events(String nom_org, String nom_event, String lieu, int nb_place, String dt_event, String h_event, int prix, String description) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 
     
@@ -155,6 +159,12 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
     public String getNom_event() {
         return nom_event;
     }
+
+    public String getDate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 
 
 }

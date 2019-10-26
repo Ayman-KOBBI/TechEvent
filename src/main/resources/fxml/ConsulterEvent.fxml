@@ -11,9 +11,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ConsulterEventController">
    <children>
-      <Button layoutX="153.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
-      <Button layoutX="232.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
-      <Button layoutX="314.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
+      <Button layoutX="314.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
+      <Button layoutX="386.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_modif" text="Modifier" />
+      <Button layoutX="460.0" layoutY="410.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
       <TableView fx:id="table_event" layoutX="159.0" layoutY="6.0" prefHeight="393.0" prefWidth="533.0" style="-fx-background-color: gray; -fx-border-color: blue;">
          <columns>
             <TableColumn fx:id="nom_or" prefWidth="69.0" text="nom_org" />
@@ -26,7 +26,7 @@
             <TableColumn fx:id="desc" prefWidth="93.0" text="description" />
          </columns>
       </TableView>
-      <TextField fx:id="tfserach" layoutX="435.0" layoutY="410.0" onKeyTyped="#search" />
+      <TextField fx:id="tfserach" layoutX="543.0" layoutY="410.0" onKeyTyped="#search" />
       <TextField fx:id="nom_or1" layoutX="8.0" layoutY="82.0" promptText="nom organisateur" />
       <TextField fx:id="nom_e1" layoutX="8.0" layoutY="115.0" promptText="nom event" />
       <TextField fx:id="lie1" layoutX="8.0" layoutY="149.0" promptText="lieu" />
@@ -41,5 +41,6 @@
          </font>
       </Text>
       <DatePicker fx:id="date1" layoutX="8.0" layoutY="217.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
+      <Button layoutX="99.0" layoutY="410.0" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
    </children>
 </AnchorPane>

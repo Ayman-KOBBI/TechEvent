@@ -264,6 +264,20 @@ public class ConsulterEventController implements Initializable {
         window.setScene(PageScene);
         window.show();
     }
+
+    @FXML
+    private void annuler(ActionEvent event) {
+          nom_or1.setText("");
+       nom_e1.setText("");
+        lie1.setText("");
+       nb1.setText(null);
+        date1.setValue(null);
+        h_e1.setText("");
+        px1.setText("");
+        
+        desc1.setText("");
+        
+    }
     
    
     }

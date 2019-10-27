@@ -29,7 +29,7 @@ public class SendingMail {
         public static String subject ;
     public SendingMail(String contenu,String destination , String subject) {
         mailUsername = "khayat.1996.api@gmail.com";
-        mailPassword = "nino9tafouhkhayat";
+        mailPassword = "**************";
         this.contenu=contenu ;
         this.destination=destination ;
         this.subject=subject ;

@@ -6,6 +6,8 @@
 package graphics;
 
 import entity.Events;
+import entity.Participants;
+import entity.Reservation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +29,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import service.EventService;
+import service.ParService;
+import service.ReservationService;
 
 /**
  * FXML Controller class
@@ -97,6 +102,38 @@ public class ParticipantEventController implements Initializable {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/Part.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(ModifEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    }
+    
+     @FXML
+    private void bt_participer(ActionEvent event) {
+         Parent PageParent = null;
+          EventService cs = new EventService();
+          ReservationService res=new ReservationService();
+         // m=getlogin;
+        ParService ps=new ParService();
+        Participants p=new Participants(60,"ayman","kobbi","6546","eaemail",50);
+        Events a = (Events) table_event.getSelectionModel().getSelectedItem();
+        Reservation r1=new Reservation(1,a.getId_ev(),p.getId_par(),p.getNom(),p.getPrenom(),a.getNom_event());
+        try {
+            res.ajouterReservation(r1);
+            JOptionPane.showMessageDialog(null, "participation etablie");
+                     
+
+        } catch (Exception ex) {
+            Logger.getLogger(ParticipantEventController.class.getName()).log(Level.SEVERE, null, ex);
+                     JOptionPane.showMessageDialog(null,ex.getMessage());
+
+        }
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/ParticipantEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ParticipantEventController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Scene PageScene = new Scene(PageParent);
 

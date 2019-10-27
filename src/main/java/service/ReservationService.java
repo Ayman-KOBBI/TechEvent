@@ -53,6 +53,7 @@ public class ReservationService implements IReservationService{
                       r.setId_par(res.getInt("id_par"));
                       r.setNom( res.getString("nom") );
                       r.setPrenom(res.getString("prenom"));
+                      r.setnom_event("nom_event");
               Reservations.add(r);
           }
           
@@ -99,7 +100,7 @@ public class ReservationService implements IReservationService{
             e.setId_ev(res2.getInt("id_ev"));
             e.setH_event(res2.getString("H_event"));
             e.setNom_org(res2.getString("Id_org"));
-            e.setNom_event(res2.getString("Image"));
+            e.setNom_event(res2.getString("nom_event"));
             e.setLieu(res2.getString("lieu"));
             e.setNb_place(res2.getInt("Nb_place"));
                  
@@ -114,13 +115,25 @@ public class ReservationService implements IReservationService{
          rs2.setInt(1, p.getSolde());
          rs2.setInt(2, p.getId_par());
          rs2.executeUpdate();
+         
+         if (e.getNb_place()-1<0){
+             throw new Exception("nbr de places insuffisant");
+         }
+         
+         String req_update_nbrplace="UPDATE events SET nb_place=? WHERE(id_ev=?);";
+         PreparedStatement rs3 = c.prepareStatement(req_update_nbrplace);
+         rs3.setInt(1, e.getNb_place()-1);
+         rs3.setInt(2, e.getId_ev());
+         rs3.executeUpdate();
+         
+         
     //    ste.executeUpdate(req_update_solde);   
         try {
             String req1="INSERT INTO `reservation` "
-                    + "(`id_ticket`,`id_ev`,`id_par`,`nom`, `prenom`,`image`) "
+                    + "(`id_ev`,`id_par`,`nom`, `prenom`,`nom_event`) "
                     + "VALUES ( "
-                    + ""+r.getId_ticket()+","+r.getId_ev()+","+r.getId_par()+",'"+r.getNom()+"','"
-                    +r.getPrenom()+"','"+r.getImage()+"');";
+                    + ""+r.getId_ev()+","+r.getId_par()+",'"+r.getNom()+"','"
+                    +r.getPrenom()+"','"+r.getnom_event()+"');";
             ste.executeUpdate(req1);
         } catch (SQLException ex) {
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);

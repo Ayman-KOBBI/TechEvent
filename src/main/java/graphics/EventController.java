@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import service.EventService;
+import utils.SendingMail;
 
 /**
  * FXML Controller class
@@ -101,6 +102,8 @@ public class EventController implements Initializable {
            EventService p = new EventService();
               p.creerEvent(E1);
               JOptionPane.showMessageDialog(null, "Account Created Successfull");
+              SendingMail se = new SendingMail("fqdsj", "khayat.mohamed@esprit.tn", "api");
+              SendingMail.envoyer();
         
         
     }

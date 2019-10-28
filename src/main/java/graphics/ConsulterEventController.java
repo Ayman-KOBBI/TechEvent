@@ -182,7 +182,7 @@ public class ConsulterEventController implements Initializable {
       
         Events a = (Events) table_event.getSelectionModel().getSelectedItem();
         cs.supprEvent(a);
-         
+         JOptionPane.showMessageDialog(null, "Event supprimer");
         
         Parent PageParent = null;
         try {
@@ -222,7 +222,7 @@ public class ConsulterEventController implements Initializable {
           Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
            EventService p = new EventService();
               p.modifEvent(E1);
-            JOptionPane.showMessageDialog(null, "Account edited Successfull");
+            JOptionPane.showMessageDialog(null, "Event modifier");
              
         
         Parent PageParent = null;

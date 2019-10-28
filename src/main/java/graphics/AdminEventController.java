@@ -35,6 +35,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.mail.MessagingException;
+import javax.management.Notification;
 import javax.swing.JOptionPane;
 import service.EventService;
 import utils.Mail;
@@ -151,13 +152,13 @@ public class AdminEventController implements Initializable {
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
         Date dt_event = Date.valueOf(locald);  
-        String h_event= h_e1.getText();
+        String etat= et1.getText();
         int prix= Integer.parseInt(px1.getText());
         String description= desc1.getText();
-        Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, lieu);
+        Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
         EventService p = new EventService();
         p.modifEvent(E1);
-        JOptionPane.showMessageDialog(null, "Account edited Successfull");
+        JOptionPane.showMessageDialog(null, "Event modifier");
      
         
         Parent PageParent = null;
@@ -201,6 +202,8 @@ public class AdminEventController implements Initializable {
       
         Events a = (Events) table_event.getSelectionModel().getSelectedItem();
         cs.supprEvent(a);
+        JOptionPane.showMessageDialog(null, "Events supprimer ");
+
         
         Parent PageParent = null;
         try {
@@ -235,12 +238,10 @@ public class AdminEventController implements Initializable {
     @FXML
     private void bt_acc(ActionEvent event) throws IOException, MessagingException  {
         EventService e = new EventService();
-      // Events e1= new Events();
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
-
             e.AccepterEvent(e1);
-                   Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
-
+                //   Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
+JOptionPane.showMessageDialog(null, "Events accepter ");
     
     }
 
@@ -251,8 +252,8 @@ public class AdminEventController implements Initializable {
       
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.RefuserEvent(e1);
-           Parent PageParent = null;
-             Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
+          //   Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
+JOptionPane.showMessageDialog(null, "Events refuser ");
 
     }
     

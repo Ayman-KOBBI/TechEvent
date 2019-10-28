@@ -110,7 +110,7 @@ public class ModifEventController implements Initializable {
           Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
            EventService p = new EventService();
               p.creerEvent(E1);
-            JOptionPane.showMessageDialog(null, "Account edited Successfull");
+            JOptionPane.showMessageDialog(null, "Event Créer");
 
     }
 

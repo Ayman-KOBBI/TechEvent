@@ -228,6 +228,40 @@ System.out.println("evenement trouvé \n");
             System.err.println("" + e.getNom_event() + " error modification!!");
         }
          }
+         
+         
+           public List<Events> cherche(String etat){
+         Events p = null ;
+         String req="select * from events where etat like '"+etat+"'";
+       // String req="select * from `events` where etat=?";
+        List<Events> event=new ArrayList<>();
+        etat="Accepte";
+        try {
+             ResultSet rs=  ste.executeQuery(req);
+            //
+            while(rs.next()){
+                p = new Events();
+                      p.setId_ev(rs.getInt("id_ev"));
+                      p.setNom_org(rs.getString("nom_org"));
+                      p.setDescription(rs.getString("Description") );
+                      p.setLieu(rs.getString("lieu"));
+                      p.setDt_event(rs.getDate("dt_event"));
+                      p.setEtat(rs.getString("etat"));
+                      p.setPrix(rs.getInt("prix"));
+                      p.setNb_place(rs.getInt("nb_place"));
+                      p.setNom_event(rs.getString("nom_event"));
+System.out.println("evenement trouvé \n");
+                      
+              event.add(p);
+               
+             // list.add(new Events(rs.getString("nom_org"),rs.getString("nom_event"),rs.getString("lieu"),rs.getInt("nb_place"),rs.getDate("dt_event"),rs.getString("h_event"),rs.getInt("Nb_place"),rs.getString("description")));  
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return event;
+}
+
 }
  
         

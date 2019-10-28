@@ -237,7 +237,7 @@ public class AdminEventController implements Initializable {
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
 
             e.AccepterEvent(e1);
-              Parent PageParent = null;
+             Parent PageParent = null;
         try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml//fxml/AdminEvent.fxml"));
             

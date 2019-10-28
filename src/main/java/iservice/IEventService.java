@@ -24,5 +24,6 @@ public interface IEventService {
     public List<Events> affichierEvent();
      public void RefuserEvent(Events e);
      public void AccepterEvent(Events e);
+     public List<Events> cherche(String etat);
     
 }

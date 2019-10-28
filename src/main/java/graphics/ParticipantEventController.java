@@ -68,8 +68,9 @@ public class ParticipantEventController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          ////////////////Afficher///////////
+          String m = "Accepte";
         EventService p= new EventService();
-        ArrayList<Events> e = (ArrayList<Events>) p.affichierEvent(); 
+        ArrayList<Events> e = (ArrayList<Events>) p.cherche(m); 
         ObservableList<Events> obs=FXCollections.observableArrayList(e);
         table_event.setItems(obs);
         nom_or.setCellValueFactory(new PropertyValueFactory<>("nom_org") );

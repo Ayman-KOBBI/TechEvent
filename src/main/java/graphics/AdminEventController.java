@@ -56,7 +56,6 @@ public class AdminEventController implements Initializable {
     private TableColumn<?, ?> nb;
     @FXML
     private TableColumn<?, ?> dt_e;
-    @FXML
     private TableColumn<?, ?> h_e;
     @FXML
     private TableColumn<?, ?> px;
@@ -72,7 +71,6 @@ public class AdminEventController implements Initializable {
     private TextField nb1;
     @FXML
     private DatePicker date1;
-    @FXML
     private TextField h_e1;
     @FXML
     private TextField px1;
@@ -80,6 +78,10 @@ public class AdminEventController implements Initializable {
     private TextField desc1;
     @FXML
     private TextField tfserach;
+    @FXML
+    private TableColumn<?, ?> et;
+    @FXML
+    private TextField et1;
 
     /**
      * Initializes the controller class.
@@ -96,7 +98,7 @@ public class AdminEventController implements Initializable {
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
         nb.setCellValueFactory(new PropertyValueFactory<>("nb_place") );
         dt_e.setCellValueFactory(new PropertyValueFactory<>("dt_event") );
-        h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
+        et.setCellValueFactory(new PropertyValueFactory<>("etat") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
         
@@ -112,7 +114,7 @@ public class AdminEventController implements Initializable {
                      String date=String.valueOf(e.getDt_event()); 
                    LocalDate date2 = LocalDate.parse(date);
                    date1.setValue(date2);
-               h_e1.setText(e.getH_event());
+               et1.setText(e.getEtat());
                 lie1.setText(e.getLieu());
                 px1.setText(Integer.toString(e.getPrix()));
                 nb1.setText(Integer.toString(e.getNb_place()));
@@ -150,7 +152,7 @@ public class AdminEventController implements Initializable {
         String h_event= h_e1.getText();
         int prix= Integer.parseInt(px1.getText());
         String description= desc1.getText();
-        Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
+        Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, lieu);
         EventService p = new EventService();
         p.modifEvent(E1);
         JOptionPane.showMessageDialog(null, "Account edited Successfull");
@@ -176,7 +178,7 @@ public class AdminEventController implements Initializable {
         lie1.setText("");
        nb1.setText(null);
         date1.setValue(null);
-        h_e1.setText("");
+        et1.setText("");
         px1.setText("");
         
         desc1.setText("");
@@ -226,6 +228,29 @@ public class AdminEventController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(PageScene);
         window.show();
+    }
+
+    @FXML
+    private void bt_acc(ActionEvent event) throws IOException  {
+        EventService e = new EventService();
+      // Events e1= new Events();
+        Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
+
+            e.AccepterEvent(e1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.hide();
+                        
+    }
+
+    @FXML
+    private void bt_ref(ActionEvent event) throws IOException  {
+       
+      /*  EventService e = new EventService();
+       Events e1= new Events();
+            e1 = e.getJobeurInfobyCin(EventController.);
+            e.RefuserEvent(e1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.hide();*/
     }
     
 }

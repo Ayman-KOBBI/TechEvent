@@ -55,7 +55,7 @@ public class EventService implements IEventService{
     ///SimpleTimeFormat format3=new SimpleTimeFormat("hh:mm:ss");
  
 
-String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description) VALUES (?,?,?,?,?,?,?,?,?)";
+String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,prix,description,etat) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pres=c.prepareStatement(req);
         pres.setInt(1,e.getId_ev() );
         pres.setString(2,e.getNom_org() );
@@ -63,10 +63,10 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
         pres.setString(4,e.getLieu());
         pres.setInt(5,e.getNb_place());
         pres.setDate(6, (java.sql.Date) e.getDt_event());
-        pres.setString(7,e.getH_event());
-        pres.setInt(8,e.getPrix());  
+        pres.setString(9,e.getEtat());
+        pres.setInt(7,e.getPrix());  
           
-        pres.setString(9,e.getDescription());  
+        pres.setString(8,e.getDescription());  
         pres.executeUpdate();
        // System.out.println(pres.executeUpdate());
         System.out.println("element inserer");
@@ -79,7 +79,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
 
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     String sql = "UPDATE events SET nom_org=?,lieu=?, nb_place=?,"
-            + "  dt_event=?,h_event=?,prix=?, description=? where nom_event=?";
+            + "  dt_event=?,etat=?,prix=?, description=? where nom_event=?";
  
         PreparedStatement pres;
           
@@ -91,7 +91,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
         pres.setString(2,e.getLieu());
         pres.setInt(3,e.getNb_place());
         pres.setDate(4, (java.sql.Date) e.getDt_event());
-        pres.setString(5,e.getH_event());
+        pres.setString(5,e.getEtat());
         pres.setInt(6,e.getPrix());  
         
         pres.setString(7,e.getDescription());
@@ -140,7 +140,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,h_
                       p.setDescription(rs.getString("Description") );
                       p.setLieu(rs.getString("lieu"));
                       p.setDt_event(rs.getDate("dt_event"));
-                      p.setH_event(rs.getString("h_event"));
+                      p.setEtat(rs.getString("etat"));
                       p.setPrix(rs.getInt("prix"));
                       p.setNb_place(rs.getInt("nb_place"));
                       p.setNom_event(rs.getString("nom_event"));
@@ -173,7 +173,7 @@ System.out.println("evenement trouvé \n");
                       p.setDescription(res.getString("Description") );
                       p.setLieu(res.getString("lieu"));
                       p.setDt_event(res.getDate("dt_event"));
-                      p.setH_event(res.getString("h_event"));
+                      p.setEtat(res.getString("etat"));
                       p.setPrix(res.getInt("prix"));
                       p.setNb_place(res.getInt("nb_place"));
                       p.setNom_event(res.getString("nom_event"));
@@ -193,7 +193,41 @@ System.out.println("evenement trouvé \n");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
     
-    
-}
+     @Override
+    public void AccepterEvent(Events e){
+        
+          try {
+            String update = "UPDATE events SET  nom_event = ?, etat=? WHERE nom_event = ? ";
+            PreparedStatement st2 = c.prepareStatement(update);
+            st2.setString(1, e.getNom_event());
+            st2.setString(2, "Accepte");
+            st2.setString(1, e.getNom_event());
+            st2.executeUpdate();
+            System.out.println("" + e.getNom_event() + " successfully modified!");
 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.err.println("" + e.getNom_event() + " error modification!!");
+        }
+    }
+    
+     @Override
+         public void RefuserEvent(Events e){
+         
+              try {
+            String update = "UPDATE events SET  nom_event = ?, etat=? WHERE nom_event = ? ";
+            PreparedStatement st2 = c.prepareStatement(update);
+            st2.setString(1, e.getNom_event());
+            st2.setString(2, "Refuser");
+            st2.setString(1, e.getNom_event());
+            st2.executeUpdate();
+            System.out.println("" + e.getNom_event() + " successfully modified!");
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.err.println("" + e.getNom_event() + " error modification!!");
+        }
+         }
+}
+ 
         

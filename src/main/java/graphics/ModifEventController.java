@@ -64,7 +64,6 @@ public class ModifEventController implements Initializable {
     private TextField desc1;
     @FXML
     private TextField px1;
-    @FXML
     private TextField h_e1;
     @FXML
     private DatePicker date1;
@@ -73,6 +72,8 @@ public class ModifEventController implements Initializable {
     @FXML
     private TextField nom_e1;
     private TableView table_event;
+    @FXML
+    private TextField et1;
 
     /**
      * Initializes the controller class.
@@ -87,20 +88,26 @@ public class ModifEventController implements Initializable {
     @FXML
     private void bt_modifEvent(ActionEvent event) throws SQLException {
        
-        
+        if(date1.getValue() == null ||desc1.getText().equals("") || lie1.getText().equals("") || px1.getText().equals("")|| nom_e1.getText().equals("") ){ 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("OPPS");
+                alert.setHeaderText("Erreur !!");
+                alert.setContentText("svp remplir les champs");
+                 alert.showAndWait();
+}
         String nom_org = nom_or1.getText();
          String nom_event = nom_e1.getText();
         String lieu= lie1.getText();
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
         Date dt_event = Date.valueOf(locald);     
-        String h_event= h_e1.getText();
+        String etat= et1.getText();
         int prix= Integer.parseInt(px1.getText());
         
         String description= desc1.getText();
 
 
-          Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
+          Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
            EventService p = new EventService();
               p.creerEvent(E1);
             JOptionPane.showMessageDialog(null, "Account edited Successfull");
@@ -131,7 +138,7 @@ public class ModifEventController implements Initializable {
         lie1.setText("");
        nb1.setText(null);
         date1.setValue(null);
-        h_e1.setText("");
+        et1.setText("");
         px1.setText("");
         
         desc1.setText("");

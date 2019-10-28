@@ -39,7 +39,7 @@ public class Test {
             //Events e3 =new Events(11, "mjez", 8, sqlDate, "08:00", 70, "m", "esprit");
            // Events e4 =new Events(62, 9, "m", 0, sqlDate, "m", 0, "m", "m"); */
             //Events e3=new Events(5, "lieu", 9, "dt_event", "h_event", 0, "image", "description");
-            Events e4 =new Events(87,0,"tech","sfax",50,sqlDate,"7:00",5,"aaaaa");
+           // Events e4 =new Events(87,0,"tech","sfax",50,sqlDate,"7:00",5,"aaaaa");
  
             //e4.setDescription("esprit_ariena");
          // es.modifEvent(e4);
@@ -79,9 +79,9 @@ public class Test {
             System.out.println(e.getMessage());
         }
         
-        Reservation r1=new Reservation(35,e4.getId_ev(),p1.getId_par(),p1.getNom(),p1.getPrenom(),e4.getNom_event());
+    //    Reservation r1=new Reservation(35,e4.getId_ev(),p1.getId_par(),p1.getNom(),p1.getPrenom(),e4.getNom_event());
         try{
-            res1.ajouterReservation(r1);
+       //     res1.ajouterReservation(r1);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

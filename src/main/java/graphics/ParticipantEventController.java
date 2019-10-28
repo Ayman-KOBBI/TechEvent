@@ -53,7 +53,6 @@ public class ParticipantEventController implements Initializable {
     private TableColumn<?, ?> nb;
     @FXML
     private TableColumn<?, ?> dt_e;
-    @FXML
     private TableColumn<?, ?> h_e;
     @FXML
     private TableColumn<?, ?> px;
@@ -78,7 +77,7 @@ public class ParticipantEventController implements Initializable {
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
         nb.setCellValueFactory(new PropertyValueFactory<>("nb_place") );
         dt_e.setCellValueFactory(new PropertyValueFactory<>("dt_event") );
-        h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
+    //    h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
         

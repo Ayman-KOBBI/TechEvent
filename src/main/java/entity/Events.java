@@ -19,12 +19,13 @@ public class Events {
     private int id_org;
    private String nom_org ; 
     private String description; 
-    private Date dt_event; 
+   private Date dt_event; 
     private int nb_place ; 
     private String lieu ;
     private int  prix ; 
-    private String h_event ; 
+ //   private String h_event ; 
     private String nom_event ;
+    private String etat ;
    
     
     public Events() {
@@ -45,7 +46,7 @@ public class Events {
 
     }
 
-    public Events(int id_ev,String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,String h_event,int prix,String description) {
+    public Events(int id_ev,String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,int prix,String description,String etat) {
        this.id_ev = id_ev;
        this.nom_org = nom_org;
         this.description = description;
@@ -53,10 +54,10 @@ public class Events {
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
-        this.h_event = h_event;
+        this.etat = etat;
         this.nom_event=nom_event;
     }
-     public Events(int id_ev,int id_org,String nom_event, String lieu,int nb_place,Date dt_event,String h_event,int prix,String description) {
+     public Events(int id_ev,int id_org,String nom_event, String lieu,int nb_place,Date dt_event,int prix,String description,String etat) {
        this.id_ev = id_ev;
        this.id_org = id_org;
         this.description = description;
@@ -64,11 +65,11 @@ public class Events {
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
-        this.h_event = h_event;
+        this.etat = etat;
         this.nom_event=nom_event;
     }
      
-public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,String h_event,int prix,String description) {
+public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,int prix,String description,String etat) {
        //this.id_ev = id_ev;
        this.nom_org = nom_org;
         this.description = description;
@@ -76,7 +77,7 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
-        this.h_event = h_event;
+        this.etat = etat;
         this.nom_event=nom_event;    }
 
     public Events(TableColumn<Events, String> nom_or, TableColumn<Events, String> nom_e, TableColumn<Events, String> lie, TableColumn<Events, String> nb, TableColumn<Events, java.sql.Date> dt_e, TableColumn<Events, String> h_e, TableColumn<Events, String> px, TableColumn<Events, String> desc) {
@@ -93,7 +94,7 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
 
     @Override
     public String toString() {
-        return "Events{" + "id_ev=" + id_ev + "," + "nom_org=" + nom_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ", h_event=" + h_event + ", nom_event=" + nom_event + '}';
+        return "Events{" + "id_ev=" + id_ev + "," + "nom_org=" + nom_org + ", description=" + description + ", dt_event=" + dt_event + ", nb_place=" + nb_place + ", lieu=" + lieu + ", prix=" + prix + ",etat=" + etat + ", nom_event=" + nom_event + '}';
     }
 
 
@@ -103,6 +104,8 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
     public void setId_ev(int id_ev) {
         this.id_ev = id_ev;
     }
+    
+    
 
     public void setNom_org(String nom_org) {
         this.nom_org = nom_org;
@@ -128,8 +131,8 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         this.prix = prix;
     }
 
-    public void setH_event(String h_event) {
-        this.h_event = h_event;
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
     public void setNom_event(String nom_event) {
@@ -140,13 +143,8 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         return id_ev;
     }
 
-    public int getId_org() {
-        return id_org;
-    }
-
-    public void setId_org(int id_org) {
-        this.id_org = id_org;
-    }
+   
+  
 
     public String getNom_org() {
         return nom_org;
@@ -172,8 +170,8 @@ public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_
         return prix;
     }
 
-    public String getH_event() {
-        return h_event;
+    public String getEtat() {
+        return etat;
     }
 
     public String getNom_event() {

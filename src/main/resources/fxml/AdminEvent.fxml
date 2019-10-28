@@ -18,7 +18,7 @@
             <TableColumn fx:id="lie" prefWidth="51.0" text="lieu" />
             <TableColumn fx:id="nb" prefWidth="61.0" text="nb_place" />
             <TableColumn fx:id="dt_e" prefWidth="79.0" text="dt_event" />
-            <TableColumn fx:id="h_e" prefWidth="56.0" text="h_event" />
+            <TableColumn fx:id="et" prefWidth="56.0" text="Etat" />
             <TableColumn fx:id="px" minWidth="0.0" prefWidth="58.0" text="prix (dt)" />
             <TableColumn fx:id="desc" prefWidth="93.0" text="description" />
          </columns>
@@ -34,7 +34,7 @@
       <TextField fx:id="lie1" layoutX="6.0" layoutY="146.0" promptText="lieu" />
       <TextField fx:id="nb1" layoutX="6.0" layoutY="181.0" promptText="nombre de place" />
       <DatePicker fx:id="date1" layoutX="6.0" layoutY="216.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
-      <TextField fx:id="h_e1" layoutX="6.0" layoutY="257.0" prefHeight="25.0" prefWidth="149.0" promptText="heure event" />
+      <TextField fx:id="et1" layoutX="6.0" layoutY="257.0" prefHeight="25.0" prefWidth="149.0" promptText="etat" />
       <TextField fx:id="px1" layoutX="6.0" layoutY="292.0" promptText="prix" />
       <TextField fx:id="desc1" layoutX="6.0" layoutY="325.0" prefHeight="70.0" prefWidth="149.0" promptText="description" />
       <Button layoutX="6.0" layoutY="411.0" mnemonicParsing="false" onAction="#refrech" text="Actualiser" />
@@ -42,5 +42,7 @@
       <TextField fx:id="tfserach" layoutX="539.0" layoutY="411.0" onKeyTyped="#search" />
       <Button layoutX="458.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
       <Button layoutX="389.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
+      <Button layoutX="183.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_acc" text="Accepter" />
+      <Button layoutX="262.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_ref" text="Refuser" />
    </children>
 </AnchorPane>

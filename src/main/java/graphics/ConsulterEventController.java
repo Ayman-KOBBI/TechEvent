@@ -55,6 +55,7 @@ import javafx.scene.chart.PieChart.Data;
 import service.EventService;
 import utils.ConnexionBD;
 
+
 /**
  * FXML Controller class
  *
@@ -72,8 +73,6 @@ public class ConsulterEventController implements Initializable {
     private TableColumn<Events, String> nb;
     @FXML
     private TableColumn<Events, Date> dt_e;
-    @FXML
-    private TableColumn<Events, String> h_e;
     @FXML
     private TableColumn<Events, String>px;
     
@@ -98,7 +97,6 @@ public class ConsulterEventController implements Initializable {
     private TextField nb1;
     @FXML
     private DatePicker date1;
-    @FXML
     private TextField h_e1;
     @FXML
     private TextField px1;
@@ -106,6 +104,9 @@ public class ConsulterEventController implements Initializable {
     private TextField desc1;
     
     private TextField dt_e1;
+    @FXML
+    private TableColumn<Events, String> et;
+    private TextField et1;
 
     /**
      * Initializes the controller class.
@@ -123,7 +124,7 @@ public class ConsulterEventController implements Initializable {
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
         nb.setCellValueFactory(new PropertyValueFactory<>("nb_place") );
         dt_e.setCellValueFactory(new PropertyValueFactory<>("dt_event") );
-        h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
+        et.setCellValueFactory(new PropertyValueFactory<>("etat") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
         
@@ -139,7 +140,7 @@ public class ConsulterEventController implements Initializable {
                      String date=String.valueOf(e.getDt_event()); 
                    LocalDate date2 = LocalDate.parse(date);
                    date1.setValue(date2);
-               h_e1.setText(e.getH_event());
+             //  et1.setText(e.getEtat());
                 lie1.setText(e.getLieu());
                 px1.setText(Integer.toString(e.getPrix()));
                 nb1.setText(Integer.toString(e.getNb_place()));
@@ -176,6 +177,7 @@ public class ConsulterEventController implements Initializable {
       
         Events a = (Events) table_event.getSelectionModel().getSelectedItem();
         cs.supprEvent(a);
+         
         
         Parent PageParent = null;
         try {
@@ -209,13 +211,14 @@ public class ConsulterEventController implements Initializable {
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
        Date dt_event = Date.valueOf(locald);  
-        String h_event= h_e1.getText();
+        String etat= "attent";
         int prix= Integer.parseInt(px1.getText());
         String description= desc1.getText();
-          Events E1= new Events(nom_org,nom_event,lieu,nb_place,dt_event,h_event,prix,description);
+          Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
            EventService p = new EventService();
               p.modifEvent(E1);
             JOptionPane.showMessageDialog(null, "Account edited Successfull");
+             
         
         Parent PageParent = null;
         try {
@@ -237,7 +240,7 @@ public class ConsulterEventController implements Initializable {
         lie1.setText("");
        nb1.setText(null);
         date1.setValue(null);
-        h_e1.setText("");
+      //  h_e1.setText("");
         px1.setText("");
         
         desc1.setText("");

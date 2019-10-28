@@ -14,15 +14,11 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.EventController">
    <children>
-      <Label fx:id="prix" layoutX="33.0" layoutY="290.0" text="Prix :" textFill="#f8f7f7">
+      <Label fx:id="prix" layoutX="33.0" layoutY="256.0" text="Prix :" textFill="#f8f7f7">
          <font>
             <Font size="16.0" />
          </font></Label>
       <Label fx:id="nom_org" layoutX="28.0" layoutY="84.0" text="Nom_org :" textFill="#fcfafa">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label fx:id="h_event" layoutX="33.0" layoutY="255.0" text="H_Event :" textFill="#fcfafa">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -61,10 +57,9 @@
       <TextField fx:id="nom_or" layoutX="212.0" layoutY="80.0" promptText="nom organisateur" />
       <TextField fx:id="lie" layoutX="212.0" layoutY="146.0" promptText="lieu" />
       <TextField fx:id="nb" layoutX="212.0" layoutY="178.0" promptText="nombre de palce" />
-      <TextField fx:id="desc" layoutX="212.0" layoutY="327.0" prefHeight="100.0" prefWidth="323.0" promptText="description" />
+      <TextField fx:id="desc" layoutX="212.0" layoutY="294.0" prefHeight="108.0" prefWidth="323.0" promptText="description" />
       <TextField fx:id="nom_e" layoutX="212.0" layoutY="113.0" promptText="nom event" />
-      <TextField fx:id="px" layoutX="212.0" layoutY="290.0" promptText="prix" />
-      <TextField fx:id="h_e" layoutX="212.0" layoutY="255.0" prefHeight="25.0" prefWidth="149.0" promptText="heure event" />
+      <TextField fx:id="px" layoutX="212.0" layoutY="256.0" promptText="prix" />
       <Button layoutX="633.0" layoutY="352.0" mnemonicParsing="false" onAction="#ajout1" text="Valider" />
       <DatePicker fx:id="date" layoutX="212.0" layoutY="213.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
       <Button layoutX="628.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_Retour" prefHeight="25.0" prefWidth="65.0" text="Retour" />
@@ -74,10 +69,11 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <ImageView fitHeight="170.0" fitWidth="219.0" layoutX="455.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="170.0" fitWidth="219.0" layoutX="455.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Event+Tech+Tribe+logo+icon+jpeg.jpg" />
          </image>
       </ImageView>
+      <Button layoutX="47.0" layoutY="396.0" mnemonicParsing="false" onAction="#mail" text="email" />
    </children>
 </AnchorPane>

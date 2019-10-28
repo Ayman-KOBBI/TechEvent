@@ -24,7 +24,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="h_event" layoutX="32.0" layoutY="255.0" text="H_Event :" textFill="WHITE">
+      <Label fx:id="h_event" layoutX="32.0" layoutY="255.0" text="Etat :" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -60,7 +60,7 @@
       <TextField fx:id="desc1" layoutX="212.0" layoutY="320.0" prefHeight="100.0" prefWidth="323.0" promptText="description" />
       <TextField fx:id="nom_e1" layoutX="212.0" layoutY="113.0" promptText="nom event" />
       <TextField fx:id="px1" layoutX="212.0" layoutY="288.0" promptText="prix" />
-      <TextField fx:id="h_e1" layoutX="212.0" layoutY="255.0" prefHeight="25.0" prefWidth="149.0" promptText="heure event" />
+      <TextField fx:id="et1" layoutX="212.0" layoutY="255.0" prefHeight="25.0" prefWidth="149.0" promptText="etat" />
       <Button layoutX="621.0" layoutY="345.0" mnemonicParsing="false" onAction="#bt_modifEvent" text="Enregistre" />
       <DatePicker fx:id="date1" layoutX="212.0" layoutY="213.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
       <Button layoutX="630.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_Retour2" text="Retour" />

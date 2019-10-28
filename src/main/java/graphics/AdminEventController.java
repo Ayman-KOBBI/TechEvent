@@ -34,8 +34,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import service.EventService;
+import utils.Mail;
 
 /**
  * FXML Controller class
@@ -231,48 +233,27 @@ public class AdminEventController implements Initializable {
     }
 
     @FXML
-    private void bt_acc(ActionEvent event) throws IOException  {
+    private void bt_acc(ActionEvent event) throws IOException, MessagingException  {
         EventService e = new EventService();
       // Events e1= new Events();
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
 
             e.AccepterEvent(e1);
-             Parent PageParent = null;
-        try {
-            PageParent = FXMLLoader.load(getClass().getResource("/fxml//fxml/AdminEvent.fxml"));
-            
-        
-        } catch (IOException ex) {
-            Logger.getLogger(AdminEventController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene PageScene = new Scene(PageParent);
+                   Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(PageScene);
-        window.show();
     
     }
 
     @FXML
-    private void bt_ref(ActionEvent event) throws IOException  {
+    private void bt_ref(ActionEvent event) throws IOException, MessagingException  {
        
         EventService e = new EventService();
       
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.RefuserEvent(e1);
            Parent PageParent = null;
-        try {
-            PageParent = FXMLLoader.load(getClass().getResource("/fxml//fxml/AdminEvent.fxml"));
-            
-        
-        } catch (IOException ex) {
-            Logger.getLogger(AdminEventController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Scene PageScene = new Scene(PageParent);
+             Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(PageScene);
-        window.show();
     }
     
 }

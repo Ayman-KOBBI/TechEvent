@@ -17,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.mail.MessagingException;
+import utils.Mail;
 
 /**
  *
@@ -25,7 +27,7 @@ import javafx.stage.Stage;
 public class NewFXMain extends Application {
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, MessagingException {
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/org.fxml"));
         Scene scene = new Scene(root);
@@ -34,7 +36,8 @@ public class NewFXMain extends Application {
         
         
         
-        
+        Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
+
         
     }
 

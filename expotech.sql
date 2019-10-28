@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 24 oct. 2019 à 14:29
+-- Généré le :  lun. 28 oct. 2019 à 15:15
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -53,20 +53,29 @@ CREATE TABLE IF NOT EXISTS `events` (
   `lieu` varchar(50) NOT NULL,
   `nb_place` int(11) NOT NULL,
   `dt_event` date NOT NULL,
-  `h_event` varchar(50) NOT NULL,
   `prix` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `etat` varchar(50) NOT NULL,
   PRIMARY KEY (`id_ev`),
   KEY `nom_org` (`nom_org`)
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=142 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `events`
 --
 
-INSERT INTO `events` (`id_ev`, `nom_org`, `nom_event`, `lieu`, `nb_place`, `dt_event`, `h_event`, `prix`, `description`) VALUES
-(87, 'ahmed', 'techevent', 'touzer', 70, '2019-10-26', '09:00', 7000, 'welcom'),
-(85, 'med', 'tech', 'med', 70, '2019-10-15', '9:00', 700000, 'esprit');
+INSERT INTO `events` (`id_ev`, `nom_org`, `nom_event`, `lieu`, `nb_place`, `dt_event`, `prix`, `description`, `etat`) VALUES
+(98, 'arwa', 'techevent3', 'ariana', 40, '2019-11-28', 3, 'informatique', 'attent'),
+(97, 'arwa', 'techevent2', 'ariana', 62, '2019-11-10', 3, 'informatique', 'accepter'),
+(89, 'med', 'brains', 'tunis', 90, '2019-10-21', 12, 'dev', 'attent'),
+(96, 'arwaaa', 'h1', 'ariana', 46, '2019-11-10', 3, 'informatique', 'accepter'),
+(85, 'amal', 'tech', 'beja', 55, '2019-11-08', 6, 'event', ''),
+(91, 'med kh', 'evolution', 'sousse', 40, '2019-10-25', 6, 'informatique', ''),
+(106, 'nino', 'technologie4.0', 'paris', 60, '2019-11-07', 40, 'info', ''),
+(121, 'khayat', 'h14', 'beja', 14, '2019-10-31', 15, 'rftrghygtrfe', 'refuser'),
+(105, 'midou', 'event4', 'tunis', 45, '2019-11-08', 4, 'info', ''),
+(141, 'med', 'khayat', 'beja', 47, '2019-10-20', 27, 'eve', 'attent'),
+(140, 'khayat1', 'kh', 'beja', 45, '2019-10-20', 40, 'yes', 'attent');
 
 -- --------------------------------------------------------
 

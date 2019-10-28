@@ -237,20 +237,42 @@ public class AdminEventController implements Initializable {
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
 
             e.AccepterEvent(e1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.hide();
-                        
+              Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml//fxml/AdminEvent.fxml"));
+            
+        
+        } catch (IOException ex) {
+            Logger.getLogger(AdminEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    
     }
 
     @FXML
     private void bt_ref(ActionEvent event) throws IOException  {
        
-      /*  EventService e = new EventService();
-       Events e1= new Events();
-            e1 = e.getJobeurInfobyCin(EventController.);
+        EventService e = new EventService();
+      
+        Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.RefuserEvent(e1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.hide();*/
+           Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml//fxml/AdminEvent.fxml"));
+            
+        
+        } catch (IOException ex) {
+            Logger.getLogger(AdminEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
     
 }

@@ -201,7 +201,7 @@ System.out.println("evenement trouvé \n");
             PreparedStatement st2 = c.prepareStatement(update);
             st2.setString(1, e.getNom_event());
             st2.setString(2, "Accepte");
-            st2.setString(1, e.getNom_event());
+            st2.setString(3, e.getNom_event());
             st2.executeUpdate();
             System.out.println("" + e.getNom_event() + " successfully modified!");
 
@@ -219,7 +219,7 @@ System.out.println("evenement trouvé \n");
             PreparedStatement st2 = c.prepareStatement(update);
             st2.setString(1, e.getNom_event());
             st2.setString(2, "Refuser");
-            st2.setString(1, e.getNom_event());
+            st2.setString(3, e.getNom_event());
             st2.executeUpdate();
             System.out.println("" + e.getNom_event() + " successfully modified!");
 

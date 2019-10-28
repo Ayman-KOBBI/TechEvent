@@ -29,14 +29,14 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException, MessagingException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/org.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show(); 
         
         
         
-        Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
+       // Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 
         
     }

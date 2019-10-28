@@ -74,6 +74,5 @@
             <Image url="@../image/Event+Tech+Tribe+logo+icon+jpeg.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="47.0" layoutY="396.0" mnemonicParsing="false" onAction="#mail" text="email" />
    </children>
 </AnchorPane>

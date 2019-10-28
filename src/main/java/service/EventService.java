@@ -189,9 +189,7 @@ System.out.println("evenement trouvé \n");
      return event;
     }     
 
-   /* private int id_ev() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+  
     
      @Override
     public void AccepterEvent(Events e){
@@ -229,7 +227,7 @@ System.out.println("evenement trouvé \n");
         }
          }
          
-         
+        //affiche les events Accepter 
            public List<Events> cherche(String etat){
          Events p = null ;
          String req="select * from events where etat like '"+etat+"'";

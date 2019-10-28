@@ -148,9 +148,5 @@ public class EventController implements Initializable {
        
     }
 
-    @FXML
-    private void mail(ActionEvent event) {
-         
-    }
     
 }

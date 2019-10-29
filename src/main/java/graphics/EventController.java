@@ -86,7 +86,7 @@ public class EventController implements Initializable {
     @FXML
     private void ajout1(ActionEvent event) throws SQLException {
         
-        if(date.getValue() == null ||desc.getText().equals("") || lie.getText().equals("") || px.getText().equals("")|| nom_e.getText().equals("") ){ 
+        if(date.getValue() == null ||desc.getText().equals("") || lie.getText().equals("") || px.getText().equals("")|| nom_e.getText().equals("") || nom_or.getText().equals("")|| nb.getText().equals("") ){ 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("OPPS");
                 alert.setHeaderText("Erreur !!");
@@ -102,7 +102,7 @@ public class EventController implements Initializable {
             int nb_place = Integer.parseInt(nb.getText());
             LocalDate locald = date.getValue();
             Date dt_event = Date.valueOf(locald);
-            String etat= "attent";
+            String etat= "En attent";
             int prix= Integer.parseInt(px.getText());
             
             String description= desc.getText();

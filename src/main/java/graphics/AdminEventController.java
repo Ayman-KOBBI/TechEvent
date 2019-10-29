@@ -39,6 +39,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -173,6 +174,13 @@ public class AdminEventController implements Initializable {
 
     @FXML
     private void refrech(ActionEvent event) {
+           if(date1.getValue() == null ||desc1.getText().equals("") || lie1.getText().equals("") || px1.getText().equals("")|| nom_e1.getText().equals("")|| nom_or1.getText().equals("")|| nb1.getText().equals("") ){ 
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("OPPS");
+                alert.setHeaderText("Erreur !!");
+                alert.setContentText("svp remplir les champs");
+                 alert.showAndWait();
+}else{
         String nom_org = nom_or1.getText();
         String nom_event = nom_e1.getText();
         String lieu= lie1.getText();
@@ -185,7 +193,7 @@ public class AdminEventController implements Initializable {
         Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
         EventService p = new EventService();
         p.modifEvent(E1);
-        JOptionPane.showMessageDialog(null, "Event modifier");
+        JOptionPane.showMessageDialog(null, "Event modifier");}
      
         
         Parent PageParent = null;
@@ -376,8 +384,7 @@ JOptionPane.showMessageDialog(null, "Events refuser ");
      //   File file = chooser.showSaveDialog(bt_excel.getScene().getWindow());
        // if (file != null) {
          //   Excel(file);
-        
-      
+   
  
    
     }

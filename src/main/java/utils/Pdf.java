@@ -44,8 +44,7 @@ public class Pdf {
   private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
       Font.BOLD);
     
-
-  public static void main(String[] args) {
+ public static void main(String[] args) {
     try {
     Document document = new Document();
       PdfWriter.getInstance(document, new FileOutputStream(FILE));
@@ -190,7 +189,7 @@ public class Pdf {
 
   private static void addEmptyLine(Paragraph paragraph, int number) {
     for (int i = 0; i < number; i++) {
-      paragraph.add(new Paragraph(" "));
+      paragraph.add(new Paragraph("khayat mohamed "));
       
     }
   }

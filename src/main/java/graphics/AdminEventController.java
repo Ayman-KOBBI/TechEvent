@@ -267,10 +267,23 @@ public class AdminEventController implements Initializable {
         EventService e = new EventService();
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.AccepterEvent(e1);
+
+            
+            
            // sendSms();
              //    Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 JOptionPane.showMessageDialog(null, "Events accepter ");
-    
+    Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AdminEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     @FXML
@@ -282,7 +295,17 @@ JOptionPane.showMessageDialog(null, "Events accepter ");
             e.RefuserEvent(e1);
           // Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
 JOptionPane.showMessageDialog(null, "Events refuser ");
+ Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AdminEvent.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(ConsulterEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
 
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
     }
 
     

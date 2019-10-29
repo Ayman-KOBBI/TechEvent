@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author asus
+ * @author khayat
  */
 
 public class Mail {

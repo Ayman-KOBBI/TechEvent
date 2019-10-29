@@ -38,11 +38,12 @@
       <TextField fx:id="px1" layoutX="6.0" layoutY="292.0" promptText="prix" />
       <TextField fx:id="desc1" layoutX="6.0" layoutY="325.0" prefHeight="70.0" prefWidth="149.0" promptText="description" />
       <Button layoutX="6.0" layoutY="411.0" mnemonicParsing="false" onAction="#refrech" text="Actualiser" />
-      <Button layoutX="97.0" layoutY="411.0" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
+      <Button layoutX="87.0" layoutY="411.0" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
       <TextField fx:id="tfserach" layoutX="539.0" layoutY="411.0" onKeyTyped="#search" />
       <Button layoutX="458.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_sup" text="Supprimer" />
-      <Button layoutX="389.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
-      <Button layoutX="183.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_acc" text="Accepter" />
-      <Button layoutX="262.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_ref" text="Refuser" />
+      <Button layoutX="386.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_aj" text="Ajouter" />
+      <Button layoutX="161.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_acc" text="Accepter" />
+      <Button layoutX="234.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_ref" text="Refuser" />
+      <Button layoutX="304.0" layoutY="411.0" mnemonicParsing="false" onAction="#bt_im" text="Imprimer" />
    </children>
 </AnchorPane>

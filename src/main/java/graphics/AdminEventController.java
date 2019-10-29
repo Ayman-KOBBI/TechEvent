@@ -5,11 +5,25 @@
  */
 package graphics;
 
+import static com.itextpdf.text.Annotation.FILE;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.List;
+import com.itextpdf.text.ListItem;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import entity.Events;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -39,6 +53,19 @@ import javax.management.Notification;
 import javax.swing.JOptionPane;
 import service.EventService;
 import utils.Mail;
+
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import static javax.management.remote.JMXConnectorFactory.connect;
+import static javax.management.remote.JMXConnectorFactory.connect;
+import static javax.rmi.PortableRemoteObject.connect;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;//mochkel ta3 library 3andek rahou !  slaey7e ha 
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import utils.ConnexionBD;
+import static utils.SmsSender.sendSms;
 
 /**
  * FXML Controller class
@@ -240,7 +267,8 @@ public class AdminEventController implements Initializable {
         EventService e = new EventService();
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.AccepterEvent(e1);
-                //   Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
+           // sendSms();
+             //    Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 JOptionPane.showMessageDialog(null, "Events accepter ");
     
     }
@@ -252,9 +280,83 @@ JOptionPane.showMessageDialog(null, "Events accepter ");
       
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.RefuserEvent(e1);
-          //   Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
+          // Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
 JOptionPane.showMessageDialog(null, "Events refuser ");
 
+    }
+
+    
+    /* private void Excel(File file) throws FileNotFoundException, IOException, SQLException {
+       
+
+        try {
+            //System.out.println("Clicked,waiting to export....");
+            
+            FileOutputStream fileOut;
+            fileOut = new FileOutputStream(file);
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet workSheet = workbook.createSheet("sheet 0");
+            
+        workSheet.setColumnWidth(1, 25);
+
+        HSSFFont fontBold = workbook.createFont();
+        HSSFCellStyle styleBold = workbook.createCellStyle();
+        styleBold.setFont(fontBold);         
+            Row row1 = workSheet.createRow((short) 0);
+            
+            workSheet.autoSizeColumn(7);
+            row1.createCell(0).setCellValue("id");
+            row1.createCell(1).setCellValue("Date Creation");
+            row1.createCell(2).setCellValue("Total Commande");
+            Row row2;
+
+            String req = "SELECT * from 'events' ";
+            Connection c = ConnexionBD
+           .getInstanceConnexionBD()
+           .getConnection();
+    Statement ste;
+             try {
+        ste = c.createStatement();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+            PreparedStatement ps=c.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int a = rs.getRow();
+                row2 = workSheet.createRow((short) a); 
+               
+                row2.createCell(0).setCellValue(rs.getInt(1));
+                row2.createCell(1).setCellValue(rs.getDate(2).toString());
+                System.out.println(rs.getDate(2).toString());
+                row2.createCell(2).setCellValue(rs.getString(3));          
+            }
+            workbook.write(fileOut);
+            fileOut.flush();
+            fileOut.close();
+            rs.close();
+
+        
+        } catch (SQLException e) {
+            System.out.println("Presentation.ListCommandeController.ExcelAction()"); 
+
+        }
+    }*/
+    
+    @FXML
+    private void bt_im(ActionEvent event) throws FileNotFoundException, DocumentException {
+      //  FileChooser chooser = new FileChooser();
+        // Set extension filter
+      //  FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Excel Files(*.xls)", "*.xls");
+      //  chooser.getExtensionFilters().add(filter);
+        // Show save dialog
+     //   File file = chooser.showSaveDialog(bt_excel.getScene().getWindow());
+       // if (file != null) {
+         //   Excel(file);
+        
+      
+ 
+   
     }
     
 }

@@ -45,8 +45,6 @@ public class ModifEventController implements Initializable {
     @FXML
     private Label id_org;
     @FXML
-    private Label h_event;
-    @FXML
     private Label dt_event;
     @FXML
     private Label nb_place;
@@ -72,7 +70,6 @@ public class ModifEventController implements Initializable {
     @FXML
     private TextField nom_e1;
     private TableView table_event;
-    @FXML
     private TextField et1;
 
     /**
@@ -101,7 +98,7 @@ public class ModifEventController implements Initializable {
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
         Date dt_event = Date.valueOf(locald);     
-        String etat= et1.getText();
+        String etat= "Accepte";
         int prix= Integer.parseInt(px1.getText());
         
         String description= desc1.getText();

@@ -14,17 +14,12 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ModifEventController">
    <children>
-      <Label fx:id="prix" layoutX="32.0" layoutY="288.0" text="Prix :" textFill="#fcf9f9">
+      <Label fx:id="prix" layoutX="32.0" layoutY="270.0" text="Prix :" textFill="#fcf9f9">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
       <Label fx:id="id_org" layoutX="28.0" layoutY="84.0" text="Nom_org :" textFill="#fffefe">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="h_event" layoutX="32.0" layoutY="255.0" text="Etat :" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -57,10 +52,9 @@
       <TextField fx:id="nom_or1" layoutX="212.0" layoutY="80.0" promptText="nom organisateur" />
       <TextField fx:id="lie1" layoutX="212.0" layoutY="146.0" promptText="lieu" />
       <TextField fx:id="nb1" layoutX="212.0" layoutY="178.0" promptText="nombre de place" />
-      <TextField fx:id="desc1" layoutX="212.0" layoutY="320.0" prefHeight="100.0" prefWidth="323.0" promptText="description" />
+      <TextField fx:id="desc1" layoutX="212.0" layoutY="301.0" prefHeight="119.0" prefWidth="323.0" promptText="description" />
       <TextField fx:id="nom_e1" layoutX="212.0" layoutY="113.0" promptText="nom event" />
-      <TextField fx:id="px1" layoutX="212.0" layoutY="288.0" promptText="prix" />
-      <TextField fx:id="et1" layoutX="212.0" layoutY="255.0" prefHeight="25.0" prefWidth="149.0" promptText="etat" />
+      <TextField fx:id="px1" layoutX="212.0" layoutY="257.0" promptText="prix" />
       <Button layoutX="621.0" layoutY="345.0" mnemonicParsing="false" onAction="#bt_modifEvent" text="Enregistre" />
       <DatePicker fx:id="date1" layoutX="212.0" layoutY="213.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
       <Button layoutX="630.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_Retour2" text="Retour" />

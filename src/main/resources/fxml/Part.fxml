@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.PartController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.PartController">
    <children>
       <AnchorPane prefHeight="450.0" prefWidth="163.0" style="-fx-background-color: #87d5ff;">
          <children>
@@ -40,6 +40,11 @@
                </font>
             </Button>
             <Button fx:id="btnForum" layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnForumAction" prefHeight="35.0" prefWidth="180.0" text="Forum">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutY="340.0" mnemonicParsing="false" onAction="#Reservations" prefHeight="35.0" prefWidth="176.0" text="Reservations">
                <font>
                   <Font size="14.0" />
                </font>

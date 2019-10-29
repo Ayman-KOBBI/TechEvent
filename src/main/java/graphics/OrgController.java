@@ -58,6 +58,7 @@ public class OrgController implements Initializable {
         window.show();
         
     }
+   
 
     @FXML
     private void home(ActionEvent event) {
@@ -69,7 +70,22 @@ public class OrgController implements Initializable {
 
     @FXML
     private void forum(ActionEvent event) {
+        
     }
 
-    
+    @FXML
+    private void Reservations(ActionEvent event) {
+        Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AfficherResOrg.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherResOrgController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    }
+
 }

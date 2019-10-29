@@ -5,6 +5,8 @@
  */
 package entity;
 
+import javafx.scene.control.TableColumn;
+
 /**
  *
  * @author ASUS
@@ -17,6 +19,7 @@ public class Reservation {
    private String nom;
    private String prenom;
    private String nom_event;
+ 
    
     public Reservation() {
     }
@@ -45,7 +48,9 @@ public class Reservation {
     public void setnom_event(String nom_event) {
         this.nom_event = nom_event;
     }
-
+  public Reservation(TableColumn<Reservation, String> nom, TableColumn<Reservation, String> prenom, TableColumn<Reservation, String> nom_event) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -72,8 +77,10 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "class reservation<"+this.id_ticket+","+this.getId_ev()+","+this.id_par+","+this.nom+","+this.prenom+">"; //To change body of generated methods, choose Tools | Templates.
+        return "Reservation{" + " nom=" + nom + ", prenom=" + prenom + ", nom_event=" + nom_event+ ", id_ticket=" + id_ticket + ", id_ev=" + id_ev + ", id_par=" + id_par +"}";
     }
+
+   
 
     public int getId_ticket() {
         return id_ticket;

@@ -86,9 +86,27 @@ public class PartController implements Initializable {
         window.setScene(PageScene);
         window.show();
     }
+    
+
 
     @FXML
     private void btnForumAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void Reservations(ActionEvent event) {
+        Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AfficherResPar.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherResOrgController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    
     }
     }    
     

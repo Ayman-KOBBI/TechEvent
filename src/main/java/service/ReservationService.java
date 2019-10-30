@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package service;
-import entity.Events;
+import entity.Organisateurs;
 import entity.Participants;
 import entity.Reservation;
+import entity.ReservationEvent;
 import iservice.IReservationService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,15 +37,19 @@ public class ReservationService implements IReservationService{
     }
     
      @Override
-    public List<Reservation> afficherReservation() {
+    public List<Reservation> afficherReservation(Organisateurs o) throws Exception {
       
       List<Reservation> Reservations = new ArrayList<>();
       Reservation r = null ;
-      String req2="select * from reservation";
+      
+      String req2="select * from reservation r "
+              + "INNER join events e ON "
+              + "r.id_ev=e.id_ev "
+              + "where e.id_org=?;";
+              PreparedStatement rs = c.prepareStatement(req2);
+        rs.setInt(1,o.getId_org());
       try {
-         
-         
-          ResultSet res=  ste.executeQuery(req2);
+          ResultSet res=  rs.executeQuery();
           while (res.next()) { 
               r = new Reservation();
              // p = new Participants();
@@ -53,17 +58,58 @@ public class ReservationService implements IReservationService{
                       r.setId_par(res.getInt("id_par"));
                       r.setNom( res.getString("nom") );
                       r.setPrenom(res.getString("prenom"));
-                      r.setnom_event("nom_event");
+                      r.setnom_event(res.getString("nom_event"));
               Reservations.add(r);
           }
           
       } catch (SQLException ex) {
           System.out.println(ex.getMessage());
       } 
-        
+        System.out.println(Reservations);
      return Reservations;
     }
+    
+     @Override
+    public List<ReservationEvent> afficherReservationPar(Participants p) throws Exception {
+      
+      List<ReservationEvent> Event = new ArrayList<>();
+      Reservation r = null ;
+      ReservationEvent e = null;
+    
+      
+      String req3="select * from reservation r "
+              + "INNER join events e ON "
+              + "r.id_ev=e.id_ev "
+              + "where r.id_par=?;";
+              PreparedStatement rs = c.prepareStatement(req3);
+        rs.setInt(1,p.getId_par());
+      try {
+          ResultSet res=  rs.executeQuery();
+          while (res.next()) { 
+              e  = new ReservationEvent();
+             // p = new Participants();
+                      e.setId_ev(res.getInt("id_ev"));
+                       e.setId_org(res.getInt("Id_org"));
+                      e.setNom_org(res.getString("nom_org"));
+                      e.setDescription(res.getString("Description") );
+                      e.setLieu(res.getString("lieu"));
+                      e.setDt_event(res.getDate("dt_event"));
+                      e.setEtat(res.getString("etat"));
+                      e.setPrix(res.getInt("prix"));
+                      e.setNb_place(res.getInt("nb_place"));
+                      e.setNom_event(res.getString("nom_event"));
+                      e.setId_ticket(res.getInt("id_ticket"));
+              Event.add(e);
+          }
+          
+      } catch (SQLException ex) {
+          System.out.println(ex.getMessage());
+      } 
+        System.out.println(Event);
+     return Event;
+    }
 
+    
     @Override
     public void ajouterReservation(Reservation r) throws Exception {
         Participants p=new Participants();
@@ -86,7 +132,7 @@ public class ReservationService implements IReservationService{
         
         System.out.println(p);
         
-        Events e=new Events();
+        ReservationEvent e=new ReservationEvent();
         String requete_prix_event="Select * from events where id_ev=?;";
         PreparedStatement rs1 = c.prepareStatement(requete_prix_event);
         rs1.setInt(1, r.getId_ev());
@@ -98,8 +144,13 @@ public class ReservationService implements IReservationService{
             e.setDescription(res2.getString("Description"));
             e.setDt_event(res2.getDate("dt_event"));
             e.setId_ev(res2.getInt("id_ev"));
-         //   e.setH_event(res2.getString("H_event"));
-            e.setNom_org(res2.getString("Id_org"));
+
+         
+            e.setNom_org(res2.getString("nom_org"));
+
+            
+            e.setId_org(res2.getInt("Id_org"));
+
             e.setNom_event(res2.getString("nom_event"));
             e.setLieu(res2.getString("lieu"));
             e.setNb_place(res2.getInt("Nb_place"));
@@ -140,6 +191,33 @@ public class ReservationService implements IReservationService{
         }
 
     }
+     @Override   
+     public List<Reservation> chercher(String nom_ev){
+         Reservation r = null ;
+        String req="select * from reservation where nom_event like '"+nom_ev+"'";
+        List<Reservation> Reservations=new ArrayList<>();
+        try {
+             ResultSet res=  ste.executeQuery(req);
+            //
+            while(res.next()){
+                r = new Reservation();
+                      r.setId_ticket( res.getInt("id_ticket"));
+                      r.setId_ev(res.getInt("id_ev"));
+                      r.setId_par(res.getInt("id_par"));
+                      r.setNom( res.getString("nom") );
+                      r.setPrenom(res.getString("prenom"));
+                      r.setnom_event(res.getString("nom_event"));
+              
+                      
+              Reservations.add(r);
+               
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Reservations;
+}
+
 
 
     @Override
@@ -157,6 +235,57 @@ public class ReservationService implements IReservationService{
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     @Override
+    public void supprimerReservationEv(ReservationEvent e) {
+         try {
+            String req1="delete from reservation where"
+                    + " id_ticket=?";
+       
+      PreparedStatement rs = c.prepareStatement(req1);
+            rs.setInt(1, e.getId_ticket());
+            rs.executeUpdate();
+            
+            String req_update_nbrplace="UPDATE events SET nb_place=? WHERE(id_ev=?);";
+         PreparedStatement rs3 = c.prepareStatement(req_update_nbrplace);
+         rs3.setInt(1, e.getNb_place()+1);
+         rs3.setInt(2, e.getId_ev());
+         rs3.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+     @Override   
+     public List<ReservationEvent> chercherEv(String nom_e){
+         ReservationEvent p = null ;
+        String req="select * from events where nom_event like '"+nom_e+"'";
+        List<ReservationEvent> event=new ArrayList<>();
+        try {
+             ResultSet rs=  ste.executeQuery(req);
+            //
+            while(rs.next()){
+                p = new ReservationEvent();
+                      p.setId_ev(rs.getInt("id_ev"));
+                      p.setNom_org(rs.getString("nom_org"));
+                      p.setDescription(rs.getString("Description") );
+                      p.setLieu(rs.getString("lieu"));
+                      p.setDt_event(rs.getDate("dt_event"));
+                      p.setEtat(rs.getString("etat"));
+                      p.setPrix(rs.getInt("prix"));
+                      p.setNb_place(rs.getInt("nb_place"));
+                      p.setNom_event(rs.getString("nom_event"));
+System.out.println("evenement trouvé \n");
+                      
+              event.add(p);
+               
+             // list.add(new Events(rs.getString("nom_org"),rs.getString("nom_event"),rs.getString("lieu"),rs.getInt("nb_place"),rs.getDate("dt_event"),rs.getString("h_event"),rs.getInt("Nb_place"),rs.getString("description")));  
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EventService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return event;
+}
+    
     
      
 }

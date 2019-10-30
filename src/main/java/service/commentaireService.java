@@ -8,6 +8,7 @@ import entity.Commentaire;
 import entity.Forum;
 import iservice.IcommentaireService;
 import java.sql.Connection;
+import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,8 +37,8 @@ public class commentaireService implements IcommentaireService {
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             Statement st=c.createStatement();
             String req1="INSERT INTO `commentaire` "
-                    + "(`id_comm`,`id_article`,`id_user`,`Text`,`date`) "
-                    + "VALUES ( "+m.getId_comm()+","+m.getId_article()+","+m.getId_user()+","+m.getText()+","+m.getDate()+");";
+                    + "(`score`,`id_article`,`id_user`,`Text`,`date`) "
+                    + "VALUES ( "+m.getScore()+","+m.getId_article()+","+m.getId_user()+",'"+m.getText()+"','"+m.getDate()+"');";
             
             
          
@@ -60,7 +61,8 @@ public class commentaireService implements IcommentaireService {
             Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public List<Commentaire> affichercomm(Forum f) 
+ @Override
+    public ArrayList<Commentaire> affichercomm(Forum f) 
             {
             ArrayList <Commentaire> mylist = new ArrayList();
         try {
@@ -69,9 +71,10 @@ public class commentaireService implements IcommentaireService {
             ResultSet rs=st.executeQuery(req);
             while(rs.next()) 
  {
- Commentaire a= new Commentaire(rs.getInt(3),rs.getString(4));
- String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getDate(5));
+ Commentaire a= new Commentaire(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
+ String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getDate(6));
  a.setDate(date);
+ a.setId_comm(rs.getInt(1));
  mylist.add(a);
  
  
@@ -93,6 +96,36 @@ public class commentaireService implements IcommentaireService {
             Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public void like ( Commentaire m)
+    { 
+    try {
+            PreparedStatement pt= c.prepareStatement("update commentaire set score=? where id_comm=? ");
+            pt.setInt(1,1+(m.getScore()));
+          
+            pt.setInt(2,m.getId_comm());
+            pt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(commentaireService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+       public void dislike ( Commentaire m)
+    { 
+    try {
+            PreparedStatement pt= c.prepareStatement("update commentaire set score=? where id_comm=? ");
+            pt.setInt(1,(m.getScore())-1);
+            pt.setInt(2,m.getId_comm());
+            pt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(commentaireService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+} 
+      
+
+       
+    }
+    
+    
+    
 
 

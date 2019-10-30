@@ -5,23 +5,8 @@
  */
 package graphics;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import static com.itextpdf.text.Font.FontFamily.TIMES_ROMAN;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import entity.Events;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -42,7 +27,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import service.EventService;
@@ -131,7 +115,6 @@ public class EventController implements Initializable {
            
         }
         
-        
     }
 
     @FXML
@@ -151,9 +134,9 @@ public class EventController implements Initializable {
     }
 
     @FXML
-    private void bt_annuler(ActionEvent event) throws DocumentException, FileNotFoundException, IOException {
+    private void bt_annuler(ActionEvent event) {
         
-     /*  nom_or.setText("");
+       nom_or.setText("");
        nom_e.setText("");
         lie.setText("");
        nb.setText(null);
@@ -161,62 +144,9 @@ public class EventController implements Initializable {
     //    et.setText("");
         px.setText(null);
         
-        desc.setText("");*/
-     Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 29,
-      Font.BOLD, BaseColor.RED);
-     Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 20,
-      Font.BOLD,BaseColor.BLUE);
-      Font sedFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-      Font.BOLD,BaseColor.GRAY);
-      FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF File", "*.pdf"));
-        fc.setTitle("save tp pdf");
-        fc.setInitialFileName("events.pdf");
-        Stage window = new Stage();
-
-           
-            File file=fc.showSaveDialog(window);
-            String str = file.getAbsolutePath();
-            if(file!=null)
-            {
-                OutputStream fil = new FileOutputStream(new File(str));
-
-
-            Document document = new Document();
-
-            PdfWriter.getInstance(document, fil);
-
-
-            document.open();
-    document.add(new Paragraph( "                             Expo'Tech ", catFont));
-         document.add(new Paragraph( " \n \n  Votre evenement créer : ", subFont));
-
-    String para1="        \n \n             Nom organisateur : "+nom_or.getText()
-                  //  + "\n \n               : "+nom_or.getText()
-                    + "\n \n              Nom evenement :  "+nom_e.getText()
-                    + "\n \n              lieu evenement : "+lie.getText()
-                    + "\n \n              nombre de place :      "+nb.getText()
-                    + "\n \n              date evenement : "+ date.getValue()
-                    + "\n \n              prix :    "+px.getText()
-                   
-                    + "\n \n              decription :      "+desc.getText();
-                    
-        
-
-            Paragraph paragraph = new Paragraph(para1);
-            paragraph.setAlignment(Element.ALIGN_LEFT);
-            document.add(paragraph);
-            document.add(new Paragraph("Merci ATTENT LA RESPONSE JE VEUX ENVOIE UN MAIL OU SMS",
-        sedFont));
-
-   
-   
-     document.close();
-            fil.close();
-            }
+        desc.setText("");
        
     }
-      
 
     
 }

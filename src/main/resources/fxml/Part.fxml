@@ -44,12 +44,27 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutY="340.0" mnemonicParsing="false" onAction="#Reservations" prefHeight="35.0" prefWidth="176.0" text="Reservations">
+            <Label fx:id="prenoml" layoutX="73.0" layoutY="115.0">
                <font>
                   <Font size="14.0" />
                </font>
-            </Button>
+            </Label>
+            <Label fx:id="soldel" layoutX="78.0" layoutY="140.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
+      <Button fx:id="Deconnexion" layoutX="-4.0" layoutY="340.0" mnemonicParsing="false" onAction="#Deconnexion" prefHeight="35.0" prefWidth="180.0" text="Deconnexion">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="noml" layoutX="71.0" layoutY="87.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

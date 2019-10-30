@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.OrgController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c2eaff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.OrgController">
    <children>
       <AnchorPane layoutX="-4.0" prefHeight="460.0" prefWidth="175.0" style="-fx-background-color: #87d5ff;">
          <children>
@@ -20,34 +20,34 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutY="200.0" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="180.0" text="Home">
+            <Button layoutX="-4.0" layoutY="200.0" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="180.0" text="Home">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutY="235.0" mnemonicParsing="false" onAction="#profil" prefHeight="35.0" prefWidth="180.0" text="Profil">
+            <Button layoutX="-4.0" layoutY="235.0" mnemonicParsing="false" onAction="#profil" prefHeight="35.0" prefWidth="180.0" text="Profil">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutY="270.0" mnemonicParsing="false" onAction="#event1" prefHeight="35.0" prefWidth="180.0" text="Events">
+            <Button layoutX="-4.0" layoutY="270.0" mnemonicParsing="false" onAction="#event1" prefHeight="35.0" prefWidth="180.0" text="Events">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="-4.0" layoutY="305.0" mnemonicParsing="false" onAction="#forum" prefHeight="35.0" prefWidth="180.0" text="Forum">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
             <TextField fx:id="nom" layoutX="79.0" layoutY="86.0" prefHeight="25.0" prefWidth="75.0" />
             <TextField fx:id="prenom" layoutX="79.0" layoutY="113.0" prefHeight="25.0" prefWidth="75.0" />
-            <Button layoutY="305.0" mnemonicParsing="false" onAction="#forum" prefHeight="35.0" prefWidth="180.0" text="Forum">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button layoutY="340.0" mnemonicParsing="false" onAction="#Reservations" prefHeight="35.0" prefWidth="180.0" text="Reservations">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
+      <Button fx:id="Deconnexion" layoutX="-9.0" layoutY="340.0" mnemonicParsing="false" onAction="#Deconnexion" prefHeight="35.0" prefWidth="180.0" text="Deconnexion">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

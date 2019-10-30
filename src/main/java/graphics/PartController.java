@@ -5,10 +5,14 @@
  */
 package graphics;
 
-import entity.Participants;
+import utils.ConnexionBD;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,16 +24,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import service.ParService;
-
+ 
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author DELL
  */
 public class PartController implements Initializable {
+Connection connection = ConnexionBD
+           .getInstanceConnexionBD()
+           .getConnection();
 
     @FXML
     private Button btnHome;
@@ -39,30 +45,41 @@ public class PartController implements Initializable {
     private Button btnMesevenements;
     @FXML
     private Button btnForum;
-    private TextField nom_p;
-    private TextField prenom_p;
-    private TextField solde_p;
+    @FXML
+    private Button Deconnexion;
+private String log , pd ;
+    @FXML
+    private Label prenoml;
+    @FXML
+    private Label soldel;
+    @FXML
+    private Label noml;
 
+    public String getLog() {
+        return log;
+    }
+
+    public String getPd() {
+        return pd;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
+
+    public void setPd(String pd) {
+        this.pd = pd;
+    }
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     /*   try{
         // TODO
-        //modifierMembre.setVisible(false);
-        ParService ms = new ParService();
-        Participants mb = ms.getpar(Participants.session);
-        nom_p.setText(mb.getNom());
-        prenom_p.setText(mb.getPrenom());
-        solde_p.setText(Integer.toString(mb.getSolde()));
-        }
-
-    
-        catch (SQLException ex) {
-            Logger.getLogger(PartController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }
+           
+    }    
 
     @FXML
     private void btnHomeAction(ActionEvent event) {
@@ -74,7 +91,7 @@ public class PartController implements Initializable {
 
     @FXML
     private void btnMesevenementsAction(ActionEvent event) {
-         Parent PageParent = null;
+        Parent PageParent = null;
         try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/ParticipantEvent.fxml"));
         } catch (IOException ex) {
@@ -86,28 +103,52 @@ public class PartController implements Initializable {
         window.setScene(PageScene);
         window.show();
     }
-    
-
 
     @FXML
     private void btnForumAction(ActionEvent event) {
     }
 
     @FXML
-    private void Reservations(ActionEvent event) {
-        Parent PageParent = null;
-        try {
-            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AfficherResPar.fxml"));
+    private void Deconnexion(ActionEvent event) {
+
+         try {
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+            Parent root = (Parent)Loader.load();
+            
+           
+            
+            Stage st= new Stage();
+            st.setScene(new Scene(root));
+            st.show();
         } catch (IOException ex) {
-            Logger.getLogger(AfficherResOrgController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene PageScene = new Scene(PageParent);
+           
+      
+       
+       Stage stage = (Stage) Deconnexion.getScene().getWindow(); 
+          stage.close();
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(PageScene);
-        window.show();
-    
     }
-    }    
-    
-
+   void setIdrecla(String login , String pwd)
+  {setLog(login);
+      setPd(pwd);
+           
+        try {
+     
+                   Statement st = connection.createStatement();
+                   String req = "select nom,prenom from participant where email='"+getLog()+"' and mdp='"+getPd()+"'";
+                   ResultSet rs = st.executeQuery(req);
+                   ResultSetMetaData meta = rs.getMetaData();
+                   while (rs.next())
+                       
+                   {  
+                       prenoml.setText(rs.getString("prenom"));
+                   noml.setText(rs.getString("nom"));
+                       
+                   }
+               } catch (SQLException ex) {
+                   Logger.getLogger(PartController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+  } 
+}

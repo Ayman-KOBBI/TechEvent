@@ -41,8 +41,8 @@ public class forumService implements IforumService {
         try {
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
             String req1="INSERT INTO `forum` "
-                    + "(`id_article`, `id_user`,`titre`,`image`,`description`,`date`) "
-                    + "VALUES ( "+f.getId_article()+","+f.getId_user()+","+f.getTitre()+","+f.getImage()+","+f.getDescription()+","+f.getDate()+");";
+                    + "(`id_user`,`score`,`titre`,`description`,`date`) "
+                    + "VALUES ( "+f.getId_user()+","+f.getScore()+",'"+f.getTitre()+"','"+f.getDescription()+"','"+f.getDate()+"');";
             
             
          
@@ -67,13 +67,14 @@ public class forumService implements IforumService {
         }
     }
 
-    @Override
-     public void modifierarticle(int id_article, String description)
+   
+     public void modifierarticle(int id_article,String titre, String description)
     {
         try {
-            PreparedStatement pt= c.prepareStatement("update forum set description=? where id_article=? ");
-            pt.setString(1,description);
-            pt.setInt(2,id_article);
+            PreparedStatement pt= c.prepareStatement("update forum set titre=?,description=? where id_article=? ");
+            pt.setString(1,titre);
+            pt.setString(2,description);
+            pt.setInt(3,id_article);
             pt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,21 +87,23 @@ public class forumService implements IforumService {
             Statement st = c.createStatement();
             String req="select * from forum";
             ResultSet rs=st.executeQuery(req);
-            while(rs.next()) {System.out.println("user id: "+rs.getInt(2)+" titre: "+rs.getString(3)+" description: "+rs.getString(5)+" date: "+rs.getDate(6)+" image: "+rs.getString(4));}
+            while(rs.next()) {System.out.println("user id: "+rs.getInt(2)+" titre: "+rs.getString(3)+" description: "+rs.getString(4)+" date: "+rs.getDate(5));}
         } catch (SQLException ex) {
             Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
+    
+   
     public ArrayList<Forum> afficherarticles()
     {
         ArrayList <Forum> mylist = new ArrayList();
         try {
             Statement st = c.createStatement();
-            String req="select * from post";
+            String req="select * from forum";
             ResultSet rs=st.executeQuery(req);
             while(rs.next()) 
  {
- Forum f = new Forum(rs.getInt(2),rs.getString(3),rs.getString(5));
+ Forum f = new Forum(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5));
  String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getDate(6));
  f.setDate(date);
  mylist.add(f);
@@ -114,6 +117,37 @@ public class forumService implements IforumService {
     
         return mylist;
 }
+   
+        public int nbreponse(int id_article)
+    {
+        ArrayList<String> t = new ArrayList();
+          try {
+              Statement st = c.createStatement();
+              String req=" select * from commentaire where id_article='"+id_article+"'";
+              ResultSet rs =st.executeQuery(req);
+              
+              while (rs.next()){t.add(rs.getString(4));}
+              
+          } catch (SQLException ex) {
+              Logger.getLogger(forumService.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    return t.size();
+    }
+        
+        public String getUsername(int id) throws SQLException {
+        Statement st;
+
+        PreparedStatement pst;
+        ResultSet rs;
+
+        String req = "Select nom from participant where id_par=?";
+        pst = c.prepareStatement(req);
+        pst.setInt(1, id);
+        rs = pst.executeQuery();
+        rs.next();
+       return rs.getString("nom");
+         
+  }
 }
 
 

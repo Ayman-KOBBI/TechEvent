@@ -5,6 +5,8 @@
  */
 package entity;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author asus
@@ -15,14 +17,54 @@ private String nom;
 private String prenom;
 private String email;
 private String tel;
+private String mdp;
+public static String session;
+ private Button modifier=new Button ("modifier");
+    private Button supprimer=new Button ("supprimer"); 
+
+    public void setModifier(Button modifier) {
+        this.modifier = modifier;
+    }
+
+    public void setSupprimer(Button supprimer) {
+        this.supprimer = supprimer;
+    }
+
+    public Button getModifier() {
+        return modifier;
+    }
+
+    public Button getSupprimer() {
+        return supprimer;
+    }
+    
+
+    public static String getSession() {
+        return session;
+    }
+
+    public static void setSession(String session) {
+        Organisateurs.session = session;
+    }
 public Organisateurs(){}
 
-    public Organisateurs(int id_org, String nom, String prenom, String email, String tel) {
+  
+    public Organisateurs(int id_org, String nom, String prenom, String email, String tel,String mdp) {
         this.id_org = id_org;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.tel = tel;
+        this.mdp=mdp;
+     
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
 

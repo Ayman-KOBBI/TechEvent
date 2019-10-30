@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IforumService {
     public void creerarticle(Forum f);
-    public void modifierarticle(int id_article, String description);
+    public void modifierarticle(int id_article,String titre, String description);
     public void supprimerarticle(int id_article);
     public void afficherarticle();
     public ArrayList<Forum> afficherarticles();

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.ForumController">
+   <children>
+      <Text fill="#f8f5f6" layoutX="-28.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EXPO TECH" textAlignment="CENTER" wrappingWidth="219.0541763305664">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Pane layoutX="171.0" prefHeight="496.0" prefWidth="539.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <JFXButton layoutX="199.0" layoutY="443.0" onAction="#Stat" prefHeight="38.0" prefWidth="165.0" text="Voir Statistique" textFill="STEELBLUE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+         </children></Pane>
+      <Label layoutX="360.0" layoutY="36.0" prefHeight="18.0" prefWidth="199.0" text="Bienvenue au forum">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="181.0" layoutY="81.0" prefHeight="361.0" prefWidth="527.0">
+         <columns>
+            <TableColumn fx:id="titre" prefWidth="173.0" text="Article" />
+            <TableColumn fx:id="id_user" prefWidth="134.0" text="Auteur " />
+            <TableColumn fx:id="score" prefWidth="104.0" text="Nb réponse" />
+            <TableColumn fx:id="button" prefWidth="115.0" text="Consulter" />
+         </columns>
+      </TableView>
+      <JFXButton layoutX="-1.0" layoutY="127.0" onAction="#forum1" prefHeight="38.0" prefWidth="165.0" text="Forum" textFill="STEELBLUE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="-1.0" layoutY="81.0" onAction="#article1" prefHeight="38.0" prefWidth="165.0" text="Créer un article" textFill="STEELBLUE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

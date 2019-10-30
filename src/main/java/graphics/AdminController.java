@@ -7,7 +7,6 @@ package graphics;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,13 +19,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import service.ParService;
+
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author DELL
  */
 public class AdminController implements Initializable {
 
@@ -42,7 +40,9 @@ public class AdminController implements Initializable {
     private Button event;
     @FXML
     private Button forum;
-
+    @FXML
+    private Button Deconnexion;
+      
     /**
      * Initializes the controller class.
      */
@@ -52,8 +52,55 @@ public class AdminController implements Initializable {
     }    
 
     @FXML
+    private void bthome(ActionEvent event) {
+    }
+
+    @FXML
+    private void btorganisateur(ActionEvent event) {
+           try {
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/consulterOrg.fxml"));
+            Parent root = (Parent)Loader.load();
+            
+           
+            
+            Stage st= new Stage();
+            st.setScene(new Scene(root));
+            st.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+      
+       
+       Stage stage = (Stage) btorganisateur.getScene().getWindow(); 
+          stage.close();
+           
+    }
+
+    @FXML
+    private void btutilisateur(ActionEvent event) {
+        
+        try {
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/consulterPar.fxml"));
+            Parent root = (Parent)Loader.load();
+           
+            Stage st= new Stage();
+            st.setScene(new Scene(root));
+            st.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+      
+       Stage stage = (Stage) utilisateur.getScene().getWindow(); 
+          stage.close();
+        
+        
+    }
+
+    @FXML
     private void event2(ActionEvent event) {
-         Parent PageParent = null;
+        Parent PageParent = null;
         try {
             PageParent = FXMLLoader.load(getClass().getResource("/fxml/AdminEvent.fxml"));
         } catch (IOException ex) {
@@ -67,19 +114,31 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void bthome(ActionEvent event) {
-    }
-
-    @FXML
-    private void btorganisateur(ActionEvent event) {
-    }
-
-    @FXML
-    private void btutilisateur(ActionEvent event) {
-    }
-
-    @FXML
     private void btforum(ActionEvent event) {
     }
+
+    @FXML
+    private void Deconnexion(ActionEvent event) {
     
+         try {
+            FXMLLoader Loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+            Parent root = (Parent)Loader.load();
+            
+           
+            
+            Stage st= new Stage();
+            st.setScene(new Scene(root));
+            st.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+      
+       
+       Stage stage = (Stage) Deconnexion.getScene().getWindow(); 
+          stage.close();
+    
+    }
+    
+  
 }

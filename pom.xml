@@ -29,6 +29,12 @@
     <artifactId>itextpdf</artifactId>
     <version>5.5.13</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+<dependency>
+    <groupId>com.jfoenix</groupId>
+    <artifactId>jfoenix</artifactId>
+    <version>8.0.8</version>
+</dependency>
 
 
 <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -49,6 +55,7 @@
   <artifactId>twilio</artifactId>
   <version>7.42.0</version>
 </dependency>
+
     </dependencies>
 
    

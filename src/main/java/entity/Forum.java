@@ -12,32 +12,82 @@ package entity;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javafx.scene.control.Button;
+
+
+
 public class Forum {
     private int id_article ;
     private int id_user;
-    private int id_org;
-    private String titre,image,description;
+    private int id_org,score;
+    private String titre,description,u;
     private final Date date1= new Date();  
 private  String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date1);
+private Button button=new Button("Consulter");
 
-    public Forum(int id_article, int id_user, int id_org, String titre, String image, String description) {
+    public Forum(int id_article, int id_user, int score, String titre, String description, String date) {
         this.id_article = id_article;
         this.id_user = id_user;
-        this.id_org = id_org;
+        this.score = score;
         this.titre = titre;
-        this.image = image;
+        this.description = description;
+        this.date= date;
+    }
+    public String getU() {
+        return u;
+    }
+
+    public Forum(int id_article, int id_user, int score, String titre, String description) {
+        this.id_article = id_article;
+        this.id_user = id_user;
+        this.score = score;
+        this.titre = titre;
         this.description = description;
     }
 
-    public Forum(int id_user, String titre, String description) {
+    public void setU(String u) {
+        this.u = u;
+    }
+    public Forum() {
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Forum(int id_user, int score, String description) {
+        this.id_user = id_user;
+        this.score = score;
+        this.description = description;
+    }
+
+    
+
+   
+
+    public Forum(int id_user,int score, String titre, String description) {
         this.id_user = id_user;
         this.titre = titre;
         this.description = description;
+    }
+
+
+
+    public void setButton(Button button) {
+        this.button = button;
+    }
+
+    public Button getButton() {
+        return button;
     }
 
     @Override
     public String toString() {
-        return "Forum{" + "id_article=" + id_article + ", id_user=" + id_user + ", id_org=" + id_org + ", titre=" + titre + ", image=" + image + ", description=" + description + ", date1=" + date1 + ", date=" + date + '}';
+        return "Forum{" + "id_article=" + id_article + ", id_user=" + id_user + ", id_org=" + id_org + ", titre=" + titre + ", description=" + description + ", date1=" + date1 + ", date=" + date + '}';
     }
 
     public void setId_article(int id_article) {
@@ -56,9 +106,7 @@ private  String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date1)
         this.titre = titre;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+
 
     public void setDescription(String description) {
         this.description = description;
@@ -84,9 +132,7 @@ private  String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date1)
         return titre;
     }
 
-    public String getImage() {
-        return image;
-    }
+   
 
     public String getDescription() {
         return description;

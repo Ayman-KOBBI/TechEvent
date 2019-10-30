@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package graphics;
+
+import service.UserService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,137 +15,145 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-/*import java.awt.Label;
-import java.awt.TextField;
-//import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.net.URL;
-import javafx.event.ActionEvent;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
-import javax.swing.JOptionPane;*/
+import entity.User;
 
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author DELL
  */
 public class LoginController implements Initializable {
-    @FXML 
+
+    @FXML
     private TextField txtUsername;
     @FXML
     private PasswordField txtPassword;
     @FXML
     private Button btnConnexion;
-    
-    @FXML
-    private Label lblMsg;
-    private Button signup;
     @FXML
     private Button btnSignup;
-    
-    
+    @FXML
+    private Label lblMsg;
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-     /*       signup.setOnAction((ActionEvent event) -> {
-                FXMLLoader loader = new FXMLLoader(LoginController.this.getClass().getResource("/fxml/inscription.fxml"));
-                Parent root;
-                try {
-                    root = loader.load();
-                    signup.getScene().setRoot(root);
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });*/
-        
-        
-    
-        
-        
-        
-
-   /* @FXML
-    private void btnConnexionAction(javafx.event.ActionEvent event) throws IOException{
-        String password= txtPassword.getText();
-        String username= txtUsername.getText();
-        String role;
-     PosteurService p = new PosteurService();
-    role=p.login(username, password);
-    if( "fault".equals(role))
-    {
-        JOptionPane.showMessageDialog(null, "Please check your Username and Password");
-    }
-    else
-    {
-        Parent root=FXMLLoader.load(getClass().getResource("/fxml/"+role+".fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.hide();
-        stage.setScene(scene);
-        stage.show();
-    }
-        
-    }
-
-    @FXML
-    private void btnSignupAction(javafx.event.ActionEvent event) throws IOException {
-        Stage stage;
-        Parent signUpPage = FXMLLoader.load(getClass().getResource("/fxml/inscription.fxml"));
-        Scene scene = new Scene (signUpPage);
-        stage = (Stage)btnSignup.getScene().getWindow();
-        stage.hide();
-        stage.setScene(scene);
-        stage.show();*/
-        
-    }
+    }    
 
     @FXML
     private void btnConnexionAction(ActionEvent event) {
+        
+        String logf = txtUsername.getText();
+        String passf = txtPassword.getText();
+        UserService u = new UserService();
+        User res = null;
+        String rol ; 
+         if (u.verifyPass(logf, passf)) {
+            rol = u.seConnecter(logf,passf);
+            
+           
+          //  session.getInstance(res.getLogin(), res.getMdp(), res.getRole(), res.getId_user());
+      
+          switch(rol)
+          {case "admin":  try {
+                    Stage stage = new Stage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin.fxml"));
+                    Parent root = loader.load();
+                     
+                
+                    Scene scene = new Scene(root);
+                    stage.setTitle("TechExpo");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+          break ; 
+          
+          
+          case "participant":   try {
+                    Stage stage = new Stage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Part.fxml"));
+                    Parent root = loader.load();
+                     PartController tr = loader.getController();
+               
+                tr.setIdrecla(logf,passf);
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Garantia");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+          break ;
+          case "organisateur": try {
+                    Stage stage = new Stage();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/org.fxml"));
+                    Parent root = loader.load();
+                            OrgController tr = loader.getController();
+               
+                tr.setIdrecla(logf,passf);
+                    Scene scene = new Scene(root);
+                    stage.setTitle("TechExpoa");
+                    stage.setScene(scene);
+                    stage.show();
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+          break;
+          
+          
+          }
+       
+           Stage stage = (Stage) btnConnexion.getScene().getWindow(); 
+          stage.close();           
+        
+       
+         }
+         else {
+           try {
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/verif_2.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                stage.setTitle("TechExpo");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+          
+         }
+        
     }
 
     @FXML
     private void btnSignupAction(ActionEvent event) {
-        Parent PageParent = null;
-        try {
-            PageParent = FXMLLoader.load(getClass().getResource("/fxml/inscription.fxml"));
+          try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/inscription.fxml"));
+        Scene scene = new Scene(root);
+            Stage stage = new Stage();
+           
+            stage.setScene(scene);
+            stage.show();
+           
         } catch (IOException ex) {
-            Logger.getLogger(ModifEventController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Scene PageScene = new Scene(PageParent);
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(PageScene);
-        window.show();
+               Stage stage = (Stage) btnSignup.getScene().getWindow(); 
+          stage.close(); 
+          
     }
-}
     
-
+}

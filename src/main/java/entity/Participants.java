@@ -15,23 +15,28 @@ public class Participants {
     private String prenom;
     private String email;
     private String tel;
+    private String mdp ;
     private int solde=20;
     public static String session;
 
+   
     
     public Participants(){}
 
-    public Participants(int id_par, String nom, String prenom, String email, String tel, int solde) {
+    public Participants(int id_par, String nom, String prenom, String email, String tel, int solde,String mdp) {
         this.id_par = id_par;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.tel = tel;
         this.solde = solde;
+        this.mdp=mdp;
+       
     }
 
-    public Participants(int id_par, String nom, String prenom, String email, String tel) {
-        this(id_par,nom,prenom,email,tel,20);
+ 
+    public Participants(int id_par, String nom, String prenom, String email, String tel,String mdp) {
+        this(id_par,nom,prenom,email,tel,20,mdp);
  
     }
 
@@ -96,6 +101,14 @@ public class Participants {
     @Override
     public String toString() {
         return "Participants{" + "id_par=" + id_par + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", tel=" + tel + ", solde=" + solde + '}';
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
     
     

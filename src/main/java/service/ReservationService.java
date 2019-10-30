@@ -161,7 +161,7 @@ public class ReservationService implements IReservationService{
             System.out.println(ex.getMessage());
         }     
         
-        ParService par1=new ParService();
+        ParticipantService par1=new ParticipantService();
         par1.SetJetons(p, true, -e.getPrix());
          String req_update_solde="UPDATE participant SET solde=? WHERE(id_par=?);";
          PreparedStatement rs2 = c.prepareStatement(req_update_solde);

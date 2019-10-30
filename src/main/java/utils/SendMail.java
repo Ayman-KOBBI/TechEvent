@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class SendMail {
    
- public static void sendMail(String userMail,String pass,String sujet,String contenu) throws MessagingException{
+/* public static void sendMail(String userMail,String pass,String sujet,String contenu) throws MessagingException{
     
         
         String to = "ayman.kobbi@esprit.tn";
@@ -58,7 +58,7 @@ public class SendMail {
           
         
         
-    }
+    }*/
 }
    
 

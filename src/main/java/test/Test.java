@@ -98,7 +98,7 @@ public class Test {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }      */
-        SendMail.sendMail("ayman.kobbi@esprit.tn","183JMT2883","aaa","ahla");
+       
 //Reservation r1=new Reservation(1,1,p1,"aaaaaa");
         //res1.ajouterReservation(r1); */
        /* ReservationService res1= new ReservationService();

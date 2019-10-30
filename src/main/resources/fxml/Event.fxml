@@ -63,7 +63,7 @@
       <Button layoutX="633.0" layoutY="352.0" mnemonicParsing="false" onAction="#ajout1" text="Valider" />
       <DatePicker fx:id="date" layoutX="212.0" layoutY="213.0" prefHeight="31.0" prefWidth="149.0" promptText="date event" />
       <Button layoutX="628.0" layoutY="414.0" mnemonicParsing="false" onAction="#bt_Retour" prefHeight="25.0" prefWidth="65.0" text="Retour" />
-      <Button layoutX="632.0" layoutY="383.0" mnemonicParsing="false" onAction="#bt_annuler" text="Anuuler" />
+      <Button layoutX="632.0" layoutY="383.0" mnemonicParsing="false" onAction="#bt_annuler" prefHeight="25.0" prefWidth="53.0" text="PDF" />
       <Text fill="#f8f5f6" fontSmoothingType="LCD" layoutX="441.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are Welcome" textAlignment="CENTER" wrappingWidth="219.0541763305664">
          <font>
             <Font size="31.0" />
@@ -74,6 +74,5 @@
             <Image url="@../image/Event+Tech+Tribe+logo+icon+jpeg.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="212.0" layoutY="414.0" mnemonicParsing="false" onAction="#pdf1" prefHeight="25.0" prefWidth="53.0" text="PDF" />
    </children>
 </AnchorPane>

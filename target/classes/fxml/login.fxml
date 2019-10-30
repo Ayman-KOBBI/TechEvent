@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #001623;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.LoginController">
    <children>
       <AnchorPane layoutX="383.0" layoutY="48.0" prefHeight="304.0" prefWidth="274.0" style="-fx-background-color: #005887;">
          <children>
@@ -26,7 +26,7 @@
       <Button fx:id="btnSignup" layoutX="108.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnSignupAction" prefHeight="30.0" prefWidth="145.0" text="Sign Up" />
       <ImageView fitHeight="211.0" fitWidth="350.0" layoutX="14.0" layoutY="18.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/evolusi.jpg" />
+            <Image url="@../image/evolusi.jpg" />
          </image>
       </ImageView>
       <Label fx:id="lblMsg" layoutX="73.0" layoutY="174.0" text="Welcome to Tech'Expo" textFill="WHITE">

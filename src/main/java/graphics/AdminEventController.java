@@ -282,7 +282,7 @@ public class AdminEventController implements Initializable {
 
             
             
-           // sendSms();
+       //     sendSms();
            //     Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 JOptionPane.showMessageDialog(null, "Events accepter ");
     Parent PageParent = null;

@@ -31,7 +31,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import service.EventService;
-import service.ParService;
+import service.ParticipantService;
 import service.ReservationService;
 
 /**
@@ -117,8 +117,8 @@ public class ParticipantEventController implements Initializable {
           EventService cs = new EventService();
           ReservationService res=new ReservationService();
          // m=getlogin;
-        ParService ps=new ParService();
-        Participants p=new Participants(11,"kobbi","ayman","6546","eaemail",50);
+        ParticipantService ps=new ParticipantService();
+        Participants p=new Participants("ghjk", "prenom", "tel", "email");
         Events a = (Events) table_event.getSelectionModel().getSelectedItem();
         Reservation r1=new Reservation(1,a.getId_ev(),p.getId_par(),p.getNom(),p.getPrenom(),a.getNom_event());
         try {

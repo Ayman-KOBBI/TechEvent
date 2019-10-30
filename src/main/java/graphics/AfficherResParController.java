@@ -63,7 +63,7 @@ public class AfficherResParController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ReservationService rs=new ReservationService();
          Participants p1= new Participants();
-         p1.setId_par(60);
+         p1.setId_par(11);
        
          ArrayList<ReservationEvent> list= null; 
         try {

@@ -20,7 +20,7 @@ public interface IEventService {
         public void modifEvent(Events e);    
 
     public void supprEvent(Events e);
-    public List<Events> chercher(String nom_e);
+    public List<Events> chercher(String nom_e );
     public List<Events> affichierEvent();
      public void RefuserEvent(Events e);
      public void AccepterEvent(Events e);

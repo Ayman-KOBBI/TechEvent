@@ -78,7 +78,7 @@ public class ParticipantEventController implements Initializable {
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
         nb.setCellValueFactory(new PropertyValueFactory<>("nb_place") );
         dt_e.setCellValueFactory(new PropertyValueFactory<>("dt_event") );
-    //    h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
+    //  h_e.setCellValueFactory(new PropertyValueFactory<>("h_event") );
         px.setCellValueFactory(new PropertyValueFactory<>("prix") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
         
@@ -89,6 +89,7 @@ public class ParticipantEventController implements Initializable {
     private void search(KeyEvent event) {
         
          EventService p = new EventService();
+          
             String m = tfserach.getText().concat("%");
             ArrayList<Events> e= (ArrayList<Events>) p.chercher(m);
             ObservableList<Events> obs=FXCollections.observableArrayList(e);
@@ -117,7 +118,7 @@ public class ParticipantEventController implements Initializable {
           ReservationService res=new ReservationService();
          // m=getlogin;
         ParService ps=new ParService();
-        Participants p=new Participants(60,"kobbi","ayman","6546","eaemail",50);
+        Participants p=new Participants(11,"kobbi","ayman","6546","eaemail",50);
         Events a = (Events) table_event.getSelectionModel().getSelectedItem();
         Reservation r1=new Reservation(1,a.getId_ev(),p.getId_par(),p.getNom(),p.getPrenom(),a.getNom_event());
         try {

@@ -142,7 +142,7 @@ public class EventController implements Initializable {
        nb.setText(null);
         date.setValue(null);
     //    et.setText("");
-        px.setText("");
+        px.setText(null);
         
         desc.setText("");
        

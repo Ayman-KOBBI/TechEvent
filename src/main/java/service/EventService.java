@@ -126,9 +126,10 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,pr
     }
 
      @Override   
-     public List<Events> chercher(String nom_e){
+     public List<Events> chercher(String nom_e ){
          Events p = null ;
-        String req="select * from events where nom_event like '"+nom_e+"'";
+        String req="select * from events where nom_event like '"+nom_e+"' ";
+         
         List<Events> event=new ArrayList<>();
         try {
              ResultSet rs=  ste.executeQuery(req);

@@ -89,7 +89,7 @@ public class ReservationService implements IReservationService{
               e  = new ReservationEvent();
              // p = new Participants();
                       e.setId_ev(res.getInt("id_ev"));
-                       e.setId_org(res.getInt("Id_org"));
+               //        e.setId_org(res.getInt("Id_org"));
                       e.setNom_org(res.getString("nom_org"));
                       e.setDescription(res.getString("Description") );
                       e.setLieu(res.getString("lieu"));
@@ -125,6 +125,7 @@ public class ReservationService implements IReservationService{
             p.setId_par(res.getInt("id_par"));
             p.setTel(res.getString("tel"));
             p.setEmail(res.getString("email"));
+           
             
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -144,12 +145,13 @@ public class ReservationService implements IReservationService{
             e.setDescription(res2.getString("Description"));
             e.setDt_event(res2.getDate("dt_event"));
             e.setId_ev(res2.getInt("id_ev"));
-
+            e.setId_ticket(res2.getInt("id_ticket"));
+            e.setEtat(res2.getString("etat"));
          
             e.setNom_org(res2.getString("nom_org"));
 
             
-            e.setId_org(res2.getInt("Id_org"));
+        //    e.setId_org(res2.getInt("Id_org"));
 
             e.setNom_event(res2.getString("nom_event"));
             e.setLieu(res2.getString("lieu"));

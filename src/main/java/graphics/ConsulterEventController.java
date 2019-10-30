@@ -203,6 +203,7 @@ public class ConsulterEventController implements Initializable {
         
             EventService p = new EventService();
             String m = tfserach.getText().concat("%");
+            
             ArrayList<Events> e= (ArrayList<Events>) p.chercher(m);
             ObservableList<Events> obs=FXCollections.observableArrayList(e);
             table_event.setItems(obs);
@@ -253,7 +254,7 @@ public class ConsulterEventController implements Initializable {
         lie1.setText("");
        nb1.setText(null);
         date1.setValue(null);
-      //  h_e1.setText("");
+       et1.setText("");
         px1.setText("");
         
         desc1.setText("");

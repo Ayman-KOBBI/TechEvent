@@ -119,7 +119,8 @@ public class ConsulterEventController implements Initializable {
         ArrayList<Events> e = (ArrayList<Events>) p.affichierEvent(); 
         ObservableList<Events> obs=FXCollections.observableArrayList(e);*/
        String m = "Accepte";
-
+    
+  
         EventService p= new EventService();
         ArrayList<Events> e = (ArrayList<Events>) p.cherche(m); 
         ObservableList<Events> obs=FXCollections.observableArrayList(e);
@@ -134,7 +135,7 @@ public class ConsulterEventController implements Initializable {
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
         
          EventService ps=new EventService();
-        ////////////
+        
         table_event.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

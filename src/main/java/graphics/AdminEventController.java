@@ -8,8 +8,11 @@ package graphics;
 import static com.itextpdf.text.Annotation.FILE;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import entity.Events;
@@ -17,6 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -278,8 +282,8 @@ public class AdminEventController implements Initializable {
 
             
             
-           // sendSms();
-             //    Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
+          //  sendSms();
+           //     Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 JOptionPane.showMessageDialog(null, "Events accepter ");
     Parent PageParent = null;
         try {
@@ -301,7 +305,7 @@ JOptionPane.showMessageDialog(null, "Events accepter ");
       
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.RefuserEvent(e1);
-          // Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
+        //  Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est refuser");
 JOptionPane.showMessageDialog(null, "Events refuser ");
  Parent PageParent = null;
         try {
@@ -375,18 +379,77 @@ JOptionPane.showMessageDialog(null, "Events refuser ");
     }*/
     
     @FXML
-    private void bt_im(ActionEvent event) throws FileNotFoundException, DocumentException {
-      //  FileChooser chooser = new FileChooser();
-        // Set extension filter
-      //  FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Excel Files(*.xls)", "*.xls");
-      //  chooser.getExtensionFilters().add(filter);
-        // Show save dialog
-     //   File file = chooser.showSaveDialog(bt_excel.getScene().getWindow());
-       // if (file != null) {
-         //   Excel(file);
-   
- 
-   
+    private void bt_im(ActionEvent event) throws FileNotFoundException, DocumentException, IOException {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF File", "*.pdf"));
+        fc.setTitle("save tp pdf");
+        fc.setInitialFileName("events.pdf");
+        Stage window = new Stage();
+
+           
+            File file=fc.showSaveDialog(window);
+            String str = file.getAbsolutePath();
+            if(file!=null)
+            {
+                OutputStream fil = new FileOutputStream(new File(str));
+
+
+            Document document = new Document();
+
+            PdfWriter.getInstance(document, fil);
+
+
+            document.open();
+       PdfPTable table = new PdfPTable(8);
+    
+     
+  //  t.setBorderColor(BaseColor.GRAY);
+    // t.setPadding(4);
+    // t.setSpacing(4);
+    // t.setBorderWidth(1);
+
+    PdfPCell c1 = new PdfPCell(new Phrase("Nom_org"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+
+    c1 = new PdfPCell(new Phrase("Nom_event"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+
+    c1 = new PdfPCell(new Phrase("Lieu"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    c1 = new PdfPCell(new Phrase("nb_palce"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    c1 = new PdfPCell(new Phrase("dt_event"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    c1 = new PdfPCell(new Phrase("Etat"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    c1 = new PdfPCell(new Phrase("Prix"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    c1 = new PdfPCell(new Phrase("Description"));
+    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+    table.addCell(c1);
+    table.setHeaderRows(1);
+     table.addCell( nom_or1.getText());
+    table.addCell(nom_e1.getText());
+    table.addCell(lie1.getText());
+    table.addCell(nb1.getText());
+  
+    table.addCell(dt_e.getText());
+    table.addCell(et1.getText());
+    table.addCell(px1.getText());
+    table.addCell(desc1.getText());
+    
+    
+    document.add(table);
+     document.close();
+            fil.close();
+            }
     }
     
 }

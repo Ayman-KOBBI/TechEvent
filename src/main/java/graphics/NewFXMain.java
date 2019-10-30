@@ -29,7 +29,7 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException, MessagingException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Part.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Forum.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show(); 

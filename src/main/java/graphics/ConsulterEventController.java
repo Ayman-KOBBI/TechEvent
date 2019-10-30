@@ -254,7 +254,7 @@ public class ConsulterEventController implements Initializable {
         lie1.setText("");
        nb1.setText(null);
         date1.setValue(null);
-       et1.setText("");
+  //     et1.setText("");
         px1.setText("");
         
         desc1.setText("");

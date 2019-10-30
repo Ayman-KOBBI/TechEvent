@@ -15,17 +15,17 @@ import javafx.scene.control.TableColumn;
  */
 public class Events {
     
-    private int id_ev ; 
-    private int id_org;
-   private String nom_org ; 
-    private String description; 
-   private Date dt_event; 
-    private int nb_place ; 
-    private String lieu ;
-    private int  prix ; 
+    protected int id_ev ; 
+    protected int id_org;
+   protected String nom_org ; 
+    protected String description; 
+   protected Date dt_event; 
+    protected int nb_place ; 
+    protected String lieu ;
+    protected int  prix ; 
  //   private String h_event ; 
-    private String nom_event ;
-    private String etat ;
+    protected String nom_event ;
+    protected String etat ;
    
     
     public Events() {

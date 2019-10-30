@@ -9,6 +9,7 @@ import entity.Events;
 import entity.Organisateurs;
 import entity.Participants;
 import entity.Reservation;
+import entity.ReservationEvent;
 import java.util.List;
 
 /**
@@ -20,7 +21,8 @@ public interface IReservationService {
     public void ajouterReservation(Reservation r) throws Exception;
     public void supprimerReservation(Reservation r);
     public List<Reservation> afficherReservation(Organisateurs o) throws Exception;
-    public List<Events> afficherReservationPar(Participants p) throws Exception;
+    public List<ReservationEvent> afficherReservationPar(Participants p) throws Exception;
      public List<Reservation> chercher(String nom_ev);
-     public void supprimerReservationEv(Events e);
+   public void supprimerReservationEv(ReservationEvent e);
+    public List<ReservationEvent> chercherEv(String nom_e);
 }

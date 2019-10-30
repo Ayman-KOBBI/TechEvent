@@ -8,6 +8,7 @@ package graphics;
 import entity.Events;
 import entity.Participants;
 import entity.Reservation;
+import entity.ReservationEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -41,17 +42,17 @@ import service.ReservationService;
 public class AfficherResParController implements Initializable {
 
     @FXML
-    private TableView<Reservation> table_event;
+    private TableView<ReservationEvent> table_event;
     @FXML
-    private TableColumn<Events,String> nom_or;
+    private TableColumn<ReservationEvent,String> nom_or;
     @FXML
-    private TableColumn<Events,String> nom_e;
+    private TableColumn<ReservationEvent,String> nom_e;
     @FXML
-    private TableColumn<Events,String> lie;
+    private TableColumn<ReservationEvent,String> lie;
     @FXML
-    private TableColumn<Events, Date> dt_e;
+    private TableColumn<ReservationEvent, Date> dt_e;
     @FXML
-    private TableColumn<Events,String> desc;
+    private TableColumn<ReservationEvent,String> desc;
     @FXML
     private TextField tfserach;
 
@@ -64,19 +65,20 @@ public class AfficherResParController implements Initializable {
          Participants p1= new Participants();
          p1.setId_par(60);
        
-         ArrayList<Reservation> list= null;; 
+         ArrayList<ReservationEvent> list= null; 
         try {
-            list = (ArrayList<Reservation>) rs.afficherReservationPar(p1);
+            list = (ArrayList<ReservationEvent>) rs.afficherReservationPar(p1);
         } catch (Exception ex) {
             Logger.getLogger(AfficherResParController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ObservableList<Reservation> obs=FXCollections.observableArrayList(list);
+        ObservableList<ReservationEvent> obs=FXCollections.observableArrayList(list);
         table_event.setItems(obs);
         nom_or.setCellValueFactory(new PropertyValueFactory<>("nom_org") );
         nom_e.setCellValueFactory(new PropertyValueFactory<>("nom_event") );
         lie.setCellValueFactory(new PropertyValueFactory<>("lieu") );
         dt_e.setCellValueFactory(new PropertyValueFactory<>("dt_event") );
         desc.setCellValueFactory(new PropertyValueFactory<>("description") );
+        
         // TODO
     }    
 
@@ -84,8 +86,8 @@ public class AfficherResParController implements Initializable {
     private void bt_sup(ActionEvent event) {
          ReservationService cs = new ReservationService();
         
-        Reservation a = (Reservation) table_event.getSelectionModel().getSelectedItem();
-        cs.supprimerReservation(a);
+        ReservationEvent a = (ReservationEvent) table_event.getSelectionModel().getSelectedItem();
+        cs.supprimerReservationEv(a);
         
         Parent PageParent = null;
         try {
@@ -102,10 +104,10 @@ public class AfficherResParController implements Initializable {
 
     @FXML
     private void search(KeyEvent event) {
-         EventService es = new EventService();
+         ReservationService rs = new ReservationService();
             String m = tfserach.getText().concat("%");
-            ArrayList<Events> e= (ArrayList<Events>) es.chercher(m);
-            ObservableList<Events> obs=FXCollections.observableArrayList(e);
+            ArrayList<ReservationEvent> e= (ArrayList<ReservationEvent>) rs.chercherEv(m);
+            ObservableList<ReservationEvent> obs=FXCollections.observableArrayList(e);
             table_event.setItems(obs);
     }
 

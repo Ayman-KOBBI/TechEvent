@@ -36,14 +36,14 @@ public class Test {
 
  
     public static void main(String[] args) throws SQLException, ParseException, MessagingException, Exception {
-       String m = "2019-01-28";
+   /*    String m = "2019-01-28";
     java.util.Date date =  new SimpleDateFormat("yyyy-MM-dd").parse(m);
     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
            EventService es = new EventService();
             OrgService org=new OrgService();
             Organisateurs o=new Organisateurs();
             o.setId_org(10);
-            o.setNom("salah");
+            o.setNom("salah");   */
            // Events e2 =new Events(9);
             //es.chercher("tech");
             //Events e3 =new Events(11, "mjez", 8, sqlDate, "08:00", 70, "m", "esprit");
@@ -61,10 +61,10 @@ public class Test {
         } catch (SQLException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } */
-        ReservationService res1= new ReservationService();
+       // ReservationService res1= new ReservationService();
         
-        res1.afficherReservation(o); 
-       Events e4 =new Events(87,o.getId_org(),o.getNom(),"tech","sfax",50,sqlDate,"7:00",5,"aaaaa");
+       // res1.afficherReservation(o); 
+      /* Events e4 =new Events(87,o.getId_org(),o.getNom(),"tech","sfax",50,sqlDate,"7:00",5,"aaaaa");
             try{
             es.creerEvent(e4);
           
@@ -98,7 +98,7 @@ public class Test {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }      */
-     //   SendMail.sendMail("ayman.kobbi@esprit.tn","********","aaa","ahla");
+        SendMail.sendMail("ayman.kobbi@esprit.tn","183JMT2883","aaa","ahla");
 //Reservation r1=new Reservation(1,1,p1,"aaaaaa");
         //res1.ajouterReservation(r1); */
        /* ReservationService res1= new ReservationService();

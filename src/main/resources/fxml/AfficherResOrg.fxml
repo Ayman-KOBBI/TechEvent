@@ -7,8 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="graphics.AfficherResOrgController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphics.AfficherResOrgController">
    <children>
       <AnchorPane id="AnchorPane" layoutY="-3.0" prefHeight="450.0" prefWidth="623.0" style="-fx-background-color: #001623;">
          <children>
@@ -16,7 +15,7 @@
                <columns>
                   <TableColumn fx:id="nomPar" prefWidth="110.0" text="nom" />
                   <TableColumn fx:id="prenomPar" prefWidth="127.0" text="prenom" />
-                  <TableColumn fx:id="nomEv" prefWidth="129.0" text="nom event" />
+                  <TableColumn fx:id="nomEv" prefWidth="129.0" text="nom_event" />
                </columns>
             </TableView>
             <TextField fx:id="rechercheEv" layoutX="343.0" layoutY="351.0" onKeyTyped="#search" />

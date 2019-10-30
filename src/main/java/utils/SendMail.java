@@ -22,8 +22,10 @@ import javax.swing.JOptionPane;
 public class SendMail {
    
  public static void sendMail(String userMail,String pass,String sujet,String contenu) throws MessagingException{
+    
+        
         String to = "ayman.kobbi@esprit.tn";
-        String host = "smtp.gmail.com";
+        String host = "smtp.aol.com";
         Properties prop = System.getProperties();
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put( "mail.smtp.host", host );
@@ -57,7 +59,6 @@ public class SendMail {
         
         
     }
- 
 }
    
 

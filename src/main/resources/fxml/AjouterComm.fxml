@@ -33,7 +33,6 @@
          </font>
       </JFXButton>
       <JFXTextArea fx:id="contenu" layoutX="219.0" layoutY="179.0" prefHeight="267.0" prefWidth="418.0" />
-      <JFXButton fx:id="button" layoutX="226.0" layoutY="474.0" text="Retour" />
       <Pane layoutX="511.0" layoutY="20.0" prefHeight="44.0" prefWidth="199.0" style="-fx-background-color: #FFFFFF;" />
    </children>
 </AnchorPane>

@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import entity.Forum;
 import entity.Commentaire;
+import javax.swing.JOptionPane;
 import service.forumService;
 import service.commentaireService;
 
@@ -27,8 +28,6 @@ public class AjouterCommController implements Initializable {
 
     @FXML
     private JFXTextArea contenu;
-    @FXML
-    private JFXButton button;
     @FXML
     private JFXTextField id;
 
@@ -44,10 +43,15 @@ public class AjouterCommController implements Initializable {
     @FXML
     private void Ajouter(ActionEvent event) {
           String st=id.getText();
+          if ("".equals(contenu.getText())){
+          JOptionPane.showMessageDialog(null, "Commentaire vide");
+          }
+          else {
         int article = Integer.parseInt(st);
            Commentaire c= new Commentaire(article,11,0,contenu.getText());
            commentaireService a = new commentaireService();
           a.ajoutercomm(c);
+          }
     }
    
 public void setText(String id)    

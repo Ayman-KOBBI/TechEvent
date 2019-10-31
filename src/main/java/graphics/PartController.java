@@ -106,6 +106,22 @@ private String log , pd ;
 
     @FXML
     private void btnForumAction(ActionEvent event) {
+        
+                                FXMLLoader loader=new FXMLLoader (getClass().getResource("/fxml/Forum.fxml")) ;
+                 //Parent root = null;
+            try {
+                loader.load();
+                //AjoutController irc=loader.getController();
+            } catch (IOException ex) {
+                Logger.getLogger(PartController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             Parent p1=loader.getRoot();
+                // String str=""+p.getId();
+                 Stage primaryStage=new Stage();
+                 Scene scene=new Scene(p1);
+                // primaryStage.setTitle(str);
+                 primaryStage.setScene(scene);
+                 primaryStage.showAndWait();
     }
 
     @FXML

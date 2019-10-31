@@ -182,7 +182,7 @@ public class EventController implements Initializable {
                     + "\n \n              lieu evenement : "+lie.getText()
                     + "\n \n              nombre de place :      "+nb.getText()
                     + "\n \n              date evenement : "+ date.getValue()
-                    + "\n \n              prix :    "+px.getText()
+                    + "\n \n              prix(dt) :    "+px.getText()
                    
                     + "\n \n              decription :      "+desc.getText();
                     

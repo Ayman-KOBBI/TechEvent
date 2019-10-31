@@ -225,7 +225,7 @@ public class ConsulterEventController implements Initializable {
         int nb_place = Integer.parseInt(nb1.getText());
         LocalDate locald = date1.getValue();
        Date dt_event = Date.valueOf(locald);  
-        String etat= "attent";
+       String etat= "En attent";
         int prix= Integer.parseInt(px1.getText());
         String description= desc1.getText();
           Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);

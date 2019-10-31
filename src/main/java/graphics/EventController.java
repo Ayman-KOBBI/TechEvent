@@ -13,6 +13,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import entity.Events;
+import entity.Organisateurs;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -96,7 +97,8 @@ public class EventController implements Initializable {
 
     @FXML
     private void ajout1(ActionEvent event) throws SQLException {
-        
+        Organisateurs org=new Organisateurs();
+        org.setId_org(5);
         if(date.getValue() == null ||desc.getText().equals("") || lie.getText().equals("") || px.getText().equals("")|| nom_e.getText().equals("") || nom_or.getText().equals("")|| nb.getText().equals("") ){ 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("OPPS");
@@ -120,7 +122,7 @@ public class EventController implements Initializable {
             
             Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
             EventService p = new EventService();
-            p.creerEvent(E1);
+            p.creerEvent(E1,org);
             
             JOptionPane.showMessageDialog(null, "Event créer");
            

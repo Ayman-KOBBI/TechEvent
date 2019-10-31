@@ -121,10 +121,10 @@ public class AfficherResOrgController implements Initializable {
     
      @FXML
     private void search(KeyEvent event) {
-        
+        Organisateurs org=new Organisateurs();
            ReservationService res = new ReservationService();
             String m = rechercheEv.getText().concat("%");
-            ArrayList<Reservation> r= (ArrayList<Reservation>) res.chercher(m);
+            ArrayList<Reservation> r= (ArrayList<Reservation>) res.chercherOrg(m,org);
             ObservableList<Reservation> obs=FXCollections.observableArrayList(r);
             tab_res.setItems(obs);
     }  

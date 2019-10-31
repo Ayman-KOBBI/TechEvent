@@ -282,8 +282,8 @@ public class AdminEventController implements Initializable {
 
             
             
-       //     sendSms();
-           //     Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
+           sendSms();
+               Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Events", "votre evenement est accepter");
 JOptionPane.showMessageDialog(null, "Events accepter ");
     Parent PageParent = null;
         try {
@@ -305,7 +305,7 @@ JOptionPane.showMessageDialog(null, "Events accepter ");
       
         Events e1=(Events) table_event.getItems().get(table_event.getSelectionModel().getSelectedIndex());
             e.RefuserEvent(e1);
-        // Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Event", "votre evenement est refuser");
+         Mail.sendMail("khayatmed@aol.com", "vrladxidydchjwzs", "Event", "votre evenement est refuser");
 JOptionPane.showMessageDialog(null, "Events refuser ");
  Parent PageParent = null;
         try {

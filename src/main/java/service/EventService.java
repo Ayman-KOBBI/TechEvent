@@ -7,6 +7,7 @@ package service;
 
 
 import entity.Events;
+import entity.Organisateurs;
 import iservice.IEventService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,7 +47,7 @@ public class EventService implements IEventService{
     }
 
     @Override
-    public void creerEvent(Events e) throws SQLException{
+    public void creerEvent(Events e,Organisateurs org) throws SQLException{
                    
  Date dt_event = Calendar.getInstance().getTime();
     SimpleDateFormat format1=new SimpleDateFormat("yyyy-MM-dd");
@@ -55,7 +56,7 @@ public class EventService implements IEventService{
     ///SimpleTimeFormat format3=new SimpleTimeFormat("hh:mm:ss");
  
 
-String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,prix,description,etat) VALUES (?,?,?,?,?,?,?,?,?)";
+String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,prix,description,etat,id_org) VALUES (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pres=c.prepareStatement(req);
         pres.setInt(1,e.getId_ev() );
         pres.setString(2,e.getNom_org() );
@@ -65,7 +66,7 @@ String req="INSERT INTO events(id_ev,nom_org,nom_event,lieu,nb_place,dt_event,pr
         pres.setDate(6, (java.sql.Date) e.getDt_event());
         pres.setString(9,e.getEtat());
         pres.setInt(7,e.getPrix());  
-          
+        pres.setInt(10,org.getId_org());
         pres.setString(8,e.getDescription());  
         pres.executeUpdate();
        // System.out.println(pres.executeUpdate());

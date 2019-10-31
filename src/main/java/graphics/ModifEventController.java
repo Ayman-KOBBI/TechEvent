@@ -6,6 +6,7 @@
 package graphics;
 
 import entity.Events;
+import entity.Organisateurs;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -84,7 +85,8 @@ public class ModifEventController implements Initializable {
 
     @FXML
     private void bt_modifEvent(ActionEvent event) throws SQLException {
-       
+        Organisateurs org=new Organisateurs();
+        org.setId_org(5);
         if(date1.getValue() == null ||desc1.getText().equals("") || lie1.getText().equals("") || px1.getText().equals("")|| nom_e1.getText().equals("")|| nom_or1.getText().equals("")|| nb1.getText().equals("")  ){ 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("OPPS");
@@ -107,7 +109,7 @@ public class ModifEventController implements Initializable {
 
           Events E1= new Events(nom_org, nom_event, lieu, nb_place, dt_event, prix, description, etat);
            EventService p = new EventService();
-              p.creerEvent(E1);
+              p.creerEvent(E1,org);
             JOptionPane.showMessageDialog(null, "Event Créer");}
 
     }

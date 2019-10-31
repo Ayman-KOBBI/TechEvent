@@ -21,14 +21,24 @@ import service.EventService;
 public class ReservationEvent extends Events {
    
      private int id_ticket;
+     private int id_org;
      
     
     public ReservationEvent(int id_ev,int id_org,String nom_event, String lieu,int nb_place,Date dt_event,int prix,String description,String etat,int id_ticket) {
-      super(id_ev,id_org,nom_event,lieu,nb_place,dt_event,prix,description,etat);
+      super(id_ev,id_org,lieu,nb_place,dt_event,prix,description,etat);
       this.id_ticket=id_ticket;
+    
     }
 
     public ReservationEvent() {
+    }
+
+    public int getId_org() {
+        return id_org;
+    }
+
+    public void setId_org(int id_org) {
+        this.id_org = id_org;
     }
 
     public int getId_ticket() {

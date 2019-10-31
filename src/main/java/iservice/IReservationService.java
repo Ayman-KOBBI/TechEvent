@@ -22,7 +22,7 @@ public interface IReservationService {
     public void supprimerReservation(Reservation r);
     public List<Reservation> afficherReservation(Organisateurs o) throws Exception;
     public List<ReservationEvent> afficherReservationPar(Participants p) throws Exception;
-     public List<Reservation> chercher(String nom_ev);
+    public List<Reservation> chercherOrg(String nom_ev,Organisateurs org);
    public void supprimerReservationEv(ReservationEvent e);
     public List<ReservationEvent> chercherEv(String nom_e);
 }

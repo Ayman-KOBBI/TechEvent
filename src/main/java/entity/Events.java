@@ -16,7 +16,7 @@ import javafx.scene.control.TableColumn;
 public class Events {
     
     protected int id_ev ; 
- //   protected int id_org;
+    protected int id_org;
    protected String nom_org ; 
     protected String description; 
    protected Date dt_event; 
@@ -57,16 +57,16 @@ public class Events {
         this.etat = etat;
         this.nom_event=nom_event;
     }
-     public Events(int id_ev,int id_org,String nom_event, String lieu,int nb_place,Date dt_event,int prix,String description,String etat) {
+     public Events(int id_ev,int id_org, String lieu,int nb_place,Date dt_event,int prix,String description,String etat) {
        this.id_ev = id_ev;
- //      this.id_org = id_org;
+      this.id_org = id_org;
         this.description = description;
         this.dt_event = dt_event;
         this.nb_place = nb_place;
         this.lieu = lieu;
         this.prix = prix;
         this.etat = etat;
-        this.nom_event=nom_event;
+        
     }
      
 public Events(String nom_org,String nom_event, String lieu,int nb_place,Date dt_event,int prix,String description,String etat) {

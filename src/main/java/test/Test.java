@@ -24,8 +24,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
-import service.OrgService;
-import service.ParService;
+import service.OrganisateurService;
+import service.ParticipantService;
 import service.ReservationService;
 import utils.SendMail;
 /**
@@ -105,6 +105,7 @@ public class Test {
         Participants p1= new Participants();
         p1.setId_par(58);
         res1.afficherReservationPar(p1);   */
+       SendMail.send("ayman.kobbi@esprit.tn", "cmfsvwuogdzceeiw", "hello","hello world");
        
     }
 }

@@ -38,12 +38,6 @@ import javafx.stage.Stage;
 
 public class OrgController implements Initializable {
 private String log , pd ;
-    @FXML
-    private Label prenoml;
-    @FXML
-    private Label soldel;
-    @FXML
-    private Label noml;
 
     public String getLog() {
         return log;
@@ -173,6 +167,21 @@ Connection connection = ConnexionBD
                    Logger.getLogger(PartController.class.getName()).log(Level.SEVERE, null, ex);
                }
   } 
+
+    @FXML
+    private void Reservations(ActionEvent event) {
+        Parent PageParent = null;
+        try {
+            PageParent = FXMLLoader.load(getClass().getResource("/fxml/AfficherResOrg.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherResOrgController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Scene PageScene = new Scene(PageParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(PageScene);
+        window.show();
+    }
        
        
        

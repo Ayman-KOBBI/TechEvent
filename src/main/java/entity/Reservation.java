@@ -38,6 +38,14 @@ public class Reservation {
      public Reservation(int id_ticket, Events e,Participants p){
             this(id_ticket,e.getId_ev(),p.getId_par(),p.getNom(),p.getPrenom(),e.getNom_event());
     }
+
+    public String getNom_event() {
+        return nom_event;
+    }
+
+    public void setNom_event(String nom_event) {
+        this.nom_event = nom_event;
+    }
     
    
      

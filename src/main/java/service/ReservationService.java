@@ -89,7 +89,7 @@ public class ReservationService implements IReservationService{
               e  = new ReservationEvent();
              // p = new Participants();
                       e.setId_ev(res.getInt("id_ev"));
-               //        e.setId_org(res.getInt("Id_org"));
+                       e.setId_org(res.getInt("Id_org"));
                       e.setNom_org(res.getString("nom_org"));
                       e.setDescription(res.getString("Description") );
                       e.setLieu(res.getString("lieu"));
@@ -125,7 +125,7 @@ public class ReservationService implements IReservationService{
             p.setId_par(res.getInt("id_par"));
             p.setTel(res.getString("tel"));
             p.setEmail(res.getString("email"));
-           
+          
             
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -145,13 +145,12 @@ public class ReservationService implements IReservationService{
             e.setDescription(res2.getString("Description"));
             e.setDt_event(res2.getDate("dt_event"));
             e.setId_ev(res2.getInt("id_ev"));
-            e.setId_ticket(res2.getInt("id_ticket"));
-            e.setEtat(res2.getString("etat"));
+
          
             e.setNom_org(res2.getString("nom_org"));
 
             
-        //    e.setId_org(res2.getInt("Id_org"));
+            e.setId_org(res2.getInt("Id_org"));
 
             e.setNom_event(res2.getString("nom_event"));
             e.setLieu(res2.getString("lieu"));
@@ -162,7 +161,7 @@ public class ReservationService implements IReservationService{
         }     
         
         ParticipantService par1=new ParticipantService();
-      //  par1.SetJetons(p, true, -e.getPrix());
+        par1.SetJetons(p, true, -e.getPrix());
          String req_update_solde="UPDATE participant SET solde=? WHERE(id_par=?);";
          PreparedStatement rs2 = c.prepareStatement(req_update_solde);
          rs2.setInt(1, p.getSolde());
@@ -193,10 +192,29 @@ public class ReservationService implements IReservationService{
         }
 
     }
-     @Override   
-     public List<Reservation> chercher(String nom_ev){
+        @Override   
+     public List<Reservation> chercherOrg(String nom_ev,Organisateurs org){
          Reservation r = null ;
-        String req="select * from reservation where nom_event like '"+nom_ev+"'";
+        String req="select * from reservation "
+                + " where nom_event like '"+nom_ev+ "';";
+         PreparedStatement rs3 = null;
+        try {
+            rs3 = c.prepareStatement(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      /*  try {
+            rs3.setString(1, nom_ev);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+       /* try {
+            rs3.setInt(1, org.getId_org());
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+     
+        
         List<Reservation> Reservations=new ArrayList<>();
         try {
              ResultSet res=  ste.executeQuery(req);
@@ -219,6 +237,37 @@ public class ReservationService implements IReservationService{
         }
        return Reservations;
 }
+     /*
+     @Override   
+     public List<Reservation> chercherPar(String nom_ev,Participants p){
+         Reservation r = null ;
+        String req="select * from reservation "
+                + " where nom_event like '"+nom_ev+ "'"
+                + "and id_par="+p.getId_par()+";";
+        
+        
+        List<Reservation> Reservations=new ArrayList<>();
+        try {
+             ResultSet res=  ste.executeQuery(req);
+            //
+            while(res.next()){
+                r = new Reservation();
+                      r.setId_ticket( res.getInt("id_ticket"));
+                      r.setId_ev(res.getInt("id_ev"));
+                      r.setId_par(res.getInt("id_par"));
+                      r.setNom( res.getString("nom") );
+                      r.setPrenom(res.getString("prenom"));
+                      r.setnom_event(res.getString("nom_event"));
+              
+                      
+              Reservations.add(r);
+               
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Reservations;
+}   */
 
 
 

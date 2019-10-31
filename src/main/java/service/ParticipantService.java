@@ -57,6 +57,19 @@ public class ParticipantService {
         return l;
 
     }
+      
+     
+    public void SetJetons(Participants p,boolean flag,int n) throws Exception{
+        if (flag){
+            if (p.getSolde()+n>=0)  
+                p.setSolde(p.getSolde()+n);
+            else
+                throw new Exception("Solde insuffisant");
+        }else{
+            if (n>=0)    
+                p.setSolde(n);
+            }
+    }
  
       
      public void supprimerPart(int id) {

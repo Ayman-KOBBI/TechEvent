@@ -21,10 +21,10 @@ import javax.swing.JOptionPane;
  */
 public class SendMail {
    
-/* public static void sendMail(String userMail,String pass,String sujet,String contenu) throws MessagingException{
+ public static void send(String to,String pass,String sujet,String contenu) throws MessagingException{
     
         
-        String to = "ayman.kobbi@esprit.tn";
+        String userMail = "kobbi.ayman@aol.tn";
         String host = "smtp.aol.com";
         Properties prop = System.getProperties();
         prop.put("mail.smtp.starttls.enable", "true");
@@ -37,6 +37,7 @@ public class SendMail {
         
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
+                    @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(userMail, pass);
                     }
@@ -58,7 +59,7 @@ public class SendMail {
           
         
         
-    }*/
+    }
 }
    
 
